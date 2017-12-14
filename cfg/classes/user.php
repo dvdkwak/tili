@@ -18,7 +18,7 @@
             $password = $mysqli->real_escape_string( $password );
 
             //hashing the 'password' value
-            $password = hash( 'sha256', $password );
+            $password = hash( 'sha512', $password );
 
             $query = 'SELECT * FROM tbl_users 
 					  WHERE username = "'. $username .'" 
@@ -73,8 +73,8 @@
                 $oldPass = $mysqli->real_escape_string( $oldPass );
                 $newPass = $mysqli->real_escape_string( $newPass );
 
-                $oldPass = hash( "sha256", $oldPass );
-                $newPass = hash( "sha256", $newPass );
+                $oldPass = hash( "sha512", $oldPass );
+                $newPass = hash( "sha512", $newPass );
 
                 $query = 'SELECT * FROM tbl_users
 					  WHERE username = "'. $_SESSION['username'] .'" 
