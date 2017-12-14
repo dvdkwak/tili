@@ -3,6 +3,7 @@
 	class user extends db{
 
         //standard login function which calles for the checked and the session set as well
+
         public function login( $username, $password, $location ){
             $this->checkCredentials( $username, $password );
             $this->setSession();
