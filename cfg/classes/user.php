@@ -40,7 +40,8 @@
         public function setSession(){
             if( $this->status === True ){
                 $_SESSION['username'] = $this->username;
-                $_SESSION['status'] = True;
+                $_SESSION['userlvl']  = $this->userlevel;
+                $_SESSION['status']   = True;
             }else{
                 $_SESSION['status'] = False;
             }
