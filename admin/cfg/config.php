@@ -28,3 +28,4 @@ if(isset($_GET['url']) || !empty($_GET['url'])){
 
 //includes
 include_once('cfg/classes/adminContent.php');
+include_once('cfg/classes/user.php');
