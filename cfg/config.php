@@ -10,24 +10,16 @@ define('database', 'tilit');
 
     //databaseclass
 
-Class Connect {
-
+Class db{
     function Connect(){
-
         $mysqli = new mysqli(hostname,username,password,database);
 
-        if(mysqli_connect_errno()) {
-            
+        if(mysqli_connect_errno()){
             echo mysqli_connect_errno();
-            
-        } else {
-
+        }else{
             return $mysqli;
-
         }
-
     }
-
 }
 
 //zetten van de url variabele

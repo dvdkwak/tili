@@ -7,26 +7,16 @@ define('password', 'usbw');
 define('database', 'tilit');
 
 
-    //databaseclass
+Class db{
+    function Connect(){
+        $mysqli = new mysqli(hostname,username,password,database);
 
-Class Connect {
-
-	function Connect(){
-
-		$mysqli = new mysqli(hostname,username,password,database);
-
-		if(mysqli_connect_errno()) {
-			
-			echo mysqli_connect_errno();
-			
-		} else {
-
-			return $mysqli;
-
-		}
-
-	}
-
+        if(mysqli_connect_errno()){
+            echo mysqli_connect_errno();
+        }else{
+            return $mysqli;
+        }
+    }
 }
 
 //getting the right url
