@@ -9,6 +9,13 @@
             $this->moveTo( $location );
         }
 
+        public function error( $message, $sort ){
+            echo '<div style="width:500px;height:50px;margin-bottom:50px;margin-left:50px;posistion:fixed;" class="my-alert-message alert alert-'.$sort.' alert-dismissable">
+                    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                    '.$message.'
+                  </div>';
+        }
+
         //function to add the user to the database
         public function addUser(){
             $mysqli = $this->Connect();
@@ -18,8 +25,8 @@
 
                 //real_escape_string to prevent sql injection
                 $email     = $mysqli->real_escape_string($_POST['email']);
-                $password  = $mysqli->real_escape_string(hash('sha512', $_POST['password']));
-                $repeated  = $mysqli->real_escape_string(hash('sha512', $_POST['repeatpass']));
+                $password  = $mysqli->real_escape_string($_POST['password']);
+                $repeated  = $mysqli->real_escape_string($_POST['repeatpass']);
                 $firstname = $mysqli->real_escape_string($_POST['firstname']);
                 $prepos    = $mysqli->real_escape_string($_POST['preposition']);
                 $lastname  = $mysqli->real_escape_string($_POST['lastname']);
@@ -31,6 +38,10 @@
 
                 //check if the passwords match
                 if ($password === $repeated) {
+                    //hashing the password
+                    $password = hash('sha512', $password);
+
+                    //check if mail exists
                     $checkEmail = $mysqli->query("SELECT email FROM tbl_users WHERE email = '$email'");
 
                     //check if the email/user already exists
