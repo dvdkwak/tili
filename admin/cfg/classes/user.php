@@ -62,7 +62,7 @@
             $password = hash( 'sha512', $password );
 
             $query = 'SELECT * FROM tbl_users 
-					  WHERE username = "'. $username .'" 
+					  WHERE email = "'. $username .'" 
 						AND password = "'. $password .'"';
             $result = $mysqli->query($query);
 
@@ -97,7 +97,7 @@
         public function lock( $location, $oldLocation ){
             if( !isset( $_SESSION['status'] ) || $_SESSION['status'] == False ){
                 $_SESSION['oldLocation'] = $oldLocation;
-                header( "location:". $location );
+                $this->moveTo($location);
             }
         }
 
