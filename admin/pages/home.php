@@ -7,7 +7,7 @@
     }
 ?>
 
-<h1>fck this pasta.</h1>
+<h1>hier komt de homepage van de backend van tilit</h1>
 
 <form method="post">
     <input type="hidden" name="logout" value="true">
