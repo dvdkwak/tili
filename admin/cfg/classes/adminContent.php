@@ -12,7 +12,7 @@ class adminContent
                 return $return;
                 break;
             default:
-                return array('link'=>'pages/404.php', 'styleLink'=>'assets/css/custom.css', 'title'=>'Oops!', 'scriptLink'=>'countUp.js');
+                return array('link'=>'pages/404.php', 'styleLink'=>'assets/css/404.css', 'title'=>'Oops!', 'scriptLink'=>'');
                 break;
         }
     }
