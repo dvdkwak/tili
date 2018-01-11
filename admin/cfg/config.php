@@ -1,6 +1,8 @@
 <?php
 session_start();
 
+$root = $_SERVER['DOCUMENT_ROOT'];
+
 define('hostname', 'localhost');
 define('username', 'root');
 define('password', 'usbw');
@@ -27,5 +29,5 @@ if(isset($_GET['url']) || !empty($_GET['url'])){
 }
 
 //includes
-include_once('classes/adminContent.php');
-include_once('classes/user.php');
+include_once($root.'/admin/cfg/classes/adminContent.php');
+include_once($root.'/admin/cfg/classes/user.php');
