@@ -11,6 +11,10 @@ class adminContent
                 $return = array('link'=>'pages/login.php', 'styleLink'=>'', 'title'=>'tilit | login', 'scriptLink'=>'');
                 return $return;
                 break;
+            case 'projects':
+            	$return = array('link'=>'pages/projects.php', 'styleLink'=>'', 'title'=>'tilit | projects', 'scriptLink'=>'');
+                return $return;
+                break;
             default:
                 return array('link'=>'pages/404.php', 'styleLink'=>'assets/css/404.css', 'title'=>'Oops!', 'scriptLink'=>'');
                 break;

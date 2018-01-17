@@ -31,3 +31,4 @@ if(isset($_GET['url']) || !empty($_GET['url'])){
 //includes
 include_once($root.'/admin/cfg/classes/adminContent.php');
 include_once($root.'/admin/cfg/classes/user.php');
+include_once($root.'/admin/cfg/classes/projects.php');
