@@ -1,7 +1,22 @@
 <?php
 include_once('cfg/config.php');
+
+$user = new user();
+
+if($url!="login"){
+    $user->lock("/admin/login", "/admin");
+}
+
 $content = new adminContent();
 $page = $content->getContent($url);
+
+if(isset($_POST['logout']) && $_POST['logout'] == "true"){
+    $user->logOut('/');
+}
+
+if(isset($_POST['flag']) && $_POST['flag'] == "login"){
+    $user->login($_POST['username'], $_POST['password'], $_SESSION['oldLocation']);
+}
 ?>
 <html>
 <head>

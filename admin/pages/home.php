@@ -1,12 +1,3 @@
-<?php
-    $user = new user();
-    $user->lock("login", "/admin/");
-
-    if(isset($_POST['logout']) && $_POST['logout'] == "true"){
-        $user->logOut('/');
-    }
-?>
-
 <h1>hier komt de homepage van de backend van TiliT oh gelukkig</h1>
 
 <form method="post">
