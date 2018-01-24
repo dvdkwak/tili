@@ -4,15 +4,15 @@ class adminContent
     public function getContent($url){
         switch($url){
             case 'home':
-                $return = array('link'=>'pages/home.php', 'styleLink'=>'assets/css/home.css', 'title'=>'homehome', 'scriptLink'=>'');
+                $return = array('link'=>'pages/home.php', 'styleLink'=>'assets/css/style.css', 'title'=>'Admin | Home', 'scriptLink'=>'');
                 return $return;
                 break;
             case 'login':
-                $return = array('link'=>'pages/login.php', 'styleLink'=>'assets/css/login.css', 'title'=>'tilit | login', 'scriptLink'=>'');
+                $return = array('link'=>'pages/login.php', 'styleLink'=>'assets/css/login.css', 'title'=>'Admin | Login', 'scriptLink'=>'');
                 return $return;
                 break;
             case 'projects':
-            	$return = array('link'=>'pages/projects.php', 'styleLink'=>'', 'title'=>'tilit | projects', 'scriptLink'=>'');
+            	$return = array('link'=>'pages/projects.php', 'styleLink'=>'assets/css/style.css', 'title'=>'Admin | Projects', 'scriptLink'=>'');
                 return $return;
                 break;
             default:
