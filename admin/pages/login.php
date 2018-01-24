@@ -1,10 +1,3 @@
-<ul class="main-navbar">
-  <li class="main-navbar-item"><a href="news.asp">News</a></li>
-  <li class="main-navbar-item"><a href="contact.asp">Contact</a></li>
-  <li class="main-navbar-item"><a href="about.asp">About</a></li>
-  <li class="main-navbar-item"><a href="default.asp">Home</a></li>
-</ul>
-
 <div class="main-container">
 
   <div class="logo-container">
