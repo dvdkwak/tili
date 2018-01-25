@@ -15,6 +15,10 @@ class adminContent
             	$return = array('link'=>'pages/projects.php', 'styleLink'=>'assets/css/style.css', 'title'=>'Admin | Projects', 'scriptLink'=>'');
                 return $return;
                 break;
+            case 'requests':
+                $return = array('link'=>'pages/requests.php', 'styleLink'=>'assets/css/style.css', 'title'=>'Admin | Requests', 'scriptLink'=>'');
+                return $return;
+                break;
             default:
                 $return = array('link'=>'pages/404.php', 'styleLink'=>'assets/css/404.css', 'title'=>'Oops!', 'scriptLink'=>'');
                 return $return;

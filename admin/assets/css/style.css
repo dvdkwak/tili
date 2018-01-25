@@ -1,4 +1,5 @@
 body {
+  max-width: 100%;
   margin: 0;
   font-family: "Roboto", sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -8,7 +9,7 @@ body {
 .container {
   position: relative;
   z-index: 1;
-  max-width: 300px;
+  max-width: 80%;
   margin: 0 auto;
 }
 .container:before, .container:after {
@@ -69,8 +70,26 @@ body {
 }
 
 .main-container {
-  width: 20%;
+  width: 80%;
   margin: auto;
   margin-top: 5%;
 
 }
+.snikker{
+  border-radius:0px;
+  margin-left:10px;
+}
+.custom-header{
+  background-color:#1abc9c
+}
+.btn-custom{
+  border: 2px solid;
+  background-color: transparent;
+}
+.btn-custom-trans{
+  background-color: transparent;
+  border: 0px solid;
+}
+.btn-custom.white{
+  border-color: white;
+  color: white;

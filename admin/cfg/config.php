@@ -32,3 +32,5 @@ if(isset($_GET['url']) || !empty($_GET['url'])){
 include_once($root.'/admin/cfg/classes/adminContent.php');
 include_once($root.'/admin/cfg/classes/user.php');
 include_once($root.'/admin/cfg/classes/projects.php');
+include_once($root.'/admin/cfg/classes/requests.php');
+include_once($root.'/admin/cfg/classes/log.php');

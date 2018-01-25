@@ -33,5 +33,4 @@ http_response_code(404);
 
 <audio autoplay="true" loop>
     <source src="/admin/assets/sounds/pacman_chomp.wav" type="audio/wav">
-    your browaserjsadfksb
 </audio>

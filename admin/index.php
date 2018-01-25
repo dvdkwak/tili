@@ -1,7 +1,8 @@
 <?php
 include_once('cfg/config.php');
 
-$user = new user();
+$user     = new user();
+$requests = new requests();
 
 if($url!="login"){
     $user->lock("/admin/login", "/admin");
@@ -26,10 +27,16 @@ if(isset($_POST['flag']) && $_POST['flag'] == "login"){
     <title><?php if(!empty($page['title'])){ echo $page['title']; } ?></title>
     <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="assets/fontawesome/css/font-awesome.min.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" href="<?php if(!empty($page['styleLink'])){ echo $page['styleLink']; } ?>">
 </head>
 <body>
+    <ul class="main-navbar">
+        <li class="main-navbar-item"><a href="home">Home</a></li>
+        <li class="main-navbar-item"><a href="projects">Projecten</a></li>
+        <li class="main-navbar-item"><a href="requests">Aanvragen</a></li>
+    </ul>
     <?php
         include_once($page['link']);
     ?>

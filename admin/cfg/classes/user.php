@@ -53,10 +53,10 @@
 
                         header('Location: index.php');
                     } else {
-                        $this->alert('Het email dat u heeft ingevoerd bestaat al.','red');
+                        $this->alert('Het email dat u heeft ingevoerd bestaat al.','danger');
                     }
                 } else {
-                    $this->alert('De wachtwoorden komen niet overeen, probeer het opnieuw.','red');
+                    $this->alert('De wachtwoorden komen niet overeen, probeer het opnieuw.','danger');
                 }
             }
         }
