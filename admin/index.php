@@ -2,7 +2,6 @@
 include_once('cfg/config.php');
 
 $user     = new user();
-$requests = new requests();
 
 if($url!="login"){
     $user->lock("/admin/login", "/admin");
