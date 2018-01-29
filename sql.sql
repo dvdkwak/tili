@@ -1,1 +1,0 @@
-ALTER TABLE  `tbl_projects` ADD  `isRequest` INT( 1 ) NOT NULL COMMENT  '1 is aanvraag 0 is geaccepteerd' AFTER  `pvePath` ;
