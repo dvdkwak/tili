@@ -117,34 +117,7 @@
         }
 
         public function changePass( $oldPass, $newPass ){
-            $mysqli = $this->connect();
 
-            if( !isset( $_SESSION['loggedIn'] ) || $_SESSION['loggedIn'] === False ){
-                $return = "U moet eerst ingelogd zijn om uw wachtwoord te kunnen veranderen.";
-                return $return;
-            }else{
-                $oldPass = $mysqli->real_escape_string( $oldPass );
-                $newPass = $mysqli->real_escape_string( $newPass );
-
-                $oldPass = hash( "sha512", $oldPass );
-                $newPass = hash( "sha512", $newPass );
-
-                $query = 'SELECT * FROM tbl_users
-					  WHERE username = "'. $_SESSION['username'] .'" 
-						AND password = "'. $oldPass .'"';
-                $result = $mysqli->query( $query );
-
-                if( $result->num_rows === 1 ){
-                    $query = 'UPDATE tbl_users
-								 SET password = "'. $newPass .'"
-							   WHERE username = "'. $_SESSION['username'] .'"';
-                    $mysqli->query( $query );
-                    $return = "geslaagd!";
-                }else{
-                    $return = "Verkeerde wachtwoord Ingevult!";
-                }
-                $this->message = $return;
-            }
         }
     }
 
