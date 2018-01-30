@@ -28,13 +28,14 @@ if(isset($_POST['flag']) && $_POST['flag'] == "login"){
     <link rel="stylesheet" href="assets/fontawesome/css/font-awesome.min.css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800' rel='stylesheet' type='text/css'>
+    <link href="/admin/assets/css/style.css" rel="stylesheet">
     <link rel="stylesheet" href="<?php if(!empty($page['styleLink'])){ echo $page['styleLink']; } ?>">
 </head>
 <body>
     <ul class="main-navbar">
         <li class="main-navbar-item"><a href="home">Home</a></li>
-        <li class="main-navbar-item"><a href="projects">Projecten</a></li>
-        <li class="main-navbar-item"><a href="requests">Aanvragen</a></li>
+        <li class="main-navbar-item"><a href="projecten">Projecten</a></li>
+        <li class="main-navbar-item"><a href="aanvragen">Aanvragen</a></li>
     </ul>
     <?php
         include_once($page['link']);
