@@ -2,14 +2,19 @@
 
 	class user extends db{
 
+        private $username
+        private $password
+
         //standard login function which calles for the checked and the session set as well
-        public function login( $username, $password, $location ){
+        public function login($username, $password, $location)
+        {
             $this->checkCredentials( $username, $password );
             $this->setSession();
             $this->moveTo( $location );
         }
 
-        public function error( $message, $sort ){
+        public function error($message, $sort)
+        {
             echo '<div style="width:500px;height:50px;margin-bottom:50px;margin-left:50px;posistion:fixed;" class="my-alert-message alert alert-'.$sort.' alert-dismissable">
                     <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
                     '.$message.'
@@ -23,11 +28,12 @@
         </div>';*/
 
         //function to add the user to the database
-        public function addUser(){
+        public function addUser()
+        {
             $mysqli = $this->Connect();
 
             //if the register button is clicked proceed with adding the user
-            if(isset($_POST['register'])){
+            if (isset($_POST['register'])) {
 
                 //real_escape_string to prevent sql injection
                 $email     = $mysqli->real_escape_string($_POST['email']);
@@ -68,7 +74,8 @@
         }
 
         //Let us just say here things get serious
-        public function checkCredentials( $username, $password ){
+        public function checkCredentials($username, $password)
+        {
             $mysqli = $this->connect();
 
             //real_escape_string to prevent sql injection
@@ -97,8 +104,9 @@
         }
 
         //if status is true then we can set the session
-        public function setSession(){
-            if( $this->status === True ){
+        public function setSession()
+        {
+            if ($this->status === True) {
                 $_SESSION['username']  = $this->username;
                 $_SESSION['userlevel'] = $this->userlevel;
                 $_SESSION['status']    = True;
@@ -107,31 +115,35 @@
             }
         }
 
-        public function logOut( $location ){
+        public function logOut($location)
+        {
             if( isset( $_SESSION['status'] ) ){
                 session_destroy();
             }
             header( "location:". $location );
         }
 
-        public function lock( $location, $oldLocation ){
-            if( !isset( $_SESSION['status'] ) || $_SESSION['status'] == False ){
+        public function lock($location, $oldLocation)
+        {
+            if (!isset( $_SESSION['status'] ) || $_SESSION['status'] == false) {
                 $_SESSION['oldLocation'] = $oldLocation;
                 $this->moveTo($location);
             }
         }
 
-        public function moveTo( $location ){
+        public function moveTo($location)
+        {
             header( "location:" . $location );
         }
 
-        public function changePass( $oldPass, $newPass ){
+        public function changePass($oldPass, $newPass)
+        {
 
         }
 
         public function ifAdmin (){
-            if ($_SESSION['userlvl'] === 0) {
-                echo '<li class="main-navbar-item"><a href="Gebruikers">Aanvragen</a></li>';
+            if (isset($_SESSION['userlevel']) && $_SESSION['userlevel'] == 0) {
+                echo '<li class="main-navbar-item"><a href="#">Gebruikers</a></li>';
             }
         }
 

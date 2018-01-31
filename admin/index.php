@@ -40,11 +40,10 @@ if(isset($_GET['uitloggen'])){
         <li class="main-navbar-item"><a href="home">Home</a></li>
         <li class="main-navbar-item"><a href="projecten">Projecten</a></li>
         <li class="main-navbar-item"><a href="aanvragen">Aanvragen</a></li>
+        <?php $user->ifAdmin(); ?>
         <li class="main-navbar-item"><a href="?uitloggen=true">uitloggen</a></li>
-        <?php $user->ifAdmin(); echo $_SESSION['userlvl']. ' test'; ?>
     </ul>
     <?php
-        var_dump($_SESSION['userlvl']);
         include_once($page['link']);
     ?>
     <script src="jquery"></script>
