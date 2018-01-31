@@ -123,8 +123,8 @@
         }
 
         public function ifAdmin (){
-            if ($_SESSION['userlvl'] === 0) {
-                echo '<li class="main-navbar-item"><a href="Gebruikers">Aanvragen</a></li>';
+            if (isset($_SESSION['userlevel']) && $_SESSION['userlevel'] == 0) {
+                echo '<li class="main-navbar-item"><a href="#">Gebruikers</a></li>';
             }
         }
 
