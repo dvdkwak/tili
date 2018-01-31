@@ -109,7 +109,7 @@
 
         public function logOut( $location ){
             if( isset( $_SESSION['status'] ) ){
-                $_SESSION['status'] = False;
+                session_destroy();
             }
             header( "location:". $location );
         }
