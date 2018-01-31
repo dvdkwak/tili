@@ -28,8 +28,8 @@
       <file leaf-file-name="index.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/admin/index.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="252">
-              <caret line="12" column="0" lean-forward="true" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="0" />
+            <state relative-caret-position="553">
+              <caret line="40" column="12" lean-forward="false" selection-start-line="40" selection-start-column="12" selection-end-line="40" selection-end-column="12" />
               <folding />
             </state>
           </provider>
@@ -38,13 +38,9 @@
       <file leaf-file-name="user.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/admin/cfg/classes/user.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="357">
-              <caret line="104" column="34" lean-forward="false" selection-start-line="104" selection-start-column="34" selection-end-line="104" selection-end-column="34" />
-              <folding>
-                <marker date="1517395918923" expanded="true" signature="2183:2233" ph="SELECT email... tbl_users" />
-                <marker date="1517395918923" expanded="true" signature="2481:2758" ph="INSERT INTO tbl_users... " />
-                <marker date="1517395918923" expanded="true" signature="3601:3704" ph="SELECT * FRO... tbl_users" />
-              </folding>
+            <state relative-caret-position="504">
+              <caret line="111" column="34" lean-forward="false" selection-start-line="111" selection-start-column="34" selection-end-line="111" selection-end-column="34" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -280,12 +276,12 @@
       <workItem from="1516960184890" duration="8000" />
       <workItem from="1517227833445" duration="2602000" />
       <workItem from="1517309108084" duration="1039000" />
-      <workItem from="1517395831649" duration="1389000" />
+      <workItem from="1517395831649" duration="1552000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="46366000" />
+    <option name="totallyTimeSpent" value="46529000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-9" y="-9" width="1938" height="1048" extended-state="6" />
@@ -322,7 +318,7 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="php">
           <url>file://$PROJECT_DIR$/admin/cfg/classes/user.php</url>
-          <line>98</line>
+          <line>105</line>
           <option name="timeStamp" value="1" />
         </line-breakpoint>
       </breakpoints>
@@ -607,20 +603,16 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/admin/cfg/classes/user.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="357">
-          <caret line="104" column="34" lean-forward="false" selection-start-line="104" selection-start-column="34" selection-end-line="104" selection-end-column="34" />
-          <folding>
-            <marker date="1517395918923" expanded="true" signature="2183:2233" ph="SELECT email... tbl_users" />
-            <marker date="1517395918923" expanded="true" signature="2481:2758" ph="INSERT INTO tbl_users... " />
-            <marker date="1517395918923" expanded="true" signature="3601:3704" ph="SELECT * FRO... tbl_users" />
-          </folding>
+        <state relative-caret-position="504">
+          <caret line="111" column="34" lean-forward="false" selection-start-line="111" selection-start-column="34" selection-end-line="111" selection-end-column="34" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/admin/index.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="252">
-          <caret line="12" column="0" lean-forward="true" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="0" />
+        <state relative-caret-position="553">
+          <caret line="40" column="12" lean-forward="false" selection-start-line="40" selection-start-column="12" selection-end-line="40" selection-end-column="12" />
           <folding />
         </state>
       </provider>
