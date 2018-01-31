@@ -16,6 +16,12 @@
                   </div>';
         }
 
+       /* echo '
+        <div style="margin-top:830px;margin-left:10px;position:fixed;"class="my-alert-message alert alert-'.$sort.' alert-dismissable">
+            <a href="#" style="z-index:100;" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+            '.$message.'
+        </div>';*/
+
         //function to add the user to the database
         public function addUser(){
             $mysqli = $this->Connect();
@@ -86,6 +92,7 @@
                 $this->userlevel  = $item->userlevel;
             }else{
                 $this->status = False;
+                $this->error("De ingevulde gegevens komen niet overeen!, probeer het nog eens.");
             }
         }
 
