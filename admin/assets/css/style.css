@@ -93,3 +93,23 @@ body {
 .btn-custom.white{
   border-color: white;
   color: white;
+}
+#modalpdf{
+  height:800px;
+  width: 800px;
+  margin-left: -170px;
+}
+.sendTime{
+
+    text-align: right;
+    color: #595959;
+    width: 100%;
+    font-size: 12px; 
+    font-weight: bold;
+}
+
+#modallog{
+    height: 800px;
+    width: 800px;
+    margin-left: -170px;
+}
