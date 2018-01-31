@@ -7,19 +7,15 @@ if($url!="login"){
     $user->lock("/admin/login", "/admin");
 }
 
-$content = new adminContent();
-$page = $content->getContent($url);
-
-if(isset($_POST['logout']) && $_POST['logout'] == "true"){
+if($url == "logout"){
     $user->logOut('/');
 }
 
+$content = new adminContent();
+$page = $content->getContent($url);
+
 if(isset($_POST['flag']) && $_POST['flag'] == "login"){
     $user->login($_POST['username'], $_POST['password'], $_SESSION['oldLocation']);
-}
-
-if(isset($_GET['uitloggen'])){
-    $user->logOut("/");
 }
 ?>
 <html>
@@ -40,7 +36,7 @@ if(isset($_GET['uitloggen'])){
         <li class="main-navbar-item"><a href="home">Home</a></li>
         <li class="main-navbar-item"><a href="projecten">Projecten</a></li>
         <li class="main-navbar-item"><a href="aanvragen">Aanvragen</a></li>
-        <li class="main-navbar-item"><a href="?uitloggen=true">uitloggen</a></li>
+        <li class="main-navbar-item"><a href="logout">uitloggen</a></li>
         <?php $user->ifAdmin(); echo $_SESSION['userlvl']. ' test'; ?>
     </ul>
     <?php
