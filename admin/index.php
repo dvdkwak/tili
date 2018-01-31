@@ -17,6 +17,10 @@ if(isset($_POST['logout']) && $_POST['logout'] == "true"){
 if(isset($_POST['flag']) && $_POST['flag'] == "login"){
     $user->login($_POST['username'], $_POST['password'], $_SESSION['oldLocation']);
 }
+
+if(isset($_GET['uitloggen'])){
+    $user->logOut("/");
+}
 ?>
 <html>
 <head>
@@ -37,6 +41,7 @@ if(isset($_POST['flag']) && $_POST['flag'] == "login"){
         <li class="main-navbar-item"><a href="projecten">Projecten</a></li>
         <li class="main-navbar-item"><a href="aanvragen">Aanvragen</a></li>
         <?php $user->ifAdmin(); ?>
+        <li class="main-navbar-item"><a href="?uitloggen=true">uitloggen</a></li>
     </ul>
     <?php
         include_once($page['link']);
