@@ -3,24 +3,12 @@
 	class user extends db{
 
         //standard login function which calles for the checked and the session set as well
-        public function login( $username, $password, $location ){
+        public function login($username, $password, $location)
+        {
             $this->checkCredentials( $username, $password );
             $this->setSession();
             $this->moveTo( $location );
         }
-
-        public function error( $message, $sort ){
-            echo '<div style="width:500px;height:50px;margin-bottom:50px;margin-left:50px;posistion:fixed;" class="my-alert-message alert alert-'.$sort.' alert-dismissable">
-                    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-                    '.$message.'
-                  </div>';
-        }
-
-       /* echo '
-        <div style="margin-top:830px;margin-left:10px;position:fixed;"class="my-alert-message alert alert-'.$sort.' alert-dismissable">
-            <a href="#" style="z-index:100;" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-            '.$message.'
-        </div>';*/
 
         //function to add the user to the database
         public function addUser(){
@@ -59,16 +47,17 @@
 
                         header('Location: index.php');
                     } else {
-                        $this->alert('Het email dat u heeft ingevoerd bestaat al.','danger');
+                        $_SESSION['error'] = 'Het email dat u heeft ingevoerd bestaat al.';
                     }
                 } else {
-                    $this->alert('De wachtwoorden komen niet overeen, probeer het opnieuw.','danger');
+                    $_SESSION['error'] = 'De wachtwoorden komen niet overeen, probeer het opnieuw.';
                 }
             }
         }
 
         //Let us just say here things get serious
-        public function checkCredentials( $username, $password ){
+        public function checkCredentials($username, $password)
+        {
             $mysqli = $this->connect();
 
             //real_escape_string to prevent sql injection
@@ -86,18 +75,18 @@
 
             //if I get a result it means the credentials are right.
             if( $result->num_rows === 1 ){
-                $this->message  = $result;
                 $this->username = $username;
                 $this->status   = True;
                 $this->userlevel  = $item->userlevel;
             }else{
                 $this->status = False;
-                $this->error("De ingevulde gegevens komen niet overeen!, probeer het nog eens.");
+                $_SESSION['error'] = "De ingevulde gegevens komen niet overeen!, probeer het nog eens.";
             }
         }
 
         //if status is true then we can set the session
-        public function setSession(){
+        public function setSession()
+        {
             if( $this->status === True ){
                 $_SESSION['username']  = $this->username;
                 $_SESSION['userlevel'] = $this->userlevel;
@@ -107,25 +96,29 @@
             }
         }
 
-        public function logOut( $location ){
+        public function logOut($location)
+        {
             if( isset( $_SESSION['status'] ) ){
                 session_destroy();
             }
             header( "location:". $location );
         }
 
-        public function lock( $location, $oldLocation ){
+        public function lock($location, $oldLocation)
+        {
             if( !isset( $_SESSION['status'] ) || $_SESSION['status'] == False ){
                 $_SESSION['oldLocation'] = $oldLocation;
                 $this->moveTo($location);
             }
         }
 
-        public function moveTo( $location ){
+        public function moveTo($location)
+        {
             header( "location:" . $location );
         }
 
-        public function changePass( $oldPass, $newPass ){
+        public function changePass($oldPass, $newPass)
+        {
 
         }
 

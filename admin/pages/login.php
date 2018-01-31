@@ -14,5 +14,12 @@
       </form>
     </div>
   </div>
-
+<?php
+if (isset($_SESSION['error'])) {
+  echo '<div style="width:500px;height:50px;margin-bottom:50px;margin-left:50px;posistion:fixed;" class="my-alert-message alert alert-danger alert-dismissable">
+          <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+          '.$_SESSION['error'].'
+        </div>';
+}
+?>
 </div>
