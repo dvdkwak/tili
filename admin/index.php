@@ -36,6 +36,7 @@ if(isset($_POST['flag']) && $_POST['flag'] == "login"){
         <li class="main-navbar-item"><a href="home">Home</a></li>
         <li class="main-navbar-item"><a href="projecten">Projecten</a></li>
         <li class="main-navbar-item"><a href="aanvragen">Aanvragen</a></li>
+        <?php $user->ifAdmin(); echo $_SESSION['userlvl']. ' test'; ?>
     </ul>
     <?php
         include_once($page['link']);
