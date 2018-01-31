@@ -39,7 +39,7 @@ if(isset($_POST['flag']) && $_POST['flag'] == "login"){
         <li class="main-navbar-item"><a href="projecten">Projecten</a></li>
         <li class="main-navbar-item"><a href="aanvragen">Aanvragen</a></li>
         <?php if ($user->ifAdmin()) {
-            echo '<li class="main-navbar-item"><a href="#">Gebruikers</a></li>';
+            echo '<li class="main-navbar-item"><a href="gebruikers">Gebruikers</a></li>';
         } ?>
         <li class="main-navbar-item"><a href="logout">uitloggen</a></li>
     </ul>
