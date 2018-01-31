@@ -91,7 +91,7 @@
         public function setSession(){
             if( $this->status === True ){
                 $_SESSION['username'] = $this->username;
-                $_SESSION['userlvl']  = $this->userlevel;
+                $_SESSION['userlvl']  = $this->firstName;
                 $_SESSION['status']   = True;
             }else{
                 $_SESSION['status'] = False;
@@ -119,6 +119,13 @@
         public function changePass( $oldPass, $newPass ){
 
         }
+
+        public function ifAdmin (){
+            if ($_SESSION['userlvl'] === 0) {
+                echo '<li class="main-navbar-item"><a href="Gebruikers">Aanvragen</a></li>';
+            }
+        }
+
     }
 
 
