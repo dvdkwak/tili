@@ -10,20 +10,6 @@
             $this->moveTo( $location );
         }
 
-        public function error($message, $sort)
-        {
-            echo '<div style="width:500px;height:50px;margin-bottom:50px;margin-left:50px;posistion:fixed;" class="my-alert-message alert alert-'.$sort.' alert-dismissable">
-                    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-                    '.$message.'
-                  </div>';
-        }
-
-       /* echo '
-        <div style="margin-top:830px;margin-left:10px;position:fixed;"class="my-alert-message alert alert-'.$sort.' alert-dismissable">
-            <a href="#" style="z-index:100;" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-            '.$message.'
-        </div>';*/
-
         //function to add the user to the database
         public function addUser(){
             $mysqli = $this->Connect();
@@ -72,6 +58,9 @@
         //Let us just say here things get serious
         public function checkCredentials($username, $password)
         {
+            require_once 'errorhandling.php';
+            $error = new errorHandling();
+
             $mysqli = $this->connect();
 
             //real_escape_string to prevent sql injection
@@ -95,7 +84,7 @@
                 $this->userlevel  = $item->userlevel;
             }else{
                 $this->status = False;
-                $this->error("De ingevulde gegevens komen niet overeen!, probeer het nog eens.");
+                $error->setCustomError("Username or password are wrong!", "danger");
             }
         }
 

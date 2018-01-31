@@ -2,6 +2,7 @@
 include_once('cfg/config.php');
 
 $user     = new user();
+$error = new errorHandling();
 
 if($url!="login"){
     $user->lock("/admin/login", "/admin");
@@ -18,6 +19,7 @@ if(isset($_POST['flag']) && $_POST['flag'] == "login"){
     $user->login($_POST['username'], $_POST['password'], $_SESSION['oldLocation']);
 }
 ?>
+<!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8">
@@ -44,8 +46,8 @@ if(isset($_POST['flag']) && $_POST['flag'] == "login"){
     <?php
         include_once($page['link']);
     ?>
-    <script src="jquery"></script>
-    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+    <script src="/admin/assets/jquery/jquery.min.js"></script>
+    <script src="/admin/assets/bootstrap/js/bootstrap.min.js"></script>
     <script src="<?php if(!empty($page['scriptLink'])){ echo $page['scriptLink']; } ?>"></script>
 </body>
 </html>
