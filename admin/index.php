@@ -40,7 +40,9 @@ if(isset($_GET['uitloggen'])){
         <li class="main-navbar-item"><a href="home">Home</a></li>
         <li class="main-navbar-item"><a href="projecten">Projecten</a></li>
         <li class="main-navbar-item"><a href="aanvragen">Aanvragen</a></li>
-        <?php $user->ifAdmin(); ?>
+        <?php if ($user->ifAdmin()) {
+            echo '<li class="main-navbar-item"><a href="#">Gebruikers</a></li>';
+        } ?>
         <li class="main-navbar-item"><a href="?uitloggen=true">uitloggen</a></li>
     </ul>
     <?php

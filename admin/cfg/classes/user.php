@@ -130,8 +130,11 @@
         }
 
         public function ifAdmin (){
-            if (isset($_SESSION['userlevel']) && $_SESSION['userlevel'] == 0) {
-                echo '<li class="main-navbar-item"><a href="#">Gebruikers</a></li>';
+            if (isset($_SESSION['userlevel']) && $_SESSION['userlevel'] == 0) 
+            {
+                return true;
+            } else {
+                return false;
             }
         }
 
