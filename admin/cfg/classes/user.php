@@ -76,12 +76,14 @@
 					  WHERE email = "'. $username .'" 
 						AND password = "'. $password .'"';
             $result = $mysqli->query($query);
+            $item = $result->fetch_object();
 
             //if I get a result it means the credentials are right.
             if( $result->num_rows === 1 ){
                 $this->message  = $result;
                 $this->username = $username;
                 $this->status   = True;
+                $this->userlevel  = $item->userlevel;
             }else{
                 $this->status = False;
             }
@@ -90,9 +92,9 @@
         //if status is true then we can set the session
         public function setSession(){
             if( $this->status === True ){
-                $_SESSION['username'] = $this->username;
-                $_SESSION['userlvl']  = $this->firstName;
-                $_SESSION['status']   = True;
+                $_SESSION['username']  = $this->username;
+                $_SESSION['userlevel'] = $this->userlevel;
+                $_SESSION['status']    = True;
             }else{
                 $_SESSION['status'] = False;
             }

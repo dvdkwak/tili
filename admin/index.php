@@ -39,6 +39,7 @@ if(isset($_POST['flag']) && $_POST['flag'] == "login"){
         <?php $user->ifAdmin(); echo $_SESSION['userlvl']. ' test'; ?>
     </ul>
     <?php
+        var_dump($_SESSION['userlvl']);
         include_once($page['link']);
     ?>
     <script src="jquery"></script>
