@@ -1,0 +1,132 @@
+.body{
+  height: 100%;
+}
+#page1{
+  color: white;
+  background-image: url('../images/landingspage.jpg');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.pageTitle{
+  font-size: 2.5em;
+  margin-top: 10vh;
+}
+.subTitle{
+  font-size: 1.3em;
+}
+
+.tech_icons{
+  font-family: "technology-icons";
+}
+.footer{
+  min-height: 20vh;
+  background-color: #17202a;
+  bottom: 0;
+}
+.page{
+  min-height: 100vh;
+  width: 100%;
+}
+.noFullPage{
+  min-height: 80vh;
+  width: 100%;
+}
+.halfPage{
+  min-height: 50vh;
+  width: 100%;
+}
+.color_dark{
+  color: black;
+}
+.color_white{
+  color: white;
+}
+.itm_pageDown{
+	color: white;
+	left: 50%;
+	margin-left: -50px;
+	width: 100px;
+	bottom: 0;
+	text-align: center;
+  position: absolute;
+}
+.itm_pageDown i{
+	font-size: 2.5em;
+	color: white;
+}
+
+.b-radius-none{
+  border-radius: 0;
+}
+
+.bg-color-mint{
+  background-color: #1ABC9C;
+  color: white;
+}
+
+.icon-size{
+  font-size: 4em;
+  color: #212529;
+}
+
+.map-responsive{
+    overflow:hidden;
+    padding-bottom:56.25%;
+    position:relative;
+    height: 450px;
+}
+.map-responsive iframe{
+    left:0;
+    top:0;
+    height: 500px;
+    width:100%;
+    position:absolute;
+}
+/*Extra small devices (portrait phones, less than 576px)
+No media query since this is the default in Bootstrap*/
+
+/*Small devices (landscape phones, 576px and up)*/
+@media (min-width: 576px) {
+
+}
+
+/*Medium devices (tablets, 768px and up)*/
+@media (min-width: 768px) {
+  .pageTitle{
+    margin-top: 30vh;
+    font-size: 4.5em;
+  }
+  .colLeft{
+    padding: 10% 0 10% 0;
+  }
+  .colRight{
+    padding: 5% 0 5% 0;
+  }
+  .page-padding{
+    padding: 5% 0 5% 0;
+  }
+
+  .phone-img{
+    width: 450px;
+  }
+}
+
+/*Large devices (desktops, 992px and up)*/
+@media (min-width: 992px) {
+  .itm_pageDown{
+  	color: white;
+  	left: 50%;
+  	margin-left: -50px;
+  	width: 100px;
+  	bottom: 0;
+  	text-align: center;
+  	position: absolute;
+  }
+}
+
+/*Extra large devices (large desktops, 1200px and up)*/
+@media (min-width: 1200px) {
+
+}
