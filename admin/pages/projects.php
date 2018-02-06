@@ -18,7 +18,7 @@
                     <h5 class="card-title">Voetbalclub</h5>
                     <p class="card-text">' . $item['description'] . '</p>
                     <button type="button" class="btn btn-outline-info" data-toggle="modal" data-target="#exampleModal">Bekijk PvE</button>
-                    <button type="button" class="btn btn-outline-info" data-toggle="modal" data-target="#logModal">Logboek</button>
+                    <a href="projecten/11" class="btn btn-outline-info">Details</a>
                 </div>
             </div>
         </div>
