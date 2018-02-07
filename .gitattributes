@@ -3,6 +3,6 @@
 
 
 $ cat .gitattributes
-admin/assets/bootstrap/* linguist-vendored=true
-admin/assets/fontawesome/* linguist-vendored=true
-admin/assets/jquery/* linguist-vendored=true
+admin/assets/bootstrap/* linguist-vendored=false
+admin/assets/fontawesome/* linguist-vendored=false
+admin/assets/jquery/* linguist-vendored=false
