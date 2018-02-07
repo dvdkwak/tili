@@ -1,2 +1,8 @@
 # Auto detect text files and perform LF normalization
 * text=auto
+
+
+$ cat .gitattributes
+admin/assets/bootstrap/* linguist-vendored=true
+admin/assets/fontawesome/* linguist-vendored=true
+admin/assets/jquery/* linguist-vendored=true
