@@ -14,5 +14,8 @@
       </form>
     </div>
   </div>
-<?php $error->getCustomError(); ?>
+
+<?php 
+  $error->getCustomError();
+?>
 </div>

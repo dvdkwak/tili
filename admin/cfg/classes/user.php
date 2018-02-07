@@ -82,6 +82,7 @@
                 $this->username = $username;
                 $this->status   = True;
                 $this->userlevel  = $item->userlevel;
+                unset($_SESSION['customError']);
             }else{
                 $this->status = False;
                 $error->setCustomError("Username or password are wrong!", "danger");
