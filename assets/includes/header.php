@@ -14,6 +14,10 @@
       <li class="nav-item">
         <a class="nav-link" href="#">Over ons</a>
       </li>
+      <li class="nav-item rl_menu mr-4" style="right: 0px; position: absolute;">
+        <div class="nav-link cursor-pointer" style="display: inline-block;" data-toggle="modal" data-target="#loginModal">Login</div> |
+        <div class="nav-link cursor-pointer" style="display: inline-block;" data-toggle="modal" data-target="#regModal">Registreer</div>
+      </li>
     </ul>
   </div>
 </nav>

@@ -38,20 +38,31 @@
 </div>
 <div id="page2" class="halfPage" style="background-color: #ECECEC;">
     <div class="container-fluid">
-    <div class="row justify-content-center">
-        <div class="col-12 col-md-5 page-padding my-4 my-md-0">
-        <div class="text-center">
+      <div class="row justify-content-center">
+          <div class="col-12 col-md-4 page-padding my-4 my-md-0">
             <h1>Over ons</h1>
             <hr>
-            <div class="text-center">
-            TiliT, een leerbedrijf opgericht door de studenten van de opleiding applicatieontwikkeling op het ROC Friese Poort te Emmeloord. Binnen TiliT kunnen wij verschillende diensten aanbieden: Webdesign, Reperatie van hardware en hulp bij software en Advies.
-            Binnen het maken van website's zijn wij van alle markten thuis. Wij kunnen u adviseren op verschillende gebieden en kunnen op aanvraag eventueel software of apps maken. De programmeer vaardigheden kunt u vinden op onze website.
-            De reparatie tak van TiliT geeft u de mogelijkheid om met mogelijke problemen op locatie te komen. Hier zullen de studenten stapsgewijs uw probleem herkennen en in overleg een oplossing toepassen.
-            TiliT heeft ook de mogelijkheid om advies te geven op ICT gebied. De studenten beschikken over een brede kennis waardoor er een goed advies gegeven kan worden.
-            </div>
-        </div>
-        </div>
-    </div>
+            <p>
+              TiliT, een leerbedrijf opgericht door de studenten van de opleiding applicatieontwikkeling op het ROC Friese Poort te Emmeloord. Binnen TiliT kunnen wij verschillende diensten aanbieden: Webdesign, Reperatie van hardware en hulp bij software en Advies.
+              Binnen het maken van website's zijn wij van alle markten thuis. Wij kunnen u adviseren op verschillende gebieden en kunnen op aanvraag eventueel software of apps maken. De programmeer vaardigheden kunt u vinden op onze website.
+              De reparatie tak van TiliT geeft u de mogelijkheid om met mogelijke problemen op locatie te komen. Hier zullen de studenten stapsgewijs uw probleem herkennen en in overleg een oplossing toepassen.
+              TiliT heeft ook de mogelijkheid om advies te geven op ICT gebied. De studenten beschikken over een brede kennis waardoor er een goed advies gegeven kan worden.
+            </p>
+          </div>
+          <div class="col-md-1">
+
+          </div>
+          <div class="col-12 col-md-4 page-padding my-4 my-md-0">
+            <h1>Onze Dienst</h1>
+            <hr>
+            <p>Heeft u een probleem of bent u opzoek naar een ICT-product? U kunt hieronder registreren en een aanvraag indienen. Wij van TiliT zullen aandachtig uw verzoek bekijken en met u kijken wat wij kunnen leveren.</p>
+            <a href="#">
+              <div class="btn bg-color-mint b-radius-none" data-toggle="modal" data-target="#regModal">
+                Registreer
+              </div>
+            </a>
+          </div>
+      </div>
     </div>
 </div>
 <div id="page3" class="noFullPage">

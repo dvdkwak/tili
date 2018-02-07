@@ -20,6 +20,8 @@
 <body>
     <div id="page1" class="page">
         <?php
+            include 'assets/includes/loginModal.php';
+            include 'assets/includes/registerModal.php';
             include 'assets/includes/header.php';
             include_once($page);
             include 'assets/includes/footer.php';
