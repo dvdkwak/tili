@@ -17,13 +17,7 @@
 		{
 			if (isset($_SESSION['customError'])) {
 				echo $_SESSION['customError'];
-				// $this->clearCustomError();
 			}
-		}
-
-		public function clearCustomError()
-		{
-			unset($_SESSION['customError']);
 		}
 	}
 
