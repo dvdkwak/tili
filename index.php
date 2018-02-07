@@ -1,6 +1,6 @@
 <?php
     require_once __DIR__ . '/autoload.php';
-    include_once('/cfg/config.php');
+    require_once __DIR__ . '/cfg/config.php';
     $content = new content();
     $page = $content->getContent($url);
 ?>
