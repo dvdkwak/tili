@@ -3,6 +3,11 @@
     include_once('/cfg/config.php');
     $content = new content();
     $page = $content->getContent($url);
+
+    $logger = new Tilit\ActionLog\ActionLogger;
+    $log = new Tilit\ActionLog\ActionLog('user', 'gerrit', 'aangemaakt');
+    $logger->saveLog($log);
+    
 ?>
 <!DOCTYPE html>
 <html>

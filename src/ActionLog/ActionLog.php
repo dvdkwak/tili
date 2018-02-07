@@ -2,18 +2,18 @@
 
 namespace Tilit\ActionLog;
 
-class ActionLog implements ActionLogInterface
+class ActionLog
 {
     public $type;
 
-    public $actor;
+    public $author;
 
     public $message;
 
-    public function __construct($type, $actor, $message)
+    public function __construct($type, $author, $message)
     {
         $this->type = $type;
-        $this->actor = $actor;
+        $this->author = $author;
         $this->message = $message;
     }
 }
