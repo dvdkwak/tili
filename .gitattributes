@@ -1,6 +1,6 @@
 # Auto detect text files and perform LF normalization
 * text=auto
 
-admin/assets/bootstrap/* linguist-vendored
-admin/assets/fontawesome/* linguist-vendored
-admin/assets/jquery/* linguist-vendored
+admin/assets/bootstrap/* linguist-vendored=false
+admin/assets/fontawesome/* linguist-vendored=false
+admin/assets/jquery/* linguist-vendored=false
