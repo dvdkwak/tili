@@ -2,8 +2,18 @@
 
 namespace Tilit\Database;
 
+/**
+ * Creates a PDO connection.
+ * Extends this class to use the pdo property
+ * of this object.
+ *
+ * @author Gerrit Mulder <info@gerritmulder.com>
+ */
 class Connection
 {
+    /**
+     * @var PDO object
+     */
     public $pdo;
 
     /**
