@@ -1,5 +1,5 @@
 <nav class="navbar navbar-expand-lg navbar-dark navbarCustom">
-  <img src="images/TiliT_Logo_White.png" alt="" height="50" >
+  <img src="assets/images/TiliT_Logo_White.png" alt="" height="50" >
   <button class="navbar-toggler" type="button" style="border-color: transparent;" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
     <i class="material-icons color_white">menu</i>
   </button>
