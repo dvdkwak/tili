@@ -63,13 +63,13 @@
            <div class="col-12">
              <div class="form-group">
                <label for="psw"> Password</label>
-               <input type="text" class="form-control myform1" id="psw" placeholder="Wachtwoord"></input>
+               <input type="text" class="form-control myform" id="psw" placeholder="Wachtwoord"></input>
              </div>
            </div>
            <div class="col-12">
              <div class="form-group">
                <label for="psw"> Re-enter password</label>
-               <input type="text" class="form-control myform1" id="pswConf" placeholder="Wachtwoord conformeren"></input>
+               <input type="text" class="form-control myform" id="pswConf" placeholder="Wachtwoord conformeren"></input>
              </div>
            </div>
          </div>

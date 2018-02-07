@@ -156,12 +156,4 @@ No media query since this is the default in Bootstrap*/
 
 .myform {
   border-radius: 0px;
-   padding-left: 35px;
-   background: url(/assets/images/close-envelope.png) no-repeat scroll 10px 10px;
-}
-
-.myform1 {
-  border-radius: 0px;
-  padding-left: 35px;
-  background: url(/assets/images/house-key.png) no-repeat scroll 10px 10px;
 }

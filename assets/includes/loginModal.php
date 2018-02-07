@@ -21,15 +21,14 @@
            <div class="col-12">
              <div class="form-group">
                <label for="psw"> Password</label>
-               <input type="text" class="form-control myform1" id="psw" placeholder="Wachtwoord"></input>
+               <input type="text" class="form-control myform" id="psw" placeholder="Wachtwoord"></input>
              </div>
            </div>
          </div>
        </div>
        <div class="modal-footer">
-         <p>Heeft u al een account? <a href="file:///I:/Nieuwe%20map/login.html" id="knoppie" data-dismiss="modal">Inloggen</a></p>
          <p>Wachtwoord <a href="#">Vergeten?</a></p>
-         <button type="submit" class="btn bg-color-mint b-radius-none float-right" style="background:#1ABC9C;">Registreren</button>
+         <button type="submitLogin" class="btn bg-color-mint b-radius-none float-right" style="background:#1ABC9C;">Login</button>
        </div>
      </form>
    </div>
