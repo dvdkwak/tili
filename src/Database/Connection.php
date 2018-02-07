@@ -14,7 +14,7 @@ class Connection
     /**
      * @var PDO object
      */
-    public $pdo;
+    protected $pdo;
 
     /**
      * Set the PDO connection and object
