@@ -5,7 +5,7 @@ namespace Tilit\Database;
 /**
  * This class can be used to perform CRUD operations.
  * 
- * @author Gerrit Mulder
+ * @author Gerrit Mulder <info@gerritmulder.com>
  */
 class DB
 {
