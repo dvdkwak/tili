@@ -13,7 +13,7 @@
 spl_autoload_register(function ($class) {
     $prefix = 'Tilit\\';
     
-    $base_dir = __DIR__ . '/src/';
+    $base_dir = __DIR__ . '/lib/';
     
     $len = strlen($prefix);
     
