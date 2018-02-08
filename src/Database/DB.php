@@ -19,6 +19,19 @@ class DB
      */
     public function __construct()
     {
-        self::$pdo = new Connection;
+        try {
+            self::$pdo = new \PDO('mysql:host=localhost;dbname=tilit', 'root', 'usbw');
+            self::$pdo->setAttribute(\PDO::ATTR_ERRMODE, \PDO::ERRMODE_EXCEPTION);
+        } catch(\PDOException $e) {
+            $e->getMessage();
+        }
+    }
+
+    public static function select($table)
+    {
+        $stmt = DB::$pdo->prepare("SELECT * FROM :table");
+        $stmt->bindParam(':table', $table);
+        $stmt->execute();
+        return $stmt->fetchAll(\PDO::FETCH_OBJ);
     }
 }

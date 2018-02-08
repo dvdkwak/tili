@@ -32,4 +32,9 @@ class ActionLogger
 
         $stmt->execute();
     }
+
+    public function getLogs()
+    {
+        $logs = DB::select('tbl_log');
+    }
 }
