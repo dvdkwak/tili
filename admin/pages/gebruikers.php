@@ -12,7 +12,56 @@
 
     <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
       <div class="card-body">
-        Zooi met overzicht van alle werknemers waar ze aan projecten kunnen gekoppeld worden.
+      <!-- table -->
+        <table class="table">
+  <thead class="thead-dark">
+    <tr>
+      <th scope="col">Voornaam</th>
+      <th scope="col">Achternaam</th>
+      <th scope="col">E-mailadres</th>
+      <th scope="col"> Project</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>testvoornaam1</td>
+      <td>testvoornaam1</td>
+      <td>test1@tilit.nl</td>
+      <td><div class="form-group">
+								    <select class="form-control" id="exampleSelect1">
+								      <option value="">Project</option>
+								      <option value="0">TestProject1</option>
+								      <option value="1">TestProject2</option>
+								      <option value="2">TestProject3</option>
+								    </select>
+								</div></td>
+    </tr>
+    <tr>
+      <td>testachternaam2</td>
+      <td>testachternaam2</td>
+      <td>test2@tilit.nl</td>
+      <td><select class="form-control" id="exampleSelect1">
+								      <option value="">Project</option>
+								      <option value="0">TestProject1</option>
+								      <option value="1">TestProject2</option>
+								      <option value="2">TestProject3</option>
+								    </select></td>
+    </tr>
+    <tr>
+      <td>testvoornaam3</td>
+      <td>testachternaam3</td>
+      <td>test3@tilit.nl</td>
+      <td><select class="form-control" id="exampleSelect1">
+								      <option value="">Project</option>
+								      <option value="0">TestProject1</option>
+								      <option value="1">TestProject2</option>
+								      <option value="2">TestProject3</option>
+								    </select></td>
+    </tr>
+  </tbody>
+</table>
+
+      <!-- end table -->
       </div>
     </div>
   </div>
