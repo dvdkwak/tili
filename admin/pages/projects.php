@@ -6,12 +6,12 @@
 
     //Displaying all the results in foreach loop
     foreach ($projects->getProjects() as $item): ?>
-    
+
         <div class="container-fluid">
             <div id="medewerker" class="container">
-                <div class="card">
-                    <div style="height:61px;" class="card-header custom-header">
-                        <h5 style="color:white;"><?= $item['projectName'] ?></h5>
+                <div class="card my-4">
+                    <div class="card-header custom-header">
+                        <h5 style="color:white; margin-bottom: 0;"><?= $item['projectName'] ?></h5>
                     </div>
                     <div class="card-body">
                         <h5 class="card-title">Voetbalclub</h5>
@@ -22,7 +22,7 @@
                 </div>
             </div>
         </div>
-       
+
     <?php endforeach; ?>
 
     <!-- Modal for the log -->
