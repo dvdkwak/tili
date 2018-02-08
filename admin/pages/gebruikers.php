@@ -27,14 +27,14 @@
       <td>testvoornaam1</td>
       <td>testvoornaam1</td>
       <td>test1@tilit.nl</td>
-      <td><div class="form-group">
+      <td>
 								    <select class="form-control" id="exampleSelect1">
 								      <option value="">Project</option>
 								      <option value="0">TestProject1</option>
 								      <option value="1">TestProject2</option>
 								      <option value="2">TestProject3</option>
 								    </select>
-								</div></td>
+								</td>
     </tr>
     <tr>
       <td>testachternaam2</td>
