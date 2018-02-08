@@ -14,8 +14,35 @@
             }
 
             //Creating a foreach loop that displays all the results
-            return $data;
+            if (isset($data)) {
+            	return $data;
+            }
             
+            
+		}
+
+		public function acceptRequests($id) {
+			$mysqli = $this->Connect();
+
+			$query = 'UPDATE tbl_projects SET isRequest = "1" WHERE id ='.$id;
+            $result = $mysqli->query($query);
+
+            require_once 'errorhandling.php';
+            $error = new errorHandling();
+
+            $error->setCustomError("Project succesfull accepted!", "success");
+		}
+
+		public function deleteRequests($id) {
+			$mysqli = $this->Connect();
+
+			$query = 'UPDATE tbl_projects SET isRequest = "2" WHERE id ='.$id;
+            $result = $mysqli->query($query);
+
+            require_once 'errorhandling.php';
+            $error = new errorHandling();
+
+            $error->setCustomError("Project succesfull deleted!", "danger");
 		}
 
     }

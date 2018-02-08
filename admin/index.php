@@ -4,7 +4,7 @@ require_once __DIR__ . '/../autoload.php';
 
 include_once('cfg/config.php');
 
-$user     = new user();
+$user  = new user();
 $error = new errorHandling();
 
 if($url!="login"){
@@ -31,6 +31,7 @@ if(isset($_POST['flag']) && $_POST['flag'] == "login"){
     <title><?php if(!empty($page['title'])){ echo $page['title']; } ?></title>
     <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="assets/fontawesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800' rel='stylesheet' type='text/css'>
     <link href="/admin/assets/css/style.css" rel="stylesheet">
@@ -40,17 +41,25 @@ if(isset($_POST['flag']) && $_POST['flag'] == "login"){
     <ul class="main-navbar">
         <li class="main-navbar-item"><a href="home">Home</a></li>
         <li class="main-navbar-item"><a href="projecten">Projecten</a></li>
-        <li class="main-navbar-item"><a href="aanvragen">Aanvragen</a></li>
-        <?php if ($user->ifAdmin()) {
+        <?php
+        if ($user->checkUserLevel(array('0'))) {
             echo '<li class="main-navbar-item"><a href="gebruikers">Gebruikers</a></li>';
-        } ?>
-        <li class="main-navbar-item"><a href="logout">uitloggen</a></li>
+        }
+        if ($user->checkUserLevel(array('0', '2'))) {
+            echo '<li class="main-navbar-item"><a href="aanvragen">Aanvragen</a></li>';
+        }
+        ?>
+        <li class="main-navbar-item float-right"><a href="logout">Uitloggen</a></li>
     </ul>
     <?php
         include_once($page['link']);
     ?>
-    <script src="/admin/assets/jquery/jquery.min.js"></script>
-    <script src="/admin/assets/bootstrap/js/bootstrap.min.js"></script>
-    <script src="<?php if(!empty($page['scriptLink'])){ echo $page['scriptLink']; } ?>"></script>
+
+
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+
 </body>
 </html>
