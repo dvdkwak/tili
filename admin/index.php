@@ -49,7 +49,7 @@ if(isset($_POST['flag']) && $_POST['flag'] == "login"){
             echo '<li class="main-navbar-item"><a href="/admin/aanvragen">Aanvragen</a></li>';
         }
     ?>
-        <li class="main-navbar-item float-right"><a href="/admin/logout">uitloggen</a></li>
+        <li class="main-navbar-item float-right"><a href="/admin/logout">Uitloggen</a></li>
     </ul>
     <?php
         include_once($page['link']);
