@@ -168,9 +168,7 @@
                 $selectUser = $_POST['selectedUserA'];
                 $selectProject = $_POST['selectedUserA'];
                 $query = 'INSERT INTO tbl_users_projects (FK_users_id, FK_projects_id) VALUES ('.$selectUser.','.$selectProject.')';
-                $result = $mysqli->query($query);
-
-
+                $mysqli->query($query);
             }
 
         }
@@ -181,9 +179,8 @@
                 $mysqli = $this->connect();
 
                 $selectProjectID = $_POST['selectedUserIDR'];
-
                 $query = 'DELETE FROM tbl_users_projects WHERE id='.$selectProjectID.'';
-                $result = $mysqli->query($query);
+                $mysqli->query($query);
             }
 
         }
@@ -192,6 +189,10 @@
             $mysqli = $this->connect();
             $query = 'SELECT ' . $select . ' FROM tbl_users WHERE '. $where.'';
             $result = $mysqli->query($query);
+            while($items = $result->fetch_assoc()){
+                $data[] = $items;
+            }
+            return $data;
         }
 
     }
