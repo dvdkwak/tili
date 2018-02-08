@@ -33,5 +33,4 @@ include_once($root.'/admin/cfg/classes/adminContent.php');
 include_once($root.'/admin/cfg/classes/user.php');
 include_once($root.'/admin/cfg/classes/projects.php');
 include_once($root.'/admin/cfg/classes/requests.php');
-include_once($root.'/admin/cfg/classes/log.php');
 include_once($root.'/admin/cfg/classes/errorhandling.php');
