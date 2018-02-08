@@ -4,18 +4,20 @@
 
         //standard login function which calles for the checked and the session set as well
         public function login($username, $password, $location)
-        {
-            $this->checkCredentials( $username, $password );
-            $this->setSession();
-            $this->moveTo( $location );
+        {   
+            if (isset($_POST['loginBtn'])) {
+                $this->checkCredentials( $username, $password );
+                $this->setSession();
+                $this->moveTo( $location );
+            }
         }
 
         //function to add the user to the database
-        public function addUser(){
+        public function register(){
             $mysqli = $this->Connect();
 
             //if the register button is clicked proceed with adding the user
-            if(isset($_POST['register'])){
+            if(isset($_POST['registerBtn'])){
 
                 //real_escape_string to prevent sql injection
                 $email     = $mysqli->real_escape_string($_POST['email']);
@@ -40,10 +42,13 @@
 
                     //check if the email/user already exists
                     if($checkEmail->num_rows === 0){
-                        $prepos = !empty($prepos) ? "'$prepos'" : "NULL";
+
+                        if (empty($prepos)) {
+                            $prepos = "NULL";
+                        }
 
                         $insertUser = $mysqli->query("INSERT INTO tbl_users (email, password, userlevel, tel, firstName, lastName, preposition, city, address, zipCode) 
-                                                      VALUES ('$email','$password','$userlvl','$telnumber','$firstname',$lastname,$prepos,$city,$address,$zipcode)");
+                                                      VALUES ('$email','$password','$userlvl','$telnumber','$firstname','$lastname','$prepos','$city','$address','$zipcode')");
 
                         header('Location: index.php');
                     } else {
@@ -145,6 +150,13 @@
                 }else{
                     return false;
                 }
+            }
+        }
+
+        public function redirectUser()
+        {
+            if ($_SESSION['userlevel'] == 1) {
+                header("Location: /admin/projecten");
             }
         }
 

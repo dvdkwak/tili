@@ -4,6 +4,8 @@
 
     $requests = new requests();
 
+    $requests->redirectUser();
+
     if (isset($_POST['btnAcceptRequest'])) {
         $id = $_POST['requestID'];
 
