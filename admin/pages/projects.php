@@ -8,7 +8,6 @@
     foreach ($projects->getProjects() as $item): print_r($item); ?>
     
         <div class="container-fluid">
-<<<<<<< HEAD
             <div id="medewerker" class="container">
                 <div class="card">
                     <div style="height:61px;" class="card-header custom-header">
@@ -25,7 +24,6 @@
         </div>
        
     <?php endforeach; ?>
-=======
 		        <div id="medewerker" class="container">
 		            <div class="card my-4">
 		                <div class="card-header custom-header">
@@ -40,11 +38,6 @@
 		            </div>
 		        </div>
 		    </div>
-        ';
-    }
-
-    ?>
->>>>>>> 22ea0a624d81343379239738490156ec5765f4e8
 
     <!-- Modal for the log -->
     <div class='modal fade' id='logModal' tabindex='-1' role='dialog' aria-labelledby='logModalLabel' aria-hidden='true'>
