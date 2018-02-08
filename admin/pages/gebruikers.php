@@ -13,6 +13,12 @@
     <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
       <div class="card-body">
       <!-- table -->
+
+          <?php
+            //getting the userData
+
+            $data = $user->
+          ?>
         <table class="table">
   <thead class="thead-dark">
     <tr>
