@@ -1,8 +1,7 @@
 <?php
 	$users = new user();
-
 	$data = $users->getUsers('*', '1=1');
-
+    $user->register();
 ?>
 
 <div class="main-container">
@@ -25,28 +24,33 @@
   <thead class="thead-dark">
     <tr>
       <th scope="col">Voornaam</th>
+      <th scope="col">tussen voegsel</th>
       <th scope="col">Achternaam</th>
       <th scope="col">E-mailadres</th>
-      <th scope="col"> Project</th>
+      <th scope="col">User level</th>
     </tr>
   </thead>
   <?php
   if (isset($data)) {
         foreach($data AS $item){
-            echo '
-				  <tbody>
+            switch($item['userlevel']) {
+                case '0':
+                    $userlevel = 'Admin';
+                    break;
+                case '1':
+                    $userlevel = 'Medewerker';
+                    break;
+                case '2':
+                    $userlevel = 'Klant';
+                    break;
+            }
+            echo '<tbody>
 				    <tr>
 				      <td>'. $item['firstName'] .'</td>
+				      <td>'. $item['preposition'] .'</td>
 				      <td>'. $item['lastName'] .'</td>
 				      <td>'. $item['email'] .'</td>
-				      <td>
-						<select class="form-control" id="exampleSelect1">
-					      <option value="">Project</option>
-					      <option value="0">TestProject1</option>
-					      <option value="1">TestProject2</option>
-					      <option value="2">TestProject3</option>
-					    </select>
-					</td>
+				      <td>'. $userlevel.'</td>
 					</tr>
 
 				  </tbody>

@@ -39,7 +39,7 @@
                             <input type="text" name="projectname" id="projectname" class="form-control input-sm" placeholder="Project naam">
                                     </div>
                                 </div>
-                                
+
                             </div>
                                 <div class="row">
                                     <div class="col-12">
@@ -61,7 +61,7 @@
                                         <input type="text" name="details" id="details" class="form-control input-sm" placeholder="Details">
                                     </div>
                                 </div>
-                                
+
                             <input type="hidden" name="">
                             <input type="submit" value="Opslaan" class="btn btn-info btn-block">
                         </form>
