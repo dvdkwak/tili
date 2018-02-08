@@ -9,19 +9,12 @@ namespace Tilit\Database;
  */
 class DB
 {
-    /**
-     * @var \PDO
-     */
-    public static $pdo;
-
-    /**
-     * Sets a new connection to the pdo property
-     */
-    public function __construct()
+    public static function connect()
     {
         try {
-            self::$pdo = new \PDO('mysql:host=localhost;dbname=tilit', 'root', 'usbw');
-            self::$pdo->setAttribute(\PDO::ATTR_ERRMODE, \PDO::ERRMODE_EXCEPTION);
+            $pdo = new \PDO('mysql:host=localhost;dbname=tilit', 'root', 'usbw');
+            $pdo->setAttribute(\PDO::ATTR_ERRMODE, \PDO::ERRMODE_EXCEPTION);
+            return $pdo;
         } catch(\PDOException $e) {
             $e->getMessage();
         }
@@ -29,8 +22,7 @@ class DB
 
     public static function select($table)
     {
-        $stmt = DB::$pdo->prepare("SELECT * FROM :table");
-        $stmt->bindParam(':table', $table);
+        $stmt = DB::connect()->prepare("SELECT * FROM " . $table);
         $stmt->execute();
         return $stmt->fetchAll(\PDO::FETCH_OBJ);
     }
