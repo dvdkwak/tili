@@ -78,10 +78,11 @@
 
             //if I get a result it means the credentials are right.
             if( $result->num_rows === 1 ){
-                $this->message  = $result;
-                $this->username = $username;
-                $this->status   = True;
-                $this->userlevel  = $item->userlevel;
+                $this->message   = $result;
+                $this->username  = $username;
+                $this->status    = True;
+                $this->userlevel = $item->userlevel;
+                $this->id        = $item->id;
             }else{
                 $this->status = False;
                 $error->setCustomError("Username or password are wrong!", "danger");
