@@ -5,7 +5,7 @@
     $projects = new projects();
 
     //Displaying all the results in foreach loop
-    foreach ($projects->getProjects() as $item): print_r($item); ?>
+    foreach ($projects->getProjects() as $item): ?>
     
         <div class="container-fluid">
             <div id="medewerker" class="container">
@@ -24,20 +24,6 @@
         </div>
        
     <?php endforeach; ?>
-		        <div id="medewerker" class="container">
-		            <div class="card my-4">
-		                <div class="card-header custom-header">
-		                    <h5 style="color:white; margin-bottom: 0;">' . $item['projectName'] . '</h5>
-		                </div>
-		                <div class="card-body">
-		                    <h5 class="card-title">Voetbalclub</h5>
-		                    <p class="card-text">' . $item['description'] . '</p>
-		                    <button type="button" class="btn btn-outline-info" data-toggle="modal" data-target="#exampleModal">Bekijk PvE</button>
-		                    <a href="projecten/11" class="btn btn-outline-info">Details</a>
-		                </div>
-		            </div>
-		        </div>
-		    </div>
 
     <!-- Modal for the log -->
     <div class='modal fade' id='logModal' tabindex='-1' role='dialog' aria-labelledby='logModalLabel' aria-hidden='true'>
