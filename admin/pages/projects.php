@@ -30,7 +30,6 @@
 
         <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
             <div class="card-body">
-                <form method="post">
                     <!-- form here -->
                         <div class="col-xs-12 col-md-6">
                         <form role="form" method="post">
@@ -68,8 +67,6 @@
                         </form>
                     </div>
                 </div>
-                    <!-- -->
-                </form>
             </div>
         </div>
     </div>
