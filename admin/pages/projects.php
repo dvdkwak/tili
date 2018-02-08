@@ -1,6 +1,7 @@
 <div class="main-container">
 
 	<?php
+<<<<<<< HEAD
 	$projects = new projects();
     $projects->requestProject();
 	?>
@@ -60,6 +61,41 @@
     	<!-- collaps tab create project-->
         <div class="container-fluid">
             <div id="medewerker" class="container">
+=======
+
+	//Getting the project information and putting it in $data
+    $projects = new projects();
+
+    $data = $projects->getProjects();
+
+		include_once '/../assets/includes/createProjectModal.php';
+		?>
+
+		<!-- collaps tab create project-->
+
+		<!-- _________________________START MODAL______________________________________________________________________ -->
+
+
+		<!-- ________________________________________________________________END MODAL_________________________________ -->
+
+				<div class="container-fluid">
+						<div id="medewerker" class="container">
+							<div class="row">
+								<div class="col-12 custom-header p-3" style="border-radius: 3px;">
+									<h4 class="float-left" style="color: white; margin-bottom: 0px;">Mijn Projecten</h4>
+									<div class="float-right" style="color: white; cursor: pointer;" data-dismiss="modal" data-toggle="modal" data-target="#createProjectModal">
+										<i class="material-icons align-top">add</i>Project Aanmaken
+									</div>
+								</div>
+							</div><?php
+
+    //Displaying all the results in foreach loop
+    if (isset($data)) {
+    	foreach ($data as $item):?>
+        <!-- add project ends here -->
+
+
+>>>>>>> 4d460a0daf9b9bc46d0375d623f9de53ff913f1c
                 <div class="card my-4">
                     <div class="card-header custom-header">
                         <h5 style="color:white; margin-bottom: 0;"><?= $item['projectName'] ?></h5>
