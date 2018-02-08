@@ -1,78 +1,39 @@
 <div class="main-container">
 
 	<?php
+
 	//Getting the project information and putting it in $data
     $projects = new projects();
 
     $data = $projects->getProjects();
 
+		include_once '/../assets/includes/createProjectModal.php';
+		?>
+
+		<!-- collaps tab create project-->
+
+		<!-- _________________________START MODAL______________________________________________________________________ -->
+
+
+		<!-- ________________________________________________________________END MODAL_________________________________ -->
+
+				<div class="container-fluid">
+						<div id="medewerker" class="container">
+							<div class="row">
+								<div class="col-12 custom-header p-3" style="border-radius: 3px;">
+									<h4 class="float-left" style="color: white; margin-bottom: 0px;">Mijn Projecten</h4>
+									<div class="float-right" style="color: white; cursor: pointer;" data-dismiss="modal" data-toggle="modal" data-target="#createProjectModal">
+										<i class="material-icons align-top">add</i>Project Aanmaken
+									</div>
+								</div>
+							</div><?php
+
     //Displaying all the results in foreach loop
     if (isset($data)) {
     	foreach ($data as $item):?>
-
-    <!-- collaps tab create project-->
-
-    
-
-
-        <div class="container-fluid">
-            <div id="medewerker" class="container">
-
-        <div id="accordion">
-            <div class="card">
-                <div class="card-header" id="headingOne">
-                <h5 class="mb-0">
-                    <button class="btn btn-link" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                      Project aanmaken
-                    </button>
-                </h5>
-            </div>
-
-        <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
-            <div class="card-body">
-                    <!-- form here -->
-                        <div class="col-xs-12 col-md-6">
-                        <form role="form" method="post">
-                            <div class="row">
-                                <div class="col-12">
-                                    <div class="form-group">
-                            <input type="text" name="projectname" id="projectname" class="form-control input-sm" placeholder="Project naam">
-                                    </div>
-                                </div>
-
-                            </div>
-                                <div class="row">
-                                    <div class="col-12">
-                                    <div class="form-group">
-                                        <input type="text" name="description" id="description" class="form-control input-sm" placeholder="Beschrijving">
-                                    </div>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-12">
-                                    <div class="form-group">
-                                        <input type="email" name="pve" id="pve" class="form-control input-sm" placeholder="PVE Path">
-                                    </div>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                <div class="col-12">
-                                    <div class="form-group">
-                                        <input type="text" name="details" id="details" class="form-control input-sm" placeholder="Details">
-                                    </div>
-                                </div>
-
-                            <input type="hidden" name="">
-                            <input type="submit" value="Opslaan" class="btn btn-info btn-block">
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
         <!-- add project ends here -->
 
-            
+
                 <div class="card my-4">
                     <div class="card-header custom-header">
                         <h5 style="color:white; margin-bottom: 0;"><?= $item['projectName'] ?></h5>
