@@ -41,21 +41,25 @@ if(isset($_POST['flag']) && $_POST['flag'] == "login"){
     <ul class="main-navbar">
         <li class="main-navbar-item"><a href="/admin/home">Home</a></li>
         <li class="main-navbar-item"><a href="/admin/projecten">Projecten</a></li>
-        <?php 
+    <?php
         if ($user->checkUserLevel(array('0'))) {
             echo '<li class="main-navbar-item"><a href="/admin/gebruikers">Gebruikers</a></li>';
         }
         if ($user->checkUserLevel(array('0', '2'))) {
             echo '<li class="main-navbar-item"><a href="/admin/aanvragen">Aanvragen</a></li>';
         }
-        ?>
-        <li class="main-navbar-item"><a href="/admin/logout">uitloggen</a></li>
+    ?>
+        <li class="main-navbar-item float-right"><a href="/admin/logout">uitloggen</a></li>
     </ul>
     <?php
         include_once($page['link']);
     ?>
-    <script src="/admin/assets/jquery/jquery.min.js"></script>
-    <script src="/admin/assets/bootstrap/js/bootstrap.min.js"></script>
-    <script src="<?php if(!empty($page['scriptLink'])){ echo $page['scriptLink']; } ?>"></script>
+
+
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+
 </body>
 </html>
