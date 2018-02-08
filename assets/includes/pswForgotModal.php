@@ -1,15 +1,15 @@
-<div class="modal" id="loginModal" role="dialog">
+<div class="modal" id="pswForgotModal" role="dialog">
  <div class="modal-dialog">
    <!-- Modal content-->
    <div class="modal-content">
      <div class="modal-header">
       <div class="text-center" style="display: block; margin: auto;">
-         <h4>Login</h4>
+         <h4>Wachtwoord Vergeten</h4>
          <img src="assets/images/logo.png" class="loginlogo" style="width:180px;"/>
       </div>
       <button type="button" class="close mr-0" data-dismiss="modal"><i class="material-icons">close</i></button>
      </div>
-       <form>
+       <form role="form">
          <div class="modal-body">
          <div class="row">
            <div class="col-12">
@@ -18,17 +18,10 @@
                <input type="email" class="form-control myform" id="email" placeholder="Email"/>
              </div>
            </div>
-           <div class="col-12">
-             <div class="form-group">
-               <label for="psw"> Password</label>
-               <input type="text" class="form-control myform" id="psw" placeholder="Wachtwoord"></input>
-             </div>
-           </div>
          </div>
        </div>
        <div class="modal-footer">
-         <p>Wachtwoord <a href="#" data-dismiss="modal" data-toggle="modal" data-target="#pswForgotModal">Vergeten?</a></p>
-         <button type="submit" class="btn bg-color-mint b-radius-none float-right" style="background:#1ABC9C;">Login</button>
+         <button type="submitPswForgot" class="btn bg-color-mint b-radius-none float-right" style="background:#1ABC9C;">Verzend</button>
        </div>
      </form>
    </div>

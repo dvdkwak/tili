@@ -9,10 +9,13 @@
         <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">Features</a>
+        <a class="nav-link" href="#page2" rel="relativeanchor">Over ons</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">Over ons</a>
+        <a class="nav-link" href="#page3" rel="relativeanchor">Vaardigheden</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#page4" rel="relativeanchor">Contact</a>
       </li>
       <li class="nav-item rl_menu mr-4" style="right: 0px; position: absolute;">
         <div class="nav-link cursor-pointer" style="display: inline-block;" data-toggle="modal" data-target="#loginModal">Login</div> |
