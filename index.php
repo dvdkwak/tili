@@ -9,7 +9,6 @@
         $user->login($_POST['email'], $_POST['password'], "/admin/projecten");
     }
     $user->register();
-    
 ?>
 <!DOCTYPE html>
 <html>
