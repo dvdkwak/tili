@@ -45,6 +45,13 @@
             $error->setCustomError("Project succesfull deleted!", "danger");
 		}
 
+		public function redirectUser()
+		{
+			if ($_SESSION['userlevel'] == 1) {
+				header("Location: /admin/projecten");
+			}
+		}
+
     }
 
 

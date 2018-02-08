@@ -1,8 +1,15 @@
 <?php
     require_once __DIR__ . '/autoload.php';
     require_once __DIR__ . '/cfg/config.php';
+    require_once __DIR__ . '/admin/cfg/config.php';
     $content = new content();
     $page = $content->getContent($url);
+    $user = new user();
+    if (isset($_POST['email'])) {
+        $user->login($_POST['email'], $_POST['password'], "/admin/projecten");
+    }
+    $user->register();
+    
 ?>
 <!DOCTYPE html>
 <html>
