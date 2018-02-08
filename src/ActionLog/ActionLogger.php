@@ -24,12 +24,17 @@ class ActionLogger
      */
     public function saveLog(ActionLog $log)
     {
-        $stmt = DB::$pdo->prepare("INSERT INTO tbl_log (type, author, message) VALUES (:type, :author, :message)");
+        $stmt = DB::connect()->prepare("INSERT INTO tbl_log (type, author, message) VALUES (:type, :author, :message)");
 
         $stmt->bindParam(':type', $log->type);
         $stmt->bindParam(':author', $log->author);
         $stmt->bindParam(':message', $log->message);
 
         $stmt->execute();
+    }
+
+    public function getLogs()
+    {
+        return DB::select('tbl_log');
     }
 }
