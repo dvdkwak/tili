@@ -33,6 +33,51 @@
     if (isset($data)) {
     	foreach ($data as $item):?>
 
+<<<<<<< HEAD
+=======
+        <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
+            <div class="card-body">
+                    <!-- form here -->
+                        <div class="col-xs-12 col-md-6">
+                        <form role="form" method="post">
+                            <div class="row">
+                                <div class="col-12">
+                                    <div class="form-group">
+                            <input type="text" name="projectname" id="projectname" class="form-control input-sm" placeholder="Project naam">
+                                    </div>
+                                </div>
+                                
+                            </div>
+                                <div class="row">
+                                    <div class="col-12">
+                                    <div class="form-group">
+                                        <input type="text" name="description" id="description" class="form-control input-sm" placeholder="Beschrijving">
+                                    </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-12">
+                                    <div class="form-group">
+                                        <input type="email" name="pve" id="pve" class="form-control input-sm" placeholder="PVE Path">
+                                    </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                <div class="col-12">
+                                    <div class="form-group">
+                                        <input type="text" name="details" id="details" class="form-control input-sm" placeholder="Details">
+                                    </div>
+                                </div>
+                                
+                            <input type="hidden" name="">
+                            <input type="submit" value="Opslaan" class="btn btn-info btn-block">
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+>>>>>>> 8aa0fe945af2cc33bf7c91b1eb28798ade0e3161
         <!-- add project ends here -->
 
 
