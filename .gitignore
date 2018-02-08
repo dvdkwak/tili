@@ -1,10 +1,2 @@
-
-.idea/vcs.xml
-.idea/workspace.xml
-*.xml
-.idea/workspace.xml___jb_tmp___
-*.xml
-.idea/workspace.xml
-.idea/workspace.xml
-*.xml
-.idea/workspace.xml
+/.idea
+/vendor

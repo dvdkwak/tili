@@ -2,18 +2,39 @@
 
 namespace Tilit\ActionLog;
 
-class ActionLog implements ActionLogInterface
+/**
+ * Represents the log and allows screening properties
+ *
+ * @author Gerrit Mulder <info@gerritmulder.com>
+ */
+class ActionLog
 {
+    /**
+     * @var Logtype
+     */
     public $type;
 
-    public $actor;
+    /**
+     * @var Logauthor
+     */
+    public $author;
 
+    /**
+     * @var Logmessage
+     */
     public $message;
 
-    public function __construct($type, $actor, $message)
+    /**
+     * Sets the log properties
+     *
+     * @param $type
+     * @param $author
+     * @param $message
+     */
+    public function __construct($type, $author, $message)
     {
         $this->type = $type;
-        $this->actor = $actor;
+        $this->author = $author;
         $this->message = $message;
     }
 }

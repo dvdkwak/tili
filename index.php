@@ -1,6 +1,6 @@
 <?php
     require_once __DIR__ . '/autoload.php';
-    include_once('/cfg/config.php');
+    require_once __DIR__ . '/cfg/config.php';
     $content = new content();
     $page = $content->getContent($url);
 ?>
@@ -21,6 +21,8 @@
 <body>
     <div id="page1" class="page">
         <?php
+            include 'assets/includes/loginModal.php';
+            include 'assets/includes/registerModal.php';
             include 'assets/includes/header.php';
             include_once($page);
             include 'assets/includes/footer.php';
