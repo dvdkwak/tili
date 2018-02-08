@@ -9,26 +9,26 @@
       </div>
       <button type="button" class="close mr-0" data-dismiss="modal"><i class="material-icons">close</i></button>
      </div>
-       <form>
+       <form method="post">
          <div class="modal-body">
          <div class="row">
            <div class="col-12">
              <div class="form-group">
                <label for="email">E-mail</label>
-               <input type="email" class="form-control myform" id="email" placeholder="Email"/>
+               <input type="email" class="form-control myform" id="email" name="email" placeholder="Email"/>
              </div>
            </div>
            <div class="col-12">
              <div class="form-group">
                <label for="psw"> Password</label>
-               <input type="text" class="form-control myform" id="psw" placeholder="Wachtwoord"></input>
+               <input type="text" class="form-control myform" id="psw" name="password" placeholder="Wachtwoord"></input>
              </div>
            </div>
          </div>
        </div>
        <div class="modal-footer">
          <p>Wachtwoord <a href="#" data-dismiss="modal" data-toggle="modal" data-target="#pswForgotModal">Vergeten?</a></p>
-         <button type="submit" class="btn bg-color-mint b-radius-none float-right" style="background:#1ABC9C;">Login</button>
+         <button type="submit" name="loginBtn" class="btn bg-color-mint b-radius-none float-right" style="background:#1ABC9C;">Login</button>
        </div>
      </form>
    </div>
