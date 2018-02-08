@@ -1,3 +1,10 @@
+<?php
+	$users = new user();
+
+	$data = $users->getUsers('*', '1=1');
+
+?>
+
 <div class="main-container">
 
 	<div id="accordion">
@@ -23,43 +30,29 @@
       <th scope="col"> Project</th>
     </tr>
   </thead>
-  <tbody>
-    <tr>
-      <td>testvoornaam1</td>
-      <td>testvoornaam1</td>
-      <td>test1@tilit.nl</td>
-      <td>
-								    <select class="form-control" id="exampleSelect1">
-								      <option value="">Project</option>
-								      <option value="0">TestProject1</option>
-								      <option value="1">TestProject2</option>
-								      <option value="2">TestProject3</option>
-								    </select>
-								</td>
-    </tr>
-    <tr>
-      <td>testachternaam2</td>
-      <td>testachternaam2</td>
-      <td>test2@tilit.nl</td>
-      <td><select class="form-control" id="exampleSelect1">
-								      <option value="">Project</option>
-								      <option value="0">TestProject1</option>
-								      <option value="1">TestProject2</option>
-								      <option value="2">TestProject3</option>
-								    </select></td>
-    </tr>
-    <tr>
-      <td>testvoornaam3</td>
-      <td>testachternaam3</td>
-      <td>test3@tilit.nl</td>
-      <td><select class="form-control" id="exampleSelect1">
-								      <option value="">Project</option>
-								      <option value="0">TestProject1</option>
-								      <option value="1">TestProject2</option>
-								      <option value="2">TestProject3</option>
-								    </select></td>
-    </tr>
-  </tbody>
+  <?php
+  if (isset($data)) {
+        foreach($data AS $item){
+            echo '
+				  <tbody>
+				    <tr>
+				      <td>'. $item['firstName'] .'</td>
+				      <td>'. $item['lastName'] .'</td>
+				      <td>'. $item['email'] .'</td>
+				      <td>
+						<select class="form-control" id="exampleSelect1">
+					      <option value="">Project</option>
+					      <option value="0">TestProject1</option>
+					      <option value="1">TestProject2</option>
+					      <option value="2">TestProject3</option>
+					    </select>
+					</td>
+					</tr>
+
+				  </tbody>
+			';
+		}
+	}?>
 </table>
 
       <!-- end table -->

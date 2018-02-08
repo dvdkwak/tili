@@ -83,7 +83,7 @@
                     <div class="card-body">
                         <h5 class="card-title">Voetbalclub</h5>
                         <p class="card-text"><?= $item['description']?></p>
-                        <button type="button" class="btn btn-outline-info" data-toggle="modal" data-target="#exampleModal">Bekijk PvE</button>
+                        <a href="PvE/<?= $item['pvePath']?>.pdf"><button type="button" class="btn btn-outline-info">Bekijk PvE</button></a>
                         <a href="projectdetails?id=<?= htmlentities($item['id']) ?>" class="btn btn-outline-info">Details</a>
                     </div>
                 </div>
