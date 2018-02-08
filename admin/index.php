@@ -41,7 +41,7 @@ if(isset($_POST['flag']) && $_POST['flag'] == "login"){
     <ul class="main-navbar">
         <li class="main-navbar-item"><a href="home">Home</a></li>
         <li class="main-navbar-item"><a href="projecten">Projecten</a></li>
-        <?php 
+        <?php
         if ($user->checkUserLevel(array('0'))) {
             echo '<li class="main-navbar-item"><a href="gebruikers">Gebruikers</a></li>';
         }
@@ -49,7 +49,7 @@ if(isset($_POST['flag']) && $_POST['flag'] == "login"){
             echo '<li class="main-navbar-item"><a href="aanvragen">Aanvragen</a></li>';
         }
         ?>
-        <li class="main-navbar-item"><a href="logout">uitloggen</a></li>
+        <li class="main-navbar-item float-right"><a href="logout">Uitloggen</a></li>
     </ul>
     <?php
         include_once($page['link']);
@@ -60,6 +60,6 @@ if(isset($_POST['flag']) && $_POST['flag'] == "login"){
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 
-    
+
 </body>
 </html>
