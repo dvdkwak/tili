@@ -14,11 +14,6 @@
       <div class="card-body">
       <!-- table -->
 
-          <?php
-            //getting the userData
-
-            $data = $user->
-          ?>
         <table class="table">
   <thead class="thead-dark">
     <tr>

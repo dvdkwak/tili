@@ -4,8 +4,11 @@
 	//Getting the project information and putting it in $data
     $projects = new projects();
 
+    $data = $projects->getProjects();
+
     //Displaying all the results in foreach loop
-    foreach ($projects->getProjects() as $item): ?>
+    if (isset($data)) {
+    	foreach ($data as $item):?>
 
         <div class="container-fluid">
             <div id="medewerker" class="container">
@@ -23,7 +26,9 @@
             </div>
         </div>
 
-    <?php endforeach; ?>
+    <?php endforeach; } else {
+        echo 'Geen resultaten';
+    } ?>
 
     <!-- Modal for the log -->
     <div class='modal fade' id='logModal' tabindex='-1' role='dialog' aria-labelledby='logModalLabel' aria-hidden='true'>
