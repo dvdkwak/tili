@@ -7,6 +7,4 @@ if(isset($_GET['url']) || !empty($_GET['url'])){
     $url = "home";
 }
 
-
-    //Includes
-include_once('/cfg/classes/content.php');
+require_once __DIR__ . '/classes/content.php';

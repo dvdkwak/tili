@@ -5,7 +5,6 @@
  * Date: 10/01/2018
  * Time: 13:47
  */
-//http_response_code(404);
 ?>
 
 <div class="box">
