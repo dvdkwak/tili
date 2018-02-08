@@ -79,7 +79,7 @@
 
 	        <div class="row">
 	        	<div class="col-xs-12 col-md-6">
-			    		<form role="form">
+			    		<form role="form" method="post">
 			    			<div class="row">
 			    				<div class="col-xs-6 col-sm-6 col-md-6">
 			    					<div class="form-group">
