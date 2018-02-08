@@ -78,10 +78,11 @@
 
             //if I get a result it means the credentials are right.
             if( $result->num_rows === 1 ){
-                $this->message  = $result;
-                $this->username = $username;
-                $this->status   = True;
-                $this->userlevel  = $item->userlevel;
+                $this->message   = $result;
+                $this->username  = $username;
+                $this->status    = True;
+                $this->userlevel = $item->userlevel;
+                $this->id        = $item->id;
             }else{
                 $this->status = False;
                 $error->setCustomError("Username or password are wrong!", "danger");
@@ -92,6 +93,7 @@
         public function setSession()
         {
             if( $this->status === True ){
+                $_SESSION['id']        = $this->id;
                 $_SESSION['username']  = $this->username;
                 $_SESSION['userlevel'] = $this->userlevel;
                 $_SESSION['status']    = True;
@@ -132,6 +134,17 @@
                 return true;
             } else {
                 return false;
+            }
+        }
+
+        public function checkUserLevel($userlevels) 
+        {
+            if (isset($_SESSION['userlevel'])) {
+                if(in_array($_SESSION['userlevel'], $userlevels)){
+                    return true;
+                }else{
+                    return false;
+                }
             }
         }
 

@@ -9,6 +9,10 @@
   background-size: cover;
 }
 
+.cursor-pointer{
+  cursor: pointer;
+}
+
 .pageTitle{
   font-size: 2.5em;
   margin-top: 10vh;
@@ -129,4 +133,27 @@ No media query since this is the default in Bootstrap*/
 /*Extra large devices (large desktops, 1200px and up)*/
 @media (min-width: 1200px) {
 
+}
+
+/*MODAL*/
+.modal-content{
+  color: #212529;
+}
+.modal-header {
+    background-color: #1ABC9C;
+    color: white;
+    border-radius: 0;
+}
+.modal-header .close{
+  position: absolute;
+  right: 0;
+  color: white;
+  text-shadow: none;
+}
+.modal-footer {
+    background-color: #f9f9f9;
+}
+
+.myform {
+  border-radius: 0px;
 }
