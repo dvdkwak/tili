@@ -4,31 +4,12 @@
         Soft & hardware ops
         </div>
         <div class="row justify-content-center">
-        <div class="col-12 col-md-4 subTitle">
-            TiliT is leerbedrijf opgericht door de studenten van de opleiding applicatieontwikkeling op het ROC Friese Poort Emmeloord
+          <div class="col-12 col-md-4 subTitle">
+              TiliT is leerbedrijf opgericht door de studenten van de opleiding applicatieontwikkeling op het ROC Friese Poort Emmeloord
+          </div>
         </div>
-        </div>
-        <!-- <div class="col-12 col-md-3 colLeft">
-        <h1>Welkom</h1>
-        <p>
-            TiliT, een leerbedrijf opgericht door de studenten van de opleiding applicatieontwikkeling op het ROC Friese Poort te Emmeloord. Binnen TiliT kunnen wij verschillende diensten aanbieden: Webdesign, Reperatie van hardware en hulp bij software en Advies.
-            Binnen het maken van website's zijn wij van alle markten thuis. Wij kunnen u adviseren op verschillende gebieden en kunnen op aanvraag eventueel software of apps maken. De programmeer vaardigheden kunt u vinden op onze website.
-            De reparatie tak van TiliT geeft u de mogelijkheid om met mogelijke problemen op locatie te komen. Hier zullen de studenten stapsgewijs uw probleem herkennen en in overleg een oplossing toepassen.
-            TiliT heeft ook de mogelijkheid om advies te geven op ICT gebied. De studenten beschikken over een brede kennis waardoor er een goed advies gegeven kan worden.
-        </p>
-        </div>
-        <div class="col-md-2">
-
-        </div>
-        <div class="col-12 col-md-3 colRight">
-        <div class="phone-img">
-            <div class="phone-screen">
-
-            </div>
-        </div>
-        </div> -->
     </div>
-    </div>
+  </div>
     <a href="#page2" rel="relativeanchor">
         <div class="itm_pageDown">
             Lees Meer
@@ -164,7 +145,7 @@
     </div>
     </div>
 </div>
-<div id="page3" class="noFullPage" style="background-color: #ECECEC;">
+<div id="page4" class="noFullPage" style="background-color: #ECECEC;">
     <div class="container-fluid">
     <div class="row justify-content-center page-padding">
         <div class="col-12 col-md-4 py-4 py-md-0">

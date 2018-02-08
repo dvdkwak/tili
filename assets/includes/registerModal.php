@@ -75,7 +75,7 @@
          </div>
        </div>
        <div class="modal-footer">
-         <p>Heeft u al een account? <a href="file:///I:/Nieuwe%20map/login.html" id="knoppie" data-dismiss="modal">Inloggen</a></p>
+         <p>Heeft u al een account? <a href="#" id="knoppie" data-dismiss="modal" data-toggle="modal" data-target="#loginModal">Inloggen</a></p>
          <p>Wachtwoord <a href="#">Vergeten?</a></p>
          <button type="submit" class="btn bg-color-mint b-radius-none float-right" style="background:#1ABC9C;">Registreren</button>
        </div>
