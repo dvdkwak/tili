@@ -1,26 +1,13 @@
 <div class="main-container">
 
 	<?php
-	//Getting the project information and putting it in $data
-    $projects = new projects();
+	$projects = new projects();
+    $projects->requestProject();
+	?>
 
-    $data = $projects->getProjects();
-
-    //Displaying all the results in foreach loop
-    if (isset($data)) {
-    	foreach ($data as $item):?>
-
-    <!-- collaps tab create project-->
-
-    
-
-
-        <div class="container-fluid">
-            <div id="medewerker" class="container">
-
-        <div id="accordion">
-            <div class="card">
-                <div class="card-header" id="headingOne">
+	 <div id="accordion">
+        <div class="card">
+            <div class="card-header" id="headingOne">
                 <h5 class="mb-0">
                     <button class="btn btn-link" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
                       Project aanmaken
@@ -28,11 +15,11 @@
                 </h5>
             </div>
 
-        <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
-            <div class="card-body">
+	        <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
+	            <div class="card-body">
                     <!-- form here -->
                         <div class="col-xs-12 col-md-6">
-                        <form role="form" method="post">
+                        <form role="form" method="post" enctype="multipart/form-data">
                             <div class="row">
                                 <div class="col-12">
                                     <div class="form-group">
@@ -50,20 +37,10 @@
                                 </div>
                                 <div class="row">
                                     <div class="col-12">
-                                    <div class="form-group">
-                                        <input type="email" name="pve" id="pve" class="form-control input-sm" placeholder="PVE Path">
-                                    </div>
+                                    	<input class="btn" type="file" name="fileToUpload" id="fileToUpload">
                                     </div>
                                 </div>
-                                <div class="row">
-                                <div class="col-12">
-                                    <div class="form-group">
-                                        <input type="text" name="details" id="details" class="form-control input-sm" placeholder="Details">
-                                    </div>
-                                </div>
-                                
-                            <input type="hidden" name="">
-                            <input type="submit" value="Opslaan" class="btn btn-info btn-block">
+                            <input type="submit" name="saveProject" value="Opslaan" class="btn btn-info btn-block">
                         </form>
                     </div>
                 </div>
@@ -72,7 +49,17 @@
     </div>
         <!-- add project ends here -->
 
-            
+	<?php
+	//Getting the project information and putting it in $data
+    $data = $projects->getProjects();
+
+    //Displaying all the results in foreach loop
+    if (isset($data)) {
+    	foreach ($data as $item):?>
+
+    	<!-- collaps tab create project-->
+        <div class="container-fluid">
+            <div id="medewerker" class="container">
                 <div class="card my-4">
                     <div class="card-header custom-header">
                         <h5 style="color:white; margin-bottom: 0;"><?= $item['projectName'] ?></h5>
@@ -80,7 +67,7 @@
                     <div class="card-body">
                         <h5 class="card-title">Voetbalclub</h5>
                         <p class="card-text"><?= $item['description']?></p>
-                        <a href="PvE/<?= $item['pvePath']?>.pdf"><button type="button" class="btn btn-outline-info">Bekijk PvE</button></a>
+                        <a href="<?= $item['pvePath']?>.pdf"><button type="button" class="btn btn-outline-info">Bekijk PvE</button></a>
                         <a href="projectdetails?id=<?= htmlentities($item['id']) ?>" class="btn btn-outline-info">Details</a>
                     </div>
                 </div>

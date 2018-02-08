@@ -32,7 +32,40 @@
             }
 		}
 
-		public function requestProject() {
+		public function requestProject()
+		{
+			if (isset($_POST['saveProject'])) {
+				$mysqli = $this->Connect();
+
+				$projectName = $mysqli->real_escape_string($_POST['projectname']);
+				$projectDesc = $mysqli->real_escape_string($_POST['description']);
+				$fileName = "PvE/". md5(date("Y-m-d h:i:s"));
+
+				$uploadOk = 1;
+				// Check if image file is a actual image or fake image
+				
+			    if ($uploadOk == 0) {
+				    echo "Sorry, your file was not uploaded.";
+				// if everything is ok, try to upload file
+				} else {
+				    if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $fileName.'.pdf')) {
+				        echo "The file ". basename( $_FILES["fileToUpload"]["name"]). " has been uploaded.";
+				    } else {
+				        echo "Sorry, there was an error uploading your file.";
+				    }
+				}
+				
+				$insertUserQuery = "INSERT INTO tbl_projects (projectName,description,pvePath,isRequest) VALUES ('$projectName','$projectDesc','$fileName','0')";
+
+				if ($mysqli->query($insertUserQuery)) {
+					echo 'gelukt';
+				}
+
+			}
+		}
+
+		public function uploadFile($fileName) {
+
 			
 		}
 

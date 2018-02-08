@@ -45,7 +45,7 @@
                     <div class="card-body">
                         <h5 class="card-title">' . $item['projectName'] . '</h5>
                         <p class="card-text">' . $item['description'] . '</p>
-                        <a href="PvE/'. $item['pvePath'] .'.pdf"><button type="button" class="btn btn-outline-info">Bekijk PvE</button></a>
+                        <a href="'. $item['pvePath'] .'.pdf"><button type="button" class="btn btn-outline-info">Bekijk PvE</button></a>
                     </div>
                 </div>
             </div>
