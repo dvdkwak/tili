@@ -14,7 +14,10 @@
             }
 
             //Creating a foreach loop that displays all the results
-            return $data;
+            if (isset($data)) {
+            	return $data;
+            }
+            
             
 		}
 
