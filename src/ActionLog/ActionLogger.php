@@ -2,7 +2,7 @@
 
 namespace Tilit\ActionLog;
 
-use Tilit\Database\Connection;
+use Tilit\Database\DB;
 
 /**
  * Main handler of logging actions into the database.
@@ -15,7 +15,7 @@ use Tilit\Database\Connection;
  *
  * @author Gerrit Mulder <info@gerritmulder.com>
  */
-class ActionLogger extends Connection
+class ActionLogger
 {
     /**
      * Saves the log to the database
@@ -24,7 +24,7 @@ class ActionLogger extends Connection
      */
     public function saveLog(ActionLog $log)
     {
-        $stmt = $this->pdo->prepare("INSERT INTO tbl_log (type, author, message) VALUES (:type, :author, :message)");
+        $stmt = DB::$pdo->prepare("INSERT INTO tbl_log (type, author, message) VALUES (:type, :author, :message)");
 
         $stmt->bindParam(':type', $log->type);
         $stmt->bindParam(':author', $log->author);
