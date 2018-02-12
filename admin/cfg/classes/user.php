@@ -160,6 +160,41 @@
             }
         }
 
+        public function addMember_Project(){
+
+            if(isset($_POST['btnProjectAddMember'])){
+                $mysqli = $this->connect();
+
+                $selectUser = $_POST['selectedUserA'];
+                $selectProject = $_POST['selectedUserA'];
+                $query = 'INSERT INTO tbl_users_projects (FK_users_id, FK_projects_id) VALUES ('.$selectUser.','.$selectProject.')';
+                $mysqli->query($query);
+            }
+
+        }
+
+        public function removeMember_Project(){
+
+            if(isset($_POST['btnProjectRemoveMember'])) {
+                $mysqli = $this->connect();
+
+                $selectProjectID = $_POST['selectedUserIDR'];
+                $query = 'DELETE FROM tbl_users_projects WHERE id='.$selectProjectID.'';
+                $mysqli->query($query);
+            }
+
+        }
+
+        public function getUsers($select, $where){
+            $mysqli = $this->connect();
+            $query = 'SELECT ' . $select . ' FROM tbl_users WHERE '. $where.'';
+            $result = $mysqli->query($query);
+            while($items = $result->fetch_assoc()){
+                $data[] = $items;
+            }
+            return $data;
+        }
+
     }
 
 
