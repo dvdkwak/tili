@@ -1,7 +1,6 @@
 <div class="main-container">
 
 	<?php
-<<<<<<< HEAD
 	$projects = new projects();
     $projects->requestProject();
 	?>
@@ -48,71 +47,44 @@
             </div>
         </div>
     </div>
-        <!-- add project ends here -->
 
-	<?php
-	//Getting the project information and putting it in $data
-    $data = $projects->getProjects();
-
-    //Displaying all the results in foreach loop
-    if (isset($data)) {
-    	foreach ($data as $item):?>
-
-    	<!-- collaps tab create project-->
-        <div class="container-fluid">
+    <div class="container-fluid">
             <div id="medewerker" class="container">
-=======
-
-	//Getting the project information and putting it in $data
-    $projects = new projects();
-
-    $data = $projects->getProjects();
-
-		include_once '/../assets/includes/createProjectModal.php';
-		?>
-
-		<!-- collaps tab create project-->
-
-		<!-- _________________________START MODAL______________________________________________________________________ -->
-
-
-		<!-- ________________________________________________________________END MODAL_________________________________ -->
-
-				<div class="container-fluid">
-						<div id="medewerker" class="container">
-							<div class="row">
-								<div class="col-12 custom-header p-3" style="border-radius: 3px;">
-									<h4 class="float-left" style="color: white; margin-bottom: 0px;">Mijn Projecten</h4>
-									<div class="float-right" style="color: white; cursor: pointer;" data-dismiss="modal" data-toggle="modal" data-target="#createProjectModal">
-										<i class="material-icons align-top">add</i>Project Aanmaken
-									</div>
-								</div>
-							</div><?php
-
-    //Displaying all the results in foreach loop
-    if (isset($data)) {
-    	foreach ($data as $item):?>
-        <!-- add project ends here -->
-
-
->>>>>>> 4d460a0daf9b9bc46d0375d623f9de53ff913f1c
-                <div class="card my-4">
-                    <div class="card-header custom-header">
-                        <h5 style="color:white; margin-bottom: 0;"><?= $item['projectName'] ?></h5>
-                    </div>
-                    <div class="card-body">
-                        <h5 class="card-title">Voetbalclub</h5>
-                        <p class="card-text"><?= $item['description']?></p>
-                        <a href="<?= $item['pvePath']?>.pdf"><button type="button" class="btn btn-outline-info">Bekijk PvE</button></a>
-                        <a href="projectdetails?id=<?= htmlentities($item['id']) ?>" class="btn btn-outline-info">Details</a>
+                <div class="row">
+                    <div class="col-12 custom-header p-3" style="border-radius: 3px;">
+                        <h4 class="float-left" style="color: white; margin-bottom: 0px;">Mijn Projecten</h4>
+                        <div class="float-right" style="color: white; cursor: pointer;" data-dismiss="modal" data-toggle="modal" data-target="#createProjectModal">
+                            <i class="material-icons align-top">add</i>Project Aanmaken
+                        </div>
                     </div>
                 </div>
-            </div>
-        </div>
 
+	<?php 
+	//Getting the project information and putting it in $data
+    $data = $projects->getProjects();
+
+    //Displaying all the results in foreach loop
+    if (isset($data)) {
+    	foreach ($data as $item):?>
+
+            <div class="card my-4">
+                <div class="card-header custom-header">
+                    <h5 style="color:white; margin-bottom: 0;"><?= $item['projectName'] ?></h5>
+                </div>
+                <div class="card-body">
+                    <h5 class="card-title">Voetbalclub</h5>
+                    <p class="card-text"><?= $item['description']?></p>
+                    <a href="<?= $item['pvePath']?>.pdf"><button type="button" class="btn btn-outline-info">Bekijk PvE</button></a>
+                    <a href="projectdetails?id=<?= htmlentities($item['id']) ?>" class="btn btn-outline-info">Details</a>
+                </div>
+            </div>
+            
     <?php endforeach; } else {
         echo 'Geen resultaten';
     } ?>
+
+        </div>
+    </div>
 
     <!-- Modal for the log -->
     <div class='modal fade' id='logModal' tabindex='-1' role='dialog' aria-labelledby='logModalLabel' aria-hidden='true'>

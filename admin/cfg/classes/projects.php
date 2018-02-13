@@ -63,12 +63,6 @@
 
 			}
 		}
-
-		public function uploadFile($fileName) {
-
-			
-		}
-
     }
 
 
