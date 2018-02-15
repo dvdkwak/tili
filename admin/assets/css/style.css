@@ -107,9 +107,14 @@ body {
     font-size: 12px; 
     font-weight: bold;
 }
-
 #modallog{
     height: 800px;
     width: 800px;
     margin-left: -170px;
+}
+#projectname{
+    width:400px;
+}
+#projectdescription{
+    width:400px;
 }
