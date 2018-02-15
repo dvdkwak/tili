@@ -4,7 +4,7 @@ class adminContent
     public function getContent($url){
         switch($url){
             case 'home':
-                return array('link'=>'pages/home.php', 'styleLink'=>'', 'title'=>'Admin | Home', 'scriptLink'=>'');
+                return array('link'=>'pages/projects.php', 'styleLink'=>'', 'title'=>'Admin | Projects', 'scriptLink'=>'');
                 break;
             case 'login':
                 return array('link'=>'pages/login.php', 'styleLink'=>'assets/css/login.css', 'title'=>'Admin | Login', 'scriptLink'=>'');

@@ -24,11 +24,8 @@
             <h1>Over ons</h1>
             <hr>
             <p>
-              TiliT, een leerbedrijf opgericht door de studenten van de opleiding applicatie ontwikkeling op het ROC Friese Poort te Emmeloord. Binnen TiliT kunnen wij verschillende diensten aanbieden: Webdesign, Reperatie van hardware en hulp bij software en Advies.
-              Binnen het maken van websites zijn wij van alle markten thuis. Wij kunnen u adviseren op verschillende gebieden en kunnen op aanvraag eventueel software of apps maken. De programmeer vaardigheden kunt u vinden op onze website.
-              De reparatie tak van TiliT geeft u de mogelijkheid om met mogelijke problemen op locatie te komen. Hier zullen de studenten stapsgewijs uw probleem herkennen en in overleg een oplossing toepassen.
-              TiliT heeft ook de mogelijkheid om advies te geven op ICT gebied. De studenten beschikken over een brede kennis waardoor er een goed advies gegeven kan worden.
-            </p>
+              TiliT is een leerbedrijf opgericht door de studenten van de opleiding applicatie ontwikkeling op het ROC Friese Poort te Emmeloord. Binnen TiliT kunnen wij verschillende diensten aanbieden: Webdesign, Reperatie van hardware en hulp bij software en Advies.
+              Binnen het maken van websites zijn wij van alle markten thuis. Wij kunnen u adviseren op verschillende gebieden en kunnen op aanvraag eventueel software of apps maken. De programmeer vaardigheden kunt u vinden op onze website. De reparatie tak van TiliT geeft u de mogelijkheid om met mogelijke problemen op locatie te komen. Hier zullen de studenten stapsgewijs uw probleem herkennen en in overleg een oplossing toepassen. TiliT heeft ook de mogelijkheid om advies te geven op ICT gebied. De studenten beschikken over een brede kennis waardoor er een goed advies gegeven kan worden. </p>
           </div>
           <div class="col-md-1">
 

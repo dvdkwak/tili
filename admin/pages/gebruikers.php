@@ -9,7 +9,7 @@
 
 	<div id="accordion">
   <div class="card">
-    <div class="card-header" id="headingOne">
+    <div class="card-header btn-link" id="headingOne"  data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
 			Overzicht
     </div>
     <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
