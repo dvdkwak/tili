@@ -10,6 +10,7 @@
     }
     $user->register();
 
+    
 ?>
 <!DOCTYPE html>
 <html>
