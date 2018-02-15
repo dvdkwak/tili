@@ -21,28 +21,34 @@
             
 		}
 
-		public function acceptRequests($id) {
+		public function acceptRequests() {
 			$mysqli = $this->Connect();
 
-			$query = 'UPDATE tbl_projects SET isRequest = "1" WHERE id ='.$id;
-            $result = $mysqli->query($query);
-
-            require_once 'errorhandling.php';
             $error = new errorHandling();
 
-            $error->setCustomError("Project succesfull accepted!", "success");
+            if (isset($_POST['btnAcceptRequest'])) {
+                $id = $_POST['requestID'];
+
+                $query = 'UPDATE tbl_projects SET isRequest = "1" WHERE id ='.$id;
+                if ($mysqli->query($query)) {
+                    $error->setCustomError("Project succesfull accepted!", "success");
+                }
+            }
 		}
 
-		public function deleteRequests($id) {
+		public function deleteRequests() {
 			$mysqli = $this->Connect();
 
-			$query = 'UPDATE tbl_projects SET isRequest = "2" WHERE id ='.$id;
-            $result = $mysqli->query($query);
-
-            require_once 'errorhandling.php';
             $error = new errorHandling();
 
-            $error->setCustomError("Project succesfull deleted!", "danger");
+            if (isset($_POST['btnDeleteRequest'])) {
+                $id = $_POST['requestID'];
+                $query = 'UPDATE tbl_projects SET isRequest = "2" WHERE id ='.$id;
+
+                if ($mysqli->query($query)) {
+                    $error->setCustomError("Project succesfull deleted!", "danger");
+                }
+            }
 		}
 
 		public function requestProject() {
