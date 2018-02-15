@@ -39,7 +39,6 @@ if(isset($_POST['flag']) && $_POST['flag'] == "login"){
 </head>
 <body>
     <ul class="main-navbar">
-        <li class="main-navbar-item"><a href="/admin/home">Home</a></li>
         <li class="main-navbar-item"><a href="/admin/projecten">Projecten</a></li>
     <?php
         if ($user->checkUserLevel(array('0'))) {
