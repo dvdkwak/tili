@@ -45,7 +45,7 @@
 				$uploadOk .= $this->checkImageType($imageFileType);
                 $uploadOk .= $this->checkImageSize();
 
-                $this->uploadFile($uploadOk,$fileName);
+                $this->uploadFile($uploadOk,$fileName,$target_file);
 
 			}
 		}
@@ -70,7 +70,7 @@
             }
         }
 
-        public function uploadFile($uploadOk)
+        public function uploadFile($uploadOk, $fileName, $target_file)
         {
             $mysqli = $this->Connect();
 
@@ -86,6 +86,21 @@
                     $mysqli->query($insertUserQuery);
                 } else {
                     echo "Sorry, there was an error uploading your file.";
+                }
+            }
+        }
+
+        public function startTiming() {
+            $mysqli = $this->Connect();
+
+            if (isset($_POST['btnStartTiming'])) {
+                $projectId = $_POST['projectId'];
+                $userId    = $_SESSION['id'];
+
+                $query = "INSERT INTO tbl_timeregistration (id, start, end, FK_user_id, FK_project_id) VALUES ('','','','','')".$id;
+
+                if ($mysqli->query($query)) {
+                    $error->setCustomError("Project succesfull deleted!", "danger");
                 }
             }
         }

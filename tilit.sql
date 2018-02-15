@@ -1,26 +1,26 @@
 -- phpMyAdmin SQL Dump
--- version 4.0.4.2
--- http://www.phpmyadmin.net
+-- version 4.7.4
+-- https://www.phpmyadmin.net/
 --
--- Machine: localhost
--- Genereertijd: 06 feb 2018 om 13:43
--- Serverversie: 5.6.13
--- PHP-versie: 5.4.17
+-- Host: 127.0.0.1:3306
+-- Gegenereerd op: 15 feb 2018 om 14:35
+-- Serverversie: 5.7.19
+-- PHP-versie: 7.0.23
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
+START TRANSACTION;
 SET time_zone = "+00:00";
 
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8 */;
+/*!40101 SET NAMES utf8mb4 */;
 
 --
--- Databank: `tilit`
+-- Database: `tilit`
 --
-CREATE DATABASE IF NOT EXISTS `tilit` DEFAULT CHARACTER SET latin1 COLLATE latin1_swedish_ci;
-USE `tilit`;
 
 -- --------------------------------------------------------
 
@@ -28,12 +28,14 @@ USE `tilit`;
 -- Tabelstructuur voor tabel `tbl_log`
 --
 
+DROP TABLE IF EXISTS `tbl_log`;
 CREATE TABLE IF NOT EXISTS `tbl_log` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `author` varchar(255) NOT NULL,
   `message` text NOT NULL,
+  `date` varchar(50) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -41,6 +43,7 @@ CREATE TABLE IF NOT EXISTS `tbl_log` (
 -- Tabelstructuur voor tabel `tbl_projects`
 --
 
+DROP TABLE IF EXISTS `tbl_projects`;
 CREATE TABLE IF NOT EXISTS `tbl_projects` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `projectName` varchar(255) NOT NULL,
@@ -48,15 +51,28 @@ CREATE TABLE IF NOT EXISTS `tbl_projects` (
   `pvePath` varchar(255) NOT NULL,
   `isRequest` int(1) NOT NULL COMMENT '1 is aanvraag 0 is geaccepteerd',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
+) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=latin1;
 
 --
--- Gegevens worden uitgevoerd voor tabel `tbl_projects`
+-- Gegevens worden geëxporteerd voor tabel `tbl_projects`
 --
 
 INSERT INTO `tbl_projects` (`id`, `projectName`, `description`, `pvePath`, `isRequest`) VALUES
-(1, 'Testnaam', 'hij doet het hoor', '', 1),
-(2, 'Lopend Project', 'Dit is een lopend project', '', 0);
+(1, 'Testnaam', 'Dit is een fietsend project', 'PvE/geen', 1),
+(2, 'Lopend Project', 'Dit is een lopend project', 'PvE/geen', 1),
+(3, 'Test', 'Oke dit is even een test voorbeeldje', 'PvE/4f33e6636355e38f429887aae3567bcb', 1),
+(4, 'ery', 'erty', 'PvE/2e067c763b95380a948ddb3db953223b', 0),
+(5, 'ery', 'erty', 'PvE/22c72a952ecbe849672fded8a12cf5d7', 2),
+(6, 'hj', 'fgjh', 'PvE/fe422b4e64c2f21ca7168b825830dc99', 2),
+(7, 'ouyoii', 'yuioyu', 'PvE/3023b6eee803c545e6d5882ad63d6b60', 2),
+(8, 'ghs', 'sdg', 'PvE/3853b0f46b44f872c86e68f67808eb3a', 2),
+(9, 'cnv', 'nvb', 'PvE/6af87a09300e43c633227aa1d699995b', 2),
+(10, 'jkhj', 'kghjkghj', '', 0),
+(11, 'jkhj', 'kghjkghj', '', 0),
+(12, 'ityui', 'tyui', '', 0),
+(13, 'yer', 'yertyer', '', 0),
+(14, 'yer', 'yertyer', 'PvE/d01a5007537cb1517524556262f42e99', 0),
+(15, 'ewrt', 'wetwert', 'PvE/ede7dad2c3918212539da516ec36d90b', 0);
 
 -- --------------------------------------------------------
 
@@ -64,12 +80,29 @@ INSERT INTO `tbl_projects` (`id`, `projectName`, `description`, `pvePath`, `isRe
 -- Tabelstructuur voor tabel `tbl_projects_log`
 --
 
+DROP TABLE IF EXISTS `tbl_projects_log`;
 CREATE TABLE IF NOT EXISTS `tbl_projects_log` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `FK_project_id` int(11) NOT NULL,
   `FK_log_id` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Tabelstructuur voor tabel `tbl_timeregistration`
+--
+
+DROP TABLE IF EXISTS `tbl_timeregistration`;
+CREATE TABLE IF NOT EXISTS `tbl_timeregistration` (
+  `id` int(10) NOT NULL AUTO_INCREMENT,
+  `start` varchar(50) NOT NULL,
+  `end` varchar(50) NOT NULL,
+  `FK_user_id` int(10) NOT NULL,
+  `FK_project_id` int(10) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -77,6 +110,7 @@ CREATE TABLE IF NOT EXISTS `tbl_projects_log` (
 -- Tabelstructuur voor tabel `tbl_users`
 --
 
+DROP TABLE IF EXISTS `tbl_users`;
 CREATE TABLE IF NOT EXISTS `tbl_users` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `email` varchar(255) NOT NULL,
@@ -91,10 +125,10 @@ CREATE TABLE IF NOT EXISTS `tbl_users` (
   `zipCode` varchar(255) NOT NULL,
   `recoveryString` varchar(255) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=12 ;
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=latin1;
 
 --
--- Gegevens worden uitgevoerd voor tabel `tbl_users`
+-- Gegevens worden geëxporteerd voor tabel `tbl_users`
 --
 
 INSERT INTO `tbl_users` (`id`, `email`, `password`, `userlevel`, `tel`, `firstName`, `lastName`, `preposition`, `city`, `address`, `zipCode`, `recoveryString`) VALUES
@@ -111,12 +145,14 @@ INSERT INTO `tbl_users` (`id`, `email`, `password`, `userlevel`, `tel`, `firstNa
 -- Tabelstructuur voor tabel `tbl_users_projects`
 --
 
+DROP TABLE IF EXISTS `tbl_users_projects`;
 CREATE TABLE IF NOT EXISTS `tbl_users_projects` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `FK_users_id` int(11) NOT NULL,
   `FK_projects_id` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

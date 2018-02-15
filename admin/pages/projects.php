@@ -1,6 +1,7 @@
 <div class="main-container">
 
 	<?php
+    echo date("Y-m-d h:i:s");
 	$projects = new projects();
     $projects->requestProject();
 	?>
@@ -44,13 +45,22 @@ if (isset($data)) {
 
             <div class="card my-4">
                 <div class="card-header custom-header">
-                    <h5 style="color:white; margin-bottom: 0;"><?= $item['projectName'] ?></h5>
+                    <h5 style="color:white; margin-bottom: -25px;"><?= $item['projectName'] ?></h5>
+                    <form style="display: inline;" action="" method="post">
+                        <input type="hidden" name="projectId" value="<?php echo $item['id']; ?>" />
+                        <button name="btnStartTiming" type="submit" class="snikker btn btn-dark btn-custom-trans float-right disabled"><i class="material-icons">timer_off</i></button>
+                    </form>
+
+                    <form style="display: inline;" action="" method="post">
+                        <input type="hidden" name="projectId" value="<?php echo $item['id']; ?>" />
+                        <button name="btnStopTiming" type="submit" class="snikker btn btn-dark btn-custom-trans float-right"><i class="material-icons">timer</i></button>
+                    </form>
                 </div>
                 <div class="card-body">
                     <h5 class="card-title">Beschrijving:</h5>
                     <p class="card-text"><?= $item['description']?></p>
                     <a href="<?= $item['pvePath']?>.pdf"><button type="button" class="btn btn-outline-info">Bekijk PvE</button></a>
-                    <a href="projectdetails?id=<?= htmlentities($item['id']) ?>" class="btn btn-outline-info">Details</a>
+                    <a href="projectdetails?id=<?php echo htmlentities($item['id']); ?>" class="btn btn-outline-info">Details</a>
                 </div>
             </div>
             
