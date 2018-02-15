@@ -43,7 +43,7 @@
 
                 $uploadOk = 1;
 				$uploadOk .= $this->checkImageType($imageFileType);
-                $uploadOk .= $this->checkImageSize($imageFileType);
+                $uploadOk .= $this->checkImageSize();
 
                 $this->uploadFile($uploadOk,$fileName);
 
