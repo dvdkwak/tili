@@ -107,8 +107,19 @@
             }
         }
 
+        //Setting the user status to 0
+        public function setStatus()
+        {
+            $mysqli = $this->connect();
+
+            $userId = $_SESSION['id'];
+            $query = "UPDATE tbl_user SET status = 0 WHERE id = '$userId'";
+            $mysqli->query($query);
+        }
+
         public function logOut($location)
         {
+            $this->setStatus();
             if( isset( $_SESSION['status'] ) ){
                 session_destroy();
             }
@@ -130,7 +141,7 @@
 
         public function changePass($oldPass, $newPass)
         {
-
+            
         }
 
         public function ifAdmin (){
