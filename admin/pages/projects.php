@@ -1,26 +1,14 @@
 <div class="main-container">
 
 	<?php
-    echo date("Y-m-d h:i:s");
 	$projects = new projects();
     $projects->requestProject();
+    $projects->startTiming();
+    $projects->stopTiming();
+    /*$to_time = strtotime("09:30:00");
+    $from_time = strtotime("16:30:00");
+    echo round(abs($to_time - $from_time) / 60 / 60,2). " Uur";*/
 	?>
-
-	 <!--<div id="accordion">
-        <div class="card">
-            <div class="card-header" id="headingOne">
-                <h5 class="mb-0">
-                    <button class="btn btn-link" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                      Project aanmaken
-                    </button>
-                </h5>
-            </div>
-
-	        <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
-
-            </div>
-        </div>
-    </div>-->
 
     <div class="container-fluid">
         <div id="medewerker" class="container">
@@ -30,7 +18,8 @@
 <?php if ($_SESSION['userlevel'] == 0) {echo"Alle Projecten";} else {echo"Mijn Projecten";}?>
                     </h4>
                     <div class="float-right" style="color: black; cursor: pointer;" data-dismiss="modal" data-toggle="modal" data-target="#createProjectModal">
-                        <i class="material-icons align-top">add</i>Project Aanmaken
+                        <?php if ($_SESSION['userlevel'] == 0) { ?><i class="material-icons align-top">add</i>Project Aanmaken <?php }
+                        if ($_SESSION['userlevel'] == 2) { ?><i class="material-icons align-top">add</i>Project Aanvragen <?php } ?>
                     </div>
                 </div>
             </div>
@@ -44,17 +33,21 @@ if (isset($data)) {
     foreach ($data as $item):?>
 
             <div class="card my-4">
-                <div class="card-header custom-header">
+                <div <?php if ($_SESSION['userlevel'] == 2) { ?>style="height:50px;"<?php } ?> class="card-header custom-header">
                     <h5 style="color:white; margin-bottom: -25px;"><?= $item['projectName'] ?></h5>
-                    <form style="display: inline;" action="" method="post">
+                    <?php
+                    $userlvl = $_SESSION['userlevel'];
+                    if ($userlvl == 1 || $userlvl == 0) {?>
+                    <form style="display: inline;" method="post">
                         <input type="hidden" name="projectId" value="<?php echo $item['id']; ?>" />
-                        <button name="btnStartTiming" type="submit" class="snikker btn btn-dark btn-custom-trans float-right disabled"><i class="material-icons">timer_off</i></button>
+                        <button name="btnStopTiming" type="submit" class="<?php $projects->checkTimerOffButton(); ?> snikker btn btn-dark btn-custom-trans float-right"><i class="material-icons">timer_off</i></button>
                     </form>
 
-                    <form style="display: inline;" action="" method="post">
+                    <form style="display: inline;" method="post">
                         <input type="hidden" name="projectId" value="<?php echo $item['id']; ?>" />
-                        <button name="btnStopTiming" type="submit" class="snikker btn btn-dark btn-custom-trans float-right"><i class="material-icons">timer</i></button>
+                        <button name="btnStartTiming" type="submit" class="<?php $projects->checkTimerButton(); ?> snikker btn btn-dark btn-custom-trans float-right"><i class="material-icons">timer</i></button>
                     </form>
+                    <?php } ?>
                 </div>
                 <div class="card-body">
                     <h5 class="card-title">Beschrijving:</h5>
