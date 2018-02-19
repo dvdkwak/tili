@@ -57,7 +57,7 @@
 
 		public function redirectUser()
 		{
-			if ($_SESSION['userlevel'] == 1) {
+			if (!$_SESSION['userlevel'] == 0) {
 				header("Location: /admin/projecten");
 			}
 		}
