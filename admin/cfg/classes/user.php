@@ -201,16 +201,27 @@
 						$mysqli = $this->connect();
 						date_default_timezone_set('Europe/Amsterdam');
 						$date = date("H:i:s d-m-Y");
-						$query = "INSERT INTO tbl_log (author, message, date) VALUES ('$fname $fname','$message','$date')";
+						$query = "INSERT INTO tbl_log (author, message, date) VALUES ('$fname $lname','$message','$date')";
 						$mysqli->query($query);
 
-						$query2 = "SELECT id FROM `tbl_log` WHERE message=$message";
+						$query2 = "SELECT id FROM `tbl_log` WHERE message='$message'";
 						$result = $mysqli->query($query2);
 						$item = $result->fetch_object();
 						$idLog = $item->id;
 
 						$query3 = "INSERT INTO tbl_projects_log (FK_project_id, FK_log_id) VALUES ('$id','$idLog')";
 						$mysqli->query($query3);
+				}
+
+				public function getTimeRegistration($projectid) {
+					$mysqli = $this->connect();
+					$query = "SELECT A.*, B.* FROM `tbl_timeregistration` AS A INNER JOIN `tbl_users` AS B ON A.FK_user_id = B.id  WHERE A.FK_project_id = ". $projectid ."";
+					$result = $mysqli->query($query);
+					while ($items = $result->fetch_assoc()){
+						$data[] = $items;
+					}
+					if (empty($data)) {}
+		        else {return $data;}
 				}
 
     }
