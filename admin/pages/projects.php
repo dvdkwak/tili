@@ -40,12 +40,12 @@ if (isset($data)) {
                     if ($userlvl == 1 || $userlvl == 0) {?>
                     <form style="display: inline;" method="post">
                         <input type="hidden" name="projectId" value="<?php echo $item['id']; ?>" />
-                        <button name="btnStopTiming" type="submit" class="<?php $projects->checkTimerOffButton(); ?> snikker btn btn-dark btn-custom-trans float-right"><i class="material-icons">timer_off</i></button>
+                        <button name="btnStopTiming" type="submit" <?php $projects->isDisabledOff(); ?> class="<?php $projects->checkTimerOffButton(); ?> snikker btn btn-dark btn-custom-trans float-right"><i class="material-icons">timer_off</i></button>
                     </form>
 
                     <form style="display: inline;" method="post">
                         <input type="hidden" name="projectId" value="<?php echo $item['id']; ?>" />
-                        <button name="btnStartTiming" type="submit" class="<?php $projects->checkTimerButton(); ?> snikker btn btn-dark btn-custom-trans float-right"><i class="material-icons">timer</i></button>
+                        <button name="btnStartTiming" type="submit" <?php $projects->isDisabledOn(); ?> class="<?php $projects->checkTimerButton(); ?> snikker btn btn-dark btn-custom-trans float-right"><i class="material-icons">timer</i></button>
                     </form>
                     <?php } ?>
                 </div>

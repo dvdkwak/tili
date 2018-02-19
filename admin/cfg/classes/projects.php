@@ -122,6 +122,23 @@ class projects extends db{
         }
     }
 
+    public function isDisabledOn()
+    {
+        $userId = $_SESSION['id'];
+        if (isset($_COOKIE[$userId])) {
+            echo 'disabled="disabled"';
+        }
+    }
+
+    public function isDisabledOff()
+    {
+        $userId = $_SESSION['id'];
+        if (!isset($_COOKIE[$userId])) {
+            echo 'disabled="disabled"';
+        }
+    }
+
+
     public function startTiming()
     {
         $mysqli = $this->Connect();
