@@ -165,7 +165,7 @@
                 <input type="text" name="subject" class="form-control b-radius-none" id="exampleFormControlInput1">
             </div>
             <div class="form-group">
-            <label for="exampleFormControlTextarea1">Example textarea</label>
+            <label for="exampleFormControlTextarea1">Bericht</label>
             <textarea class="form-control b-radius-none" name="message" id="exampleFormControlTextarea1" rows="3"></textarea>
             </div>
             <input type="submit" class="btn float-right bg-color-mint b-radius-none" name="submitBtn" value="Verzend">
