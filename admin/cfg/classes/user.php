@@ -4,7 +4,7 @@
 
         //standard login function which calles for the checked and the session set as well
         public function login($username, $password, $location)
-        {   
+        {
             if (isset($_POST['loginBtn'])) {
                 $this->checkCredentials( $username, $password );
                 $this->setSession();
@@ -47,7 +47,7 @@
                             $prepos = "NULL";
                         }
 
-                        $insertUser = $mysqli->query("INSERT INTO tbl_users (email, password, userlevel, tel, firstName, lastName, preposition, city, address, zipCode) 
+                        $insertUser = $mysqli->query("INSERT INTO tbl_users (email, password, userlevel, tel, firstName, lastName, preposition, city, address, zipCode)
                                                       VALUES ('$email','$password','$userlvl','$telnumber','$firstname','$lastname','$prepos','$city','$address','$zipcode')");
 
                         header('Location: index.php');
@@ -75,19 +75,19 @@
             //hashing the 'password' value
             $password = hash( 'sha512', $password );
 
-            $query = 'SELECT * FROM tbl_users 
-					  WHERE email = "'. $username .'" 
+            $query = 'SELECT * FROM tbl_users
+					  WHERE email = "'. $username .'"
 						AND password = "'. $password .'"';
             $result = $mysqli->query($query);
             $item = $result->fetch_object();
 
             //if I get a result it means the credentials are right.
             if( $result->num_rows === 1 ){
-                $this->message   = $result;
-                $this->username  = $username;
                 $this->status    = True;
                 $this->userlevel = $item->userlevel;
                 $this->id        = $item->id;
+								$this->firstName = $item->firstName;
+								$this->lastName = $item->lastName;
             }else{
                 $this->status = False;
                 $error->setCustomError("Username or password are wrong!", "danger");
@@ -99,27 +99,17 @@
         {
             if( $this->status === True ){
                 $_SESSION['id']        = $this->id;
-                $_SESSION['username']  = $this->username;
                 $_SESSION['userlevel'] = $this->userlevel;
                 $_SESSION['status']    = True;
+								$_SESSION['firstName'] = $this->firstName;
+								$_SESSION['lastName']  = $this->lastName;
             }else{
                 $_SESSION['status'] = False;
             }
         }
 
-        //Setting the user status to 0
-        public function setStatus()
-        {
-            $mysqli = $this->connect();
-
-            $userId = $_SESSION['id'];
-            $query = "UPDATE tbl_user SET status = 0 WHERE id = '$userId'";
-            $mysqli->query($query);
-        }
-
         public function logOut($location)
         {
-            $this->setStatus();
             if( isset( $_SESSION['status'] ) ){
                 session_destroy();
             }
@@ -141,11 +131,11 @@
 
         public function changePass($oldPass, $newPass)
         {
-            
+
         }
 
         public function ifAdmin (){
-            if (isset($_SESSION['userlevel']) && $_SESSION['userlevel'] == 0) 
+            if (isset($_SESSION['userlevel']) && $_SESSION['userlevel'] == 0)
             {
                 return true;
             } else {
@@ -153,7 +143,7 @@
             }
         }
 
-        public function checkUserLevel($userlevels) 
+        public function checkUserLevel($userlevels)
         {
             if (isset($_SESSION['userlevel'])) {
                 if(in_array($_SESSION['userlevel'], $userlevels)){
@@ -171,18 +161,7 @@
             }
         }
 
-        public function addMember_Project(){
 
-            if(isset($_POST['btnProjectAddMember'])){
-                $mysqli = $this->connect();
-
-                $selectUser = $_POST['selectedUserA'];
-                $selectProject = $_POST['selectedUserA'];
-                $query = 'INSERT INTO tbl_users_projects (FK_users_id, FK_projects_id) VALUES ('.$selectUser.','.$selectProject.')';
-                $mysqli->query($query);
-            }
-
-        }
 
         public function removeMember_Project(){
 
@@ -206,7 +185,33 @@
             return $data;
         }
 
+				public function getLog($id) {
+		      $mysqli = $this->connect();
+		      $query = '
+		        SELECT A.*, B.* FROM tbl_projects_log AS A INNER JOIN tbl_log AS B ON A.FK_log_id = B.id WHERE A.FK_project_id = '. $id .' ORDER BY B.id ASC';
+		      $result = $mysqli->query($query);
+		      while($items = $result->fetch_assoc()){
+		          $data[] = $items;
+		      }
+		      if (empty($data)) {}
+		        else {return $data;}
+		    }
+
+				public function verLog($id, $fname, $lname, $message){
+						$mysqli = $this->connect();
+						date_default_timezone_set('Europe/Amsterdam');
+						$date = date("H:i:s d-m-Y");
+						$query = "INSERT INTO tbl_log (author, message, date) VALUES ('$fname $fname','$message','$date')";
+						$mysqli->query($query);
+
+						$query2 = "SELECT id FROM `tbl_log` WHERE message=$message";
+						$result = $mysqli->query($query2);
+						$item = $result->fetch_object();
+						$idLog = $item->id;
+
+						$query3 = "INSERT INTO tbl_projects_log (FK_project_id, FK_log_id) VALUES ('$id','$idLog')";
+						$mysqli->query($query3);
+				}
+
     }
-
-
 ?>
