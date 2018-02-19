@@ -39,13 +39,12 @@ if(isset($_POST['flag']) && $_POST['flag'] == "login"){
 </head>
 <body>
     <ul class="main-navbar">
-        <li class="main-navbar-item"><a href="/admin/home">Home</a></li>
         <li class="main-navbar-item"><a href="/admin/projecten">Projecten</a></li>
     <?php
         if ($user->checkUserLevel(array('0'))) {
             echo '<li class="main-navbar-item"><a href="/admin/gebruikers">Gebruikers</a></li>';
         }
-        if ($user->checkUserLevel(array('0', '2'))) {
+        if ($user->checkUserLevel(array('0'))) {
             echo '<li class="main-navbar-item"><a href="/admin/aanvragen">Aanvragen</a></li>';
         }
     ?>

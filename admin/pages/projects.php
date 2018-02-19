@@ -1,160 +1,108 @@
 <div class="main-container">
 
 	<?php
-<<<<<<< HEAD
 	$projects = new projects();
     $projects->requestProject();
+    $projects->startTiming();
+    $projects->stopTiming();
+    /*$to_time = strtotime("09:30:00");
+    $from_time = strtotime("16:30:00");
+    echo round(abs($to_time - $from_time) / 60 / 60,2). " Uur";*/
 	?>
 
-	 <div id="accordion">
-        <div class="card">
-            <div class="card-header" id="headingOne">
-                <h5 class="mb-0">
-                    <button class="btn btn-link" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                      Project aanmaken
-                    </button>
-                </h5>
-            </div>
-
-	        <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
-	            <div class="card-body">
-                    <!-- form here -->
-                        <div class="col-xs-12 col-md-6">
-                        <form role="form" method="post" enctype="multipart/form-data">
-                            <div class="row">
-                                <div class="col-12">
-                                    <div class="form-group">
-                            <input type="text" name="projectname" id="projectname" class="form-control input-sm" placeholder="Project naam">
-                                    </div>
-                                </div>
-                                
-                            </div>
-                                <div class="row">
-                                    <div class="col-12">
-                                    <div class="form-group">
-                                        <input type="text" name="description" id="description" class="form-control input-sm" placeholder="Beschrijving">
-                                    </div>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-12">
-                                    	<input class="btn" type="file" name="fileToUpload" id="fileToUpload">
-                                    </div>
-                                </div>
-                            <input type="submit" name="saveProject" value="Opslaan" class="btn btn-info btn-block">
-                        </form>
+    <div class="container-fluid">
+        <div id="medewerker" class="container">
+            <div class="row">
+                <div class="col-12 p-3" style="border-radius: 3px;">
+                    <h4 class="float-left" style="color: black; margin-bottom: 0px;">
+<?php if ($_SESSION['userlevel'] == 0) {echo"Alle Projecten";} else {echo"Mijn Projecten";}?>
+                    </h4>
+                    <div class="float-right" style="color: black; cursor: pointer;" data-dismiss="modal" data-toggle="modal" data-target="#createProjectModal">
+                        <?php if ($_SESSION['userlevel'] == 0) { ?><i class="material-icons align-top">add</i>Project Aanmaken <?php }
+                        if ($_SESSION['userlevel'] == 2) { ?><i class="material-icons align-top">add</i>Project Aanvragen <?php } ?>
                     </div>
                 </div>
             </div>
+
+<?php
+//Getting the project information and putting it in $data
+$data = $projects->getProjects();
+
+//Displaying all the results in foreach loop
+if (isset($data)) {
+    foreach ($data as $item):?>
+
+            <div class="card my-4">
+                <div <?php if ($_SESSION['userlevel'] == 2) { ?>style="height:50px;"<?php } ?> class="card-header custom-header">
+                    <h5 style="color:white; margin-bottom: -25px;"><?= $item['projectName'] ?></h5>
+                    <?php
+                    $userlvl = $_SESSION['userlevel'];
+                    if ($userlvl == 1 || $userlvl == 0) {?>
+                    <form style="display: inline;" method="post">
+                        <input type="hidden" name="projectId" value="<?php echo $item['id']; ?>" />
+                        <button name="btnStopTiming" type="submit" <?php $projects->isDisabledOff(); ?> class="<?php $projects->checkTimerOffButton(); ?> snikker btn btn-dark btn-custom-trans float-right"><i class="material-icons">timer_off</i></button>
+                    </form>
+
+                    <form style="display: inline;" method="post">
+                        <input type="hidden" name="projectId" value="<?php echo $item['id']; ?>" />
+                        <button name="btnStartTiming" type="submit" <?php $projects->isDisabledOn(); ?> class="<?php $projects->checkTimerButton(); ?> snikker btn btn-dark btn-custom-trans float-right"><i class="material-icons">timer</i></button>
+                    </form>
+                    <?php } ?>
+                </div>
+                <div class="card-body">
+                    <h5 class="card-title">Beschrijving:</h5>
+                    <p class="card-text"><?= $item['description']?></p>
+                    <a href="<?= $item['pvePath']?>.pdf"><button type="button" class="btn btn-outline-info">Bekijk PvE</button></a>
+                    <a href="projectdetails?id=<?php echo htmlentities($item['id']); ?>" class="btn btn-outline-info">Details</a>
+                </div>
+            </div>
+            
+<?php endforeach; } else {
+    echo 'Geen resultaten';
+} ?>
+
         </div>
     </div>
-        <!-- add project ends here -->
 
-	<?php
-	//Getting the project information and putting it in $data
-    $data = $projects->getProjects();
-
-    //Displaying all the results in foreach loop
-    if (isset($data)) {
-    	foreach ($data as $item):?>
-
-    	<!-- collaps tab create project-->
-        <div class="container-fluid">
-            <div id="medewerker" class="container">
-=======
-
-	//Getting the project information and putting it in $data
-    $projects = new projects();
-
-    $data = $projects->getProjects();
-
-		include_once '/../assets/includes/createProjectModal.php';
-		?>
-
-		<!-- collaps tab create project-->
-
-		<!-- _________________________START MODAL______________________________________________________________________ -->
-
-
-		<!-- ________________________________________________________________END MODAL_________________________________ -->
-
-				<div class="container-fluid">
-						<div id="medewerker" class="container">
-							<div class="row">
-								<div class="col-12 custom-header p-3" style="border-radius: 3px;">
-									<h4 class="float-left" style="color: white; margin-bottom: 0px;">Mijn Projecten</h4>
-									<div class="float-right" style="color: white; cursor: pointer;" data-dismiss="modal" data-toggle="modal" data-target="#createProjectModal">
-										<i class="material-icons align-top">add</i>Project Aanmaken
-									</div>
-								</div>
-							</div><?php
-
-    //Displaying all the results in foreach loop
-    if (isset($data)) {
-    	foreach ($data as $item):?>
-        <!-- add project ends here -->
-
-
->>>>>>> 4d460a0daf9b9bc46d0375d623f9de53ff913f1c
-                <div class="card my-4">
-                    <div class="card-header custom-header">
-                        <h5 style="color:white; margin-bottom: 0;"><?= $item['projectName'] ?></h5>
-                    </div>
-                    <div class="card-body">
-                        <h5 class="card-title">Voetbalclub</h5>
-                        <p class="card-text"><?= $item['description']?></p>
-                        <a href="<?= $item['pvePath']?>.pdf"><button type="button" class="btn btn-outline-info">Bekijk PvE</button></a>
-                        <a href="projectdetails?id=<?= htmlentities($item['id']) ?>" class="btn btn-outline-info">Details</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-    <?php endforeach; } else {
-        echo 'Geen resultaten';
-    } ?>
-
-    <!-- Modal for the log -->
-    <div class='modal fade' id='logModal' tabindex='-1' role='dialog' aria-labelledby='logModalLabel' aria-hidden='true'>
+    <!-- Modal for adding a project -->
+    <div class='modal fade' id='createProjectModal' tabindex='-1' role='dialog' aria-labelledby='createProjectModal' aria-hidden='true'>
         <div class='modal-dialog align-middle' role='document'>
-            <div id='modallog' class='modal-content'>
+            <div class='modal-content'>
                 <div class='modal-header'>
-                    <h5 class='modal-title' id='exampleModalLabel'>Log van [Naam bedrijf]</h5>
+                    <h5 class='modal-title' id='exampleModalLabel'>Project aanmaken</h5>
                     <button type='button' class='close' data-dismiss='modal' aria-label='Close'>
                         <span aria-hidden='true'>&times;</span>
                     </button>
                 </div>
                 <div class='modal-body'>
-                    <div class='bericht'>
-                        <b>Naam:</b>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. In convallis, nisi ac feugiat laoreet, nibh sem mattis massa, nec iaculis neque mi et magna. Quisque et orci acsem ornare fringilla nec a elit.</p>
-                        <div class='sendTime'>
-                            14:40 - 22-01-2018
+                    <div class="card-body">
+                        <!-- form here -->
+                        <div class="col-xs-12 col-md-6">
+                            <form role="form" method="post" enctype="multipart/form-data">
+                                <div class="row">
+                                    <div class="col-12">
+                                        <div class="form-group">
+                                            <input type="text" name="projectname" id="projectname" class="form-control input-sm" placeholder="Project naam" required>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-12">
+                                        <div class="form-group">
+                                            <textarea type="text" name="description" id="projectdescription" class="form-control input-sm" placeholder="Beschrijving" required></textarea>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-12">
+                                        PvE uploaden:
+                                        <input style="margin-left:-10px;" class="btn" type="file" name="fileToUpload" id="fileToUpload" required>
+                                    </div>
+                                </div>
+                                <input type="submit" name="saveProject" value="Toevoegen" class="btn btn-info btn-block">
+                            </form>
                         </div>
                     </div>
-                    <div class='bericht'>
-                        <b>Naam:</b>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. In convallis, nisi ac feugiat laoreet, nibh sem mattis massa, nec iaculis neque mi et magna. Quisque et orci acsem ornare fringilla nec a elit.</p>
-                        <div class='sendTime'>
-                            14:44 - 29-01-2018
-                        </div>
-                    </div>
-                </div>
-                <div class='row'>
-                    <div class='col-1'></div>
-                    <div class='col-9'>
-                        <div class='form-group'>
-                            <input class='form-control' placeholder='Typ hier een bericht.' type='text'>
-                        </div>
-                    </div>
-                    <div class='col-2'>
-                        <div class='form-group'>
-                            <button type='button' class='btn btn-outline-secondary'>Verzend</button>
-                        </div>
-                    </div>
-                </div>
-                <div class='modal-footer'>
-                    <button type='button' class='btn btn-outline-danger' data-dismiss='modal'>Sluiten</button>
                 </div>
             </div>
         </div>

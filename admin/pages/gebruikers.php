@@ -1,6 +1,7 @@
 <?php
 	$users = new user();
-	$data = $users->getUsers('*', '1=1');
+	$data = $users->getUsers('*', 'NOT userlevel=2');
+	$data2 = $users->getUsers('*', 'userlevel=2');
     $user->register();
 ?>
 
@@ -8,57 +9,104 @@
 
 	<div id="accordion">
   <div class="card">
-    <div class="card-header" id="headingOne">
-      <h5 class="mb-0">
-        <button class="btn btn-link" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-          Overzicht werknemers
-        </button>
-      </h5>
+    <div class="card-header btn-link" id="headingOne"  data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+			Overzicht
     </div>
-
     <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
       <div class="card-body">
       <!-- table -->
+				<ul class="nav nav-tabs">
+					<li class="nav-item">
+						<a class="nav-link active" href="#medewerkers" data-toggle="tab" role="tab">Medewerkers</a>
+					</li>
+				  <li class="nav-item">
+				    <a class="nav-link" href="#klanten" data-toggle="tab" role="tab">Klanten</a>
+				  </li>
+				</ul>
+				<div class="tab-content">
+					<div class="tab-pane active" id="medewerkers" role="tabpanel">
+						<table class="table">
+							<thead>
+								<tr>
+									<th scope="col">Voornaam</th>
+									<th scope="col">tussen voegsel</th>
+									<th scope="col">Achternaam</th>
+									<th scope="col">E-mailadres</th>
+									<th scope="col">User level</th>
+								</tr>
+							</thead>
+							<?php
+								if (isset($data)) {
+											foreach($data AS $item){
+													switch($item['userlevel']) {
+															case '0':
+																	$userlevel = 'Manager';
+																	break;
+															case '1':
+																	$userlevel = 'Medewerker';
+																	break;
+															case '2':
+																	$userlevel = 'Klant';
+																	break;
+													}
+													echo '<tbody>
+													<tr>
+														<td>'. $item['firstName'] .'</td>
+														<td>'. $item['preposition'] .'</td>
+														<td>'. $item['lastName'] .'</td>
+														<td>'. $item['email'] .'</td>
+														<td>'. $userlevel.'</td>
+												</tr>
 
-        <table class="table">
-  <thead class="thead-dark">
-    <tr>
-      <th scope="col">Voornaam</th>
-      <th scope="col">tussen voegsel</th>
-      <th scope="col">Achternaam</th>
-      <th scope="col">E-mailadres</th>
-      <th scope="col">User level</th>
-    </tr>
-  </thead>
-  <?php
-  if (isset($data)) {
-        foreach($data AS $item){
-            switch($item['userlevel']) {
-                case '0':
-                    $userlevel = 'Admin';
-                    break;
-                case '1':
-                    $userlevel = 'Medewerker';
-                    break;
-                case '2':
-                    $userlevel = 'Klant';
-                    break;
-            }
-            echo '<tbody>
-				    <tr>
-				      <td>'. $item['firstName'] .'</td>
-				      <td>'. $item['preposition'] .'</td>
-				      <td>'. $item['lastName'] .'</td>
-				      <td>'. $item['email'] .'</td>
-				      <td>'. $userlevel.'</td>
-					</tr>
+												</tbody>
+										';
+									}
+								}
+							?>
+							</table>
+					</div>
+					<div class="tab-pane" id="klanten" role="tabpanel">
+						<table class="table">
+							<thead>
+								<tr>
+									<th scope="col">Voornaam</th>
+									<th scope="col">tussen voegsel</th>
+									<th scope="col">Achternaam</th>
+									<th scope="col">E-mailadres</th>
+									<th scope="col">User level</th>
+								</tr>
+							</thead>
+							<?php
+								if (isset($data2)) {
+											foreach($data2 AS $item){
+													switch($item['userlevel']) {
+															case '0':
+																	$userlevel = 'Manager';
+																	break;
+															case '1':
+																	$userlevel = 'Medewerker';
+																	break;
+															case '2':
+																	$userlevel = 'Klant';
+																	break;
+													}
+													echo '<tbody>
+													<tr>
+														<td>'. $item['firstName'] .'</td>
+														<td>'. $item['preposition'] .'</td>
+														<td>'. $item['lastName'] .'</td>
+														<td>'. $item['email'] .'</td>
+														<td>'. $userlevel.'</td>
+												</tr>
 
-				  </tbody>
-			';
-		}
-	}?>
-</table>
-
+												</tbody>
+										';
+									}
+								}
+							?>
+						</table>
+					</div>
+				</div>
       <!-- end table -->
       </div>
     </div>
@@ -143,5 +191,4 @@
     </div>
   </div>
 </div>
-
 </div>
