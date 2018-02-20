@@ -185,44 +185,62 @@
             return $data;
         }
 
-				public function getLog($id) {
-		      $mysqli = $this->connect();
-		      $query = '
-		        SELECT A.*, B.* FROM tbl_projects_log AS A INNER JOIN tbl_log AS B ON A.FK_log_id = B.id WHERE A.FK_project_id = '. $id .' ORDER BY B.id ASC';
-		      $result = $mysqli->query($query);
-		      while($items = $result->fetch_assoc()){
-		          $data[] = $items;
-		      }
-		      if (empty($data)) {}
-		        else {return $data;}
-		    }
+        public function getLog($id) {
+          $mysqli = $this->connect();
+          $query = '
+            SELECT A.*, B.* FROM tbl_projects_log AS A INNER JOIN tbl_log AS B ON A.FK_log_id = B.id WHERE A.FK_project_id = '. $id .' ORDER BY B.id ASC';
+          $result = $mysqli->query($query);
+          while($items = $result->fetch_assoc()){
+              $data[] = $items;
+          }
+          if (empty($data)) {}
+            else {return $data;}
+        }
 
-				public function verLog($id, $fname, $lname, $message){
-						$mysqli = $this->connect();
-						date_default_timezone_set('Europe/Amsterdam');
-						$date = date("H:i:s d-m-Y");
-						$query = "INSERT INTO tbl_log (author, message, date) VALUES ('$fname $lname','$message','$date')";
-						$mysqli->query($query);
+        public function verLog($id, $fname, $lname, $message){
+            $mysqli = $this->connect();
+            date_default_timezone_set('Europe/Amsterdam');
+            $date = date("H:i:s d-m-Y");
+            $query = "INSERT INTO tbl_log (author, message, date) VALUES ('$fname $lname','$message','$date')";
+            $mysqli->query($query);
 
-						$query2 = "SELECT id FROM `tbl_log` WHERE message='$message'";
-						$result = $mysqli->query($query2);
-						$item = $result->fetch_object();
-						$idLog = $item->id;
+            $query2 = "SELECT id FROM `tbl_log` WHERE message='$message'";
+            $result = $mysqli->query($query2);
+            $item = $result->fetch_object();
+            $idLog = $item->id;
 
-						$query3 = "INSERT INTO tbl_projects_log (FK_project_id, FK_log_id) VALUES ('$id','$idLog')";
-						$mysqli->query($query3);
-				}
+            $query3 = "INSERT INTO tbl_projects_log (FK_project_id, FK_log_id) VALUES ('$id','$idLog')";
+            $mysqli->query($query3);
+        }
 
-				public function getTimeRegistration($projectid) {
-					$mysqli = $this->connect();
-					$query = "SELECT A.*, B.* FROM `tbl_timeregistration` AS A INNER JOIN `tbl_users` AS B ON A.FK_user_id = B.id  WHERE A.FK_project_id = ". $projectid ."";
-					$result = $mysqli->query($query);
-					while ($items = $result->fetch_assoc()){
-						$data[] = $items;
-					}
-					if (empty($data)) {}
-		        else {return $data;}
-				}
+        public function getTimeRegistration($projectid) {
+            $mysqli = $this->connect();
+            $query = "SELECT A.*, B.* FROM `tbl_timeregistration` AS A INNER JOIN `tbl_users` AS B ON A.FK_user_id = B.id  WHERE A.FK_project_id = ". $projectid ."";
+            $result = $mysqli->query($query);
+            while ($items = $result->fetch_assoc()){
+                $data[] = $items;
+            }
+            if (empty($data)) {}
+            else {return $data;}
+        }
+
+        public function sendMail()
+        {
+            $mysqli = $this->Connect();
+
+            if (isset($_POST['submitBtn'])) {
+                $to = 'ploosman123@gmail.com';
+                $subject = $mysqli->real_escape_string($_POST['subject']);
+                $from    = $mysqli->real_escape_string($_POST['contactmail']);
+                $message = $mysqli->real_escape_string($_POST['message']);
+
+                $headers = 'From: '.$from. "\r\n" .
+                    'Reply-To: '.$from. "\r\n" .
+                    'X-Mailer: PHP/' . phpversion();
+
+                mail($to, $subject, $message, $headers);
+            }
+        }
 
     }
 ?>
