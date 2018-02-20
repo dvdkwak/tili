@@ -15,13 +15,13 @@
            <div class="col-12">
              <div class="form-group">
                <label for="email">E-mail</label>
-               <input type="email" class="form-control myform" id="email" placeholder="Email"/>
+               <input type="email" name="forgotEmail" class="form-control myform" id="email" placeholder="Email"/>
              </div>
            </div>
          </div>
        </div>
        <div class="modal-footer">
-         <button type="submitPswForgot" class="btn bg-color-mint b-radius-none float-right" style="background:#1ABC9C;">Verzend</button>
+         <button type="submitPswForgot" name="forgotSubmit" class="btn bg-color-mint b-radius-none float-right" style="background:#1ABC9C;">Verzend</button>
        </div>
      </form>
    </div>

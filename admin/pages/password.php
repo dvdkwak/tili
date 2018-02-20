@@ -7,10 +7,9 @@
   <div class="login-page">
     <div class="form"> 		
       <form method="post" class="login-form">
-        <input type="text" name="username" placeholder="Username"/>
         <input type="password" name="password" placeholder="Wachtwoord"/>
-        <input type="hidden" name="flag" value="login">
-        <input type="submit" value="Inloggen">
+        <input type="password" name="passwordrepeat" placeholder="Wachtwoord herhalen"/>
+        <input type="submit" name="changeSubmitBtn" value="Veranderen">
       </form>
     </div>
   </div>

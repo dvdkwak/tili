@@ -101,8 +101,8 @@
                 $_SESSION['id']        = $this->id;
                 $_SESSION['userlevel'] = $this->userlevel;
                 $_SESSION['status']    = True;
-								$_SESSION['firstName'] = $this->firstName;
-								$_SESSION['lastName']  = $this->lastName;
+                $_SESSION['firstName'] = $this->firstName;
+                $_SESSION['lastName']  = $this->lastName;
             }else{
                 $_SESSION['status'] = False;
             }
@@ -215,7 +215,7 @@
 
         public function getTimeRegistration($projectid) {
             $mysqli = $this->connect();
-            $query = "SELECT A.*, B.* FROM `tbl_timeregistration` AS A INNER JOIN `tbl_users` AS B ON A.FK_user_id = B.id  WHERE A.FK_project_id = ". $projectid ."";
+            $query = "SELECT A.*, B.* FROM `tbl_timeregistration` AS A INNER JOIN `tbl_users` AS B ON A.FK_user_id = B.id  WHERE A.FK_project_id = ". $projectid;
             $result = $mysqli->query($query);
             while ($items = $result->fetch_assoc()){
                 $data[] = $items;
@@ -226,19 +226,93 @@
 
         public function sendMail()
         {
-            $mysqli = $this->Connect();
-
             if (isset($_POST['submitBtn'])) {
                 $to = 'ploosman123@gmail.com';
-                $subject = $mysqli->real_escape_string($_POST['subject']);
-                $from    = $mysqli->real_escape_string($_POST['contactmail']);
-                $message = $mysqli->real_escape_string($_POST['message']);
+                $subject = $_POST['subject'];
+                $from    = $_POST['contactmail'];
+                $message = $_POST['message'];
+                $name    = $_POST['name'];
+                $phone   = $_POST['telephone'];
 
-                $headers = 'From: '.$from. "\r\n" .
-                    'Reply-To: '.$from. "\r\n" .
-                    'X-Mailer: PHP/' . phpversion();
+                // Message
+                $message = file_get_contents("/assets/includes/contactFormTemplate.php");
 
-                mail($to, $subject, $message, $headers);
+                // To send HTML mail, the Content-type header must be set
+                $headers[] = 'Content-type: text/html; charset=iso-8859-1';
+                $headers[] = 'MIME-Version: 1.0';
+
+                // Additional headers add additional receivers (split with comma's)
+                $headers[] = 'To: ';
+                $headers[] = 'From: '. $from;
+
+                // Mail it
+                mail($to, $subject, $message, implode("\r\n", $headers));
+            }
+        }
+
+        public function generateRandomString($length) {
+            $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+            $charactersLength = strlen($characters);
+            $randomString = '';
+            for ($i = 0; $i < $length; $i++) {
+                $randomString .= $characters[rand(0, $charactersLength - 1)];
+            }
+            return $randomString;
+        }
+
+
+        public function getRecoveryString($email)
+        {
+            $mysqli = $this->Connect();
+
+            $query = "SELECT recoveryString FROM tbl_users WHERE email = '$email'";
+            $result = $mysqli->query($query);
+            $string = $result->fetch_object()->email;
+
+            return $string;
+        }
+
+        public function createRecoveryString($email)
+        {
+            $mysqli = $this->Connect();
+
+            $string = $this->generateRandomString('32');
+
+            $query = "UPDATE tbl_users SET recoveryString = '$string' WHERE email = '$email' ";
+            $mysqli->query($query);
+        }
+
+        public function forgotPassword()
+        {
+            $mysqli = $this->Connect();
+
+            if (isset($_POST['forgotSubmit'])) {
+                $email = $mysqli->real_escape_string($_POST['forgotEmail']);
+
+                $this->createRecoveryString($email);
+                $recoveryString = $this->getRecoveryString($email);
+
+                $message = '<html>
+                                <head>
+                                </head>
+                                <body>
+                                    <img src="http://tilit.nl/assets/images/TiliT_Logo2.png" alt="TiliT Logo" height="100" width="320"><br />
+                                    <h3>Wachtwoord veranderen voor TiliT.nl</h3><br />
+                                    <p>Om uw wachtwoord te veranderen moet u deze link volgen: <a href="https://www.tilit.nl/wachtwoordvergeten/">Wachtwoord Veranderen</a></p> <br />
+                                    <p>Komt deze actie u niet bekent voor klik dan <a href="https://www.tilit.nl/">hier</a>.</p>
+                                </body>
+                            </html>';
+
+                $subject = "Wachtwoord wijzigen TiliT";
+                $from    = "info@tilit.nl";
+
+                // To send HTML mail, the Content-type header must be set
+                $headers[] = 'Content-type: text/html; charset=iso-8859-1';
+                $headers[] = 'MIME-Version: 1.0';
+                $headers[] = 'From: '. $from;
+
+                // Mail it
+                mail($email, $subject, $message, implode("\r\n", $headers));
             }
         }
 

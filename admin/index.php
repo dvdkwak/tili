@@ -7,8 +7,8 @@ include_once('cfg/config.php');
 $user  = new user();
 $error = new errorHandling();
 
-if($url!="login"){
-    $user->lock("/admin/login", "/admin");
+if($url!="wachtwoord"){
+    $user->lock("/", "/admin/wachtwoord");
 }
 
 if($url == "logout"){
@@ -18,8 +18,8 @@ if($url == "logout"){
 $content = new adminContent();
 $page = $content->getContent($url);
 
-if(isset($_POST['flag']) && $_POST['flag'] == "login"){
-    $user->login($_POST['username'], $_POST['password'], $_SESSION['oldLocation']);
+if(isset($_POST['changeSubmitBtn'])){
+
 }
 ?>
 <!DOCTYPE html>
@@ -39,6 +39,7 @@ if(isset($_POST['flag']) && $_POST['flag'] == "login"){
 </head>
 <body>
     <ul class="main-navbar">
+        <li class="main-navbar-item"><a href="/admin/projecten">Home</a></li>
         <li class="main-navbar-item"><a href="/admin/projecten">Projecten</a></li>
     <?php
         if ($user->checkUserLevel(array('0'))) {

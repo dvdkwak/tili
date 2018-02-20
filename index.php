@@ -8,54 +8,9 @@
     if (isset($_POST['loginBtn'])) {
         $user->login($_POST['email'], $_POST['password'], "/admin/projecten");
     }
-    //$user->register();
-    //$user->sendMail();
-
-if (isset($_POST['submitBtn'])) {
-    $to = 'ploosman123@gmail.com';
-    $subject = $_POST['subject'];
-    $from    = $_POST['contactmail'];
-    $message = $_POST['message'];
-
-    // Message
-    $message = '
-    <html>
-    <head>
-    </head>
-    <body>
-    <div style="width:320px;height:100px;"><img src="http://tilit.nl/assets/images/TiliT_Logo2.png" ></div>
-       
-      <p>Here are the birthdays upcoming in August!</p>
-      <table>
-        <tr>
-          <th>Person</th><th>Day</th><th>Month</th><th>Year</th>
-        </tr>
-        <tr>
-          <td>Johny</td><td>10th</td><td>August</td><td>1970</td>
-        </tr>
-        <tr>
-          <td>Sally</td><td>17th</td><td>August</td><td>1973</td>
-        </tr>
-      </table>
-    </body>
-    </html>
-    ';
-
-    // To send HTML mail, the Content-type header must be set
-    $headers[] = 'MIME-Version: 1.0';
-    $headers[] = 'Content-type: text/html; charset=iso-8859-1';
-    $headers[] = 'MIME-Version: 1.0';
-
-    // Additional headers add additional receivers (split with comma's)
-    $headers[] = 'To: ';
-    $headers[] = 'From: '. $from;
-
-    // Mail it
-    mail($to, $subject, $message, implode("\r\n", $headers));
-}
-
-
-
+    $user->register();
+    $user->sendMail();
+    $user->forgotPassword();
 ?>
 <!DOCTYPE html>
 <html>

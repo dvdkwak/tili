@@ -21,6 +21,6 @@
     </div>
 </div>
 
-<audio autoplay="true" loop>
+<!--<audio autoplay="true" loop>
     <source src="/admin/assets/sounds/pacman_chomp.wav" type="audio/wav">
-</audio>
+</audio>-->
