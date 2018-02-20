@@ -129,11 +129,6 @@
             header( "location:" . $location );
         }
 
-        public function changePass($oldPass, $newPass)
-        {
-
-        }
-
         public function ifAdmin (){
             if (isset($_SESSION['userlevel']) && $_SESSION['userlevel'] == 0)
             {
@@ -227,7 +222,7 @@
         public function sendMail()
         {
             if (isset($_POST['submitBtn'])) {
-                $to = 'ploosman123@gmail.com';
+                $to = 'info@tilit.nl';
                 $subject = $_POST['subject'];
                 $from    = $_POST['contactmail'];
                 $message = $_POST['message'];
@@ -296,9 +291,9 @@
                                 <head>
                                 </head>
                                 <body>
-                                    <img src="http://tilit.nl/assets/images/TiliT_Logo2.png" alt="TiliT Logo" height="100" width="320"><br />
+                                    <img src="http://tilit.nl/assets/images/TiliT_Logo2.png" alt="TiliT Logo" height="120" width="386"><br />
                                     <h3>Wachtwoord veranderen voor TiliT.nl</h3><br />
-                                    <p>Om uw wachtwoord te veranderen moet u deze link volgen: <a href="https://www.tilit.nl/wachtwoordvergeten/">Wachtwoord Veranderen</a></p> <br />
+                                    <p>Om uw wachtwoord te veranderen moet u deze link volgen: <a href="https://www.tilit.nl/admin/wachtwoord?string=' . $recoveryString .'">Wachtwoord Veranderen</a></p> <br />
                                     <p>Komt deze actie u niet bekent voor klik dan <a href="https://www.tilit.nl/">hier</a>.</p>
                                 </body>
                             </html>';
@@ -316,5 +311,22 @@
             }
         }
 
+        public function changePassword()
+        {
+            $mysqli = $this->Connect();
+
+            if (isset($_POST['changeSubmitBtn'])) {
+                $checkpassword  = $mysqli->real_escape_string($_POST['password']);
+                $passwordrepeat = $mysqli->real_escape_string($_POST['passwordrepeat']);
+                $password = hash('sha512', $checkpassword);
+                $recovery = $_GET['string'];
+
+                if ($checkpassword == $passwordrepeat) {
+                    $query = "UPDATE tbl_users SET password = '$password' WHERE recoveryString = ".$recovery;
+                    $mysqli->query($query);
+                    header('/');
+                }
+            }
+        }
     }
 ?>

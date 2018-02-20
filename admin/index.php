@@ -17,10 +17,7 @@ if($url == "logout"){
 
 $content = new adminContent();
 $page = $content->getContent($url);
-
-if(isset($_POST['changeSubmitBtn'])){
-
-}
+$user->changePassword();
 ?>
 <!DOCTYPE html>
 <html>
