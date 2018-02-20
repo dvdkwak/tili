@@ -21,6 +21,9 @@ class adminContent
             case 'gebruikers':
                 return array('link'=>'pages/gebruikers.php', 'styleLink'=>'', 'title'=>'Admin | gebruikersbeheer', 'scriptLink'=>'');
                 break;
+            case 'pdftest':
+                return array('link'=>'pages/pdftest.php', 'styleLink'=>'', 'title'=>'Admin | gebruikersbeheer', 'scriptLink'=>'');
+                break;
             default:
                 return array('link'=>'pages/404.php', 'styleLink'=>'assets/css/404.css', 'title'=>'Oops!', 'scriptLink'=>'');
                 break;

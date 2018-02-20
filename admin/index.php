@@ -17,7 +17,10 @@ if($url == "logout"){
 
 $content = new adminContent();
 $page = $content->getContent($url);
-$user->changePassword();
+
+if(isset($_POST['changeSubmitBtn'])){
+
+}
 ?>
 <!DOCTYPE html>
 <html>
@@ -44,6 +47,9 @@ $user->changePassword();
         }
         if ($user->checkUserLevel(array('0'))) {
             echo '<li class="main-navbar-item"><a href="/admin/aanvragen">Aanvragen</a></li>';
+        }
+        if ($user->checkUserLevel(array('0'))) {
+            echo '<li class="main-navbar-item"><a href="/admin/pdftest">PDF TEST</a></li>';
         }
     ?>
         <li class="main-navbar-item float-right"><a href="/admin/logout">Uitloggen</a></li>

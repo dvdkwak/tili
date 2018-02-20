@@ -328,5 +328,18 @@
                 }
             }
         }
+
+				public function offerCreate($projectId) {
+					$mysqli = $this->connect();
+
+					$query = "
+						SELECT A.*, B.*, C.*, D.* FROM tbl_projects AS C
+						INNER JOIN tbl_users_projects AS B ON C.id = B.FK_project_id
+						INNER JOIN tbl_users AS A ON B.FK_user_id = A.id
+						INNER JOIN tbl_offers AS D ON A.id= D.FK_user_id AND C.id = D.FK_project_id
+						WHERE C.id = ".$projectId."";
+
+
+				}
     }
 ?>

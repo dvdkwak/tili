@@ -93,7 +93,7 @@ class projects extends db{
     public function getTime()
     {
         date_default_timezone_set('Europe/Amsterdam');
-        $time = date("h:i:s");
+        $time = date("H:i:s");
 
         return $time;
     }
