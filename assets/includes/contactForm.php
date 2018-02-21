@@ -14,7 +14,7 @@
                     </div>
                     <div class="form-group">
                         <label for="exampleFormControlInput1">Telefoon nummer</label>
-                        <input type="tel" name="telephone" class="form-control b-radius-none" id="exampleFormControlInput1">
+                        <input type="number" name="telephone" class="form-control b-radius-none" id="exampleFormControlInput1">
                     </div>
                     <div class="form-group">
                         <label for="exampleFormControlInput1">Onderwerp</label>

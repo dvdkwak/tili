@@ -118,3 +118,17 @@ body {
 #projectdescription{
     width:400px;
 }
+.circleBase {
+    border-radius: 50%;
+    behavior: url(PIE.htc); /* remove if you don't care about IE8 */
+}
+.type1 {
+    width: 20px;
+    height: 20px;
+    background: red;
+}
+.type2 {
+    width: 20px;
+    height: 20px;
+    background: green;
+}

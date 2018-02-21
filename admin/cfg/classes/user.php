@@ -1,362 +1,395 @@
 <?php
 
-	class user extends db{
+class user extends db
+{
 
-        //standard login function which calles for the checked and the session set as well
-        public function login($username, $password, $location)
-        {
-            if (isset($_POST['loginBtn'])) {
-                $this->checkCredentials( $username, $password );
-                $this->setSession();
-                $this->moveTo( $location );
-            }
+    //standard login function which calles for the checked and the session set as well
+    public function login($username, $password, $location)
+    {
+        if (isset($_POST['loginBtn'])) {
+            $this->checkCredentials($username, $password);
+            $this->setSession();
+            $this->moveTo($location);
         }
+    }
 
-        //function to add the user to the database
-        public function register(){
-            $mysqli = $this->Connect();
+    //function to add the user to the database
+    public function register()
+    {
+        $mysqli = $this->Connect();
 
-            //if the register button is clicked proceed with adding the user
-            if(isset($_POST['registerBtn'])){
-
-                //real_escape_string to prevent sql injection
-                $email     = $mysqli->real_escape_string($_POST['email']);
-                $password  = $mysqli->real_escape_string($_POST['password']);
-                $repeated  = $mysqli->real_escape_string($_POST['repeatpass']);
-                $firstname = $mysqli->real_escape_string($_POST['firstname']);
-                $prepos    = $mysqli->real_escape_string($_POST['preposition']);
-                $lastname  = $mysqli->real_escape_string($_POST['lastname']);
-                $telnumber = $mysqli->real_escape_string($_POST['telnumber']);
-                $city      = $mysqli->real_escape_string($_POST['city']);
-                $address   = $mysqli->real_escape_string($_POST['address']);
-                $zipcode   = $mysqli->real_escape_string($_POST['zipcode']);
-                $userlvl   = $mysqli->real_escape_string($_POST['userlvl']);
-
-                //check if the passwords match
-                if ($password === $repeated) {
-                    //hashing the password
-                    $password = hash('sha512', $password);
-
-                    //check if mail exists
-                    $checkEmail = $mysqli->query("SELECT email FROM tbl_users WHERE email = '$email'");
-
-                    //check if the email/user already exists
-                    if($checkEmail->num_rows === 0){
-
-                        if (empty($prepos)) {
-                            $prepos = "NULL";
-                        }
-
-                        $insertUser = $mysqli->query("INSERT INTO tbl_users (email, password, userlevel, tel, firstName, lastName, preposition, city, address, zipCode)
-                                                      VALUES ('$email','$password','$userlvl','$telnumber','$firstname','$lastname','$prepos','$city','$address','$zipcode')");
-
-                        header('Location: index.php');
-                    } else {
-                        $this->alert('Het email dat u heeft ingevoerd bestaat al.','danger');
-                    }
-                } else {
-                    $this->alert('De wachtwoorden komen niet overeen, probeer het opnieuw.','danger');
-                }
-            }
-        }
-
-        //Let us just say here things get serious
-        public function checkCredentials($username, $password)
-        {
-            require_once 'errorhandling.php';
-            $error = new errorHandling();
-
-            $mysqli = $this->connect();
+        //if the register button is clicked proceed with adding the user
+        if (isset($_POST['registerBtn'])) {
 
             //real_escape_string to prevent sql injection
-            $username = $mysqli->real_escape_string( $username );
-            $password = $mysqli->real_escape_string( $password );
+            $email = $mysqli->real_escape_string($_POST['email']);
+            $password = $mysqli->real_escape_string($_POST['password']);
+            $repeated = $mysqli->real_escape_string($_POST['repeatpass']);
+            $firstname = $mysqli->real_escape_string($_POST['firstname']);
+            $prepos = $mysqli->real_escape_string($_POST['preposition']);
+            $lastname = $mysqli->real_escape_string($_POST['lastname']);
+            $telnumber = $mysqli->real_escape_string($_POST['telnumber']);
+            $city = $mysqli->real_escape_string($_POST['city']);
+            $address = $mysqli->real_escape_string($_POST['address']);
+            $zipcode = $mysqli->real_escape_string($_POST['zipcode']);
+            $userlvl = $mysqli->real_escape_string($_POST['userlvl']);
 
-            //hashing the 'password' value
-            $password = hash( 'sha512', $password );
+            //check if the passwords match
+            if ($password === $repeated) {
+                //hashing the password
+                $password = hash('sha512', $password);
 
-            $query = 'SELECT * FROM tbl_users
-					  WHERE email = "'. $username .'"
-						AND password = "'. $password .'"';
-            $result = $mysqli->query($query);
-            $item = $result->fetch_object();
+                //check if mail exists
+                $checkEmail = $mysqli->query("SELECT email FROM tbl_users WHERE email = '$email'");
 
-            //if I get a result it means the credentials are right.
-            if( $result->num_rows === 1 ){
-                $this->status    = True;
-                $this->userlevel = $item->userlevel;
-                $this->id        = $item->id;
-								$this->firstName = $item->firstName;
-								$this->lastName = $item->lastName;
-            }else{
-                $this->status = False;
-                $error->setCustomError("Username or password are wrong!", "danger");
+                //check if the email/user already exists
+                if ($checkEmail->num_rows === 0) {
+
+                    if (empty($prepos)) {
+                        $prepos = "NULL";
+                    }
+
+                    $insertUser = $mysqli->query("INSERT INTO tbl_users (email, password, userlevel, tel, firstName, lastName, preposition, city, address, zipCode)
+                                                      VALUES ('$email','$password','$userlvl','$telnumber','$firstname','$lastname','$prepos','$city','$address','$zipcode')");
+
+                    header('Location: index.php');
+                } else {
+                    $this->alert('Het email dat u heeft ingevoerd bestaat al.', 'danger');
+                }
+            } else {
+                $this->alert('De wachtwoorden komen niet overeen, probeer het opnieuw.', 'danger');
             }
         }
+    }
 
-        //if status is true then we can set the session
-        public function setSession()
-        {
-            if( $this->status === True ){
-                $_SESSION['id']        = $this->id;
-                $_SESSION['userlevel'] = $this->userlevel;
-                $_SESSION['status']    = True;
-                $_SESSION['firstName'] = $this->firstName;
-                $_SESSION['lastName']  = $this->lastName;
-            }else{
-                $_SESSION['status'] = False;
-            }
+    //Let us just say here things get serious
+    public function checkCredentials($username, $password)
+    {
+        require_once 'errorhandling.php';
+        $error = new errorHandling();
+
+        $mysqli = $this->connect();
+
+        //real_escape_string to prevent sql injection
+        $username = $mysqli->real_escape_string($username);
+        $password = $mysqli->real_escape_string($password);
+
+        //hashing the 'password' value
+        $password = hash('sha512', $password);
+
+        $query = 'SELECT * FROM tbl_users
+					  WHERE email = "' . $username . '"
+						AND password = "' . $password . '"';
+        $result = $mysqli->query($query);
+        $item = $result->fetch_object();
+
+        //if I get a result it means the credentials are right.
+        if ($result->num_rows === 1) {
+            $this->status = True;
+            $this->userlevel = $item->userlevel;
+            $this->id = $item->id;
+            $this->firstName = $item->firstName;
+            $this->lastName = $item->lastName;
+        } else {
+            $this->status = False;
+            $error->setCustomError("Username or password are wrong!", "danger");
         }
+    }
 
-        public function logOut($location)
-        {
-            if( isset( $_SESSION['status'] ) ){
-                session_destroy();
-            }
-            header( "location:". $location );
+    //if status is true then we can set the session
+    public function setSession()
+    {
+        if ($this->status === True) {
+            $_SESSION['id'] = $this->id;
+            $_SESSION['userlevel'] = $this->userlevel;
+            $_SESSION['status'] = True;
+            $_SESSION['firstName'] = $this->firstName;
+            $_SESSION['lastName'] = $this->lastName;
+        } else {
+            $_SESSION['status'] = False;
         }
+    }
 
-        public function lock($location, $oldLocation)
-        {
-            if( !isset( $_SESSION['status'] ) || $_SESSION['status'] == False ){
-                $_SESSION['oldLocation'] = $oldLocation;
-                $this->moveTo($location);
-            }
+    public function logOut($location)
+    {
+        if (isset($_SESSION['status'])) {
+            session_destroy();
         }
+        header("location:" . $location);
+    }
 
-        public function moveTo($location)
-        {
-            header( "location:" . $location );
+    public function lock($location, $oldLocation)
+    {
+        if (!isset($_SESSION['status']) || $_SESSION['status'] == False) {
+            $_SESSION['oldLocation'] = $oldLocation;
+            $this->moveTo($location);
         }
+    }
 
-        public function ifAdmin (){
-            if (isset($_SESSION['userlevel']) && $_SESSION['userlevel'] == 0)
-            {
+    public function moveTo($location)
+    {
+        header("location:" . $location);
+    }
+
+    public function ifAdmin()
+    {
+        if (isset($_SESSION['userlevel']) && $_SESSION['userlevel'] == 0) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public function checkUserLevel($userlevels)
+    {
+        if (isset($_SESSION['userlevel'])) {
+            if (in_array($_SESSION['userlevel'], $userlevels)) {
                 return true;
             } else {
                 return false;
             }
         }
+    }
 
-        public function checkUserLevel($userlevels)
-        {
-            if (isset($_SESSION['userlevel'])) {
-                if(in_array($_SESSION['userlevel'], $userlevels)){
-                    return true;
-                }else{
-                    return false;
-                }
-            }
+    public function redirectUser()
+    {
+        if ($_SESSION['userlevel'] == 1) {
+            header("Location: /admin/projecten");
         }
-
-        public function redirectUser()
-        {
-            if ($_SESSION['userlevel'] == 1) {
-                header("Location: /admin/projecten");
-            }
-        }
+    }
 
 
+    public function removeMember_Project()
+    {
 
-        public function removeMember_Project(){
-
-            if(isset($_POST['btnProjectRemoveMember'])) {
-                $mysqli = $this->connect();
-
-                $selectProjectID = $_POST['selectedUserIDR'];
-                $query = 'DELETE FROM tbl_users_projects WHERE id='.$selectProjectID.'';
-                $mysqli->query($query);
-            }
-
-        }
-
-        public function getUsers($select, $where){
+        if (isset($_POST['btnProjectRemoveMember'])) {
             $mysqli = $this->connect();
-            $query = 'SELECT ' . $select . ' FROM tbl_users WHERE '. $where.'';
-            $result = $mysqli->query($query);
-            while($items = $result->fetch_assoc()){
-                $data[] = $items;
-            }
+
+            $selectProjectID = $_POST['selectedUserIDR'];
+            $query = 'DELETE FROM tbl_users_projects WHERE id=' . $selectProjectID . '';
+            $mysqli->query($query);
+        }
+
+    }
+
+    public function getUsers($select, $where)
+    {
+        $mysqli = $this->connect();
+        $query = 'SELECT ' . $select . ' FROM tbl_users WHERE ' . $where . '';
+        $result = $mysqli->query($query);
+        while ($items = $result->fetch_assoc()) {
+            $data[] = $items;
+        }
+        return $data;
+    }
+
+    public function getLog($id)
+    {
+        $mysqli = $this->connect();
+        $query = '
+            SELECT A.*, B.* FROM tbl_projects_log AS A INNER JOIN tbl_log AS B ON A.FK_log_id = B.id WHERE A.FK_project_id = ' . $id . ' ORDER BY B.id ASC';
+        $result = $mysqli->query($query);
+        while ($items = $result->fetch_assoc()) {
+            $data[] = $items;
+        }
+        if (empty($data)) {
+        } else {
             return $data;
         }
+    }
 
-        public function getLog($id) {
-          $mysqli = $this->connect();
-          $query = '
-            SELECT A.*, B.* FROM tbl_projects_log AS A INNER JOIN tbl_log AS B ON A.FK_log_id = B.id WHERE A.FK_project_id = '. $id .' ORDER BY B.id ASC';
-          $result = $mysqli->query($query);
-          while($items = $result->fetch_assoc()){
-              $data[] = $items;
-          }
-          if (empty($data)) {}
-            else {return $data;}
+    public function verLog($id, $fname, $lname, $message)
+    {
+        $mysqli = $this->connect();
+        date_default_timezone_set('Europe/Amsterdam');
+        $date = date("H:i:s d-m-Y");
+        $query = "INSERT INTO tbl_log (author, message, date) VALUES ('$fname $lname','$message','$date')";
+        $mysqli->query($query);
+
+        $query2 = "SELECT id FROM `tbl_log` WHERE message='$message'";
+        $result = $mysqli->query($query2);
+        $item = $result->fetch_object();
+        $idLog = $item->id;
+
+        $query3 = "INSERT INTO tbl_projects_log (FK_project_id, FK_log_id) VALUES ('$id','$idLog')";
+        $mysqli->query($query3);
+    }
+
+    public function getTimeRegistration($projectid)
+    {
+        $mysqli = $this->connect();
+        $query = "SELECT A.*, B.* FROM `tbl_timeregistration` AS A INNER JOIN `tbl_users` AS B ON A.FK_user_id = B.id  WHERE A.FK_project_id = " . $projectid;
+        $result = $mysqli->query($query);
+        while ($items = $result->fetch_assoc()) {
+            $data[] = $items;
         }
-
-        public function verLog($id, $fname, $lname, $message){
-            $mysqli = $this->connect();
-            date_default_timezone_set('Europe/Amsterdam');
-            $date = date("H:i:s d-m-Y");
-            $query = "INSERT INTO tbl_log (author, message, date) VALUES ('$fname $lname','$message','$date')";
-            $mysqli->query($query);
-
-            $query2 = "SELECT id FROM `tbl_log` WHERE message='$message'";
-            $result = $mysqli->query($query2);
-            $item = $result->fetch_object();
-            $idLog = $item->id;
-
-            $query3 = "INSERT INTO tbl_projects_log (FK_project_id, FK_log_id) VALUES ('$id','$idLog')";
-            $mysqli->query($query3);
+        if (empty($data)) {
+        } else {
+            return $data;
         }
+    }
 
-        public function getTimeRegistration($projectid) {
-            $mysqli = $this->connect();
-            $query = "SELECT A.*, B.* FROM `tbl_timeregistration` AS A INNER JOIN `tbl_users` AS B ON A.FK_user_id = B.id  WHERE A.FK_project_id = ". $projectid;
-            $result = $mysqli->query($query);
-            while ($items = $result->fetch_assoc()){
-                $data[] = $items;
-            }
-            if (empty($data)) {}
-            else {return $data;}
+    public function sendMail()
+    {
+        if (isset($_POST['submitBtn'])) {
+            $to = 'info@tilit.nl';
+            $subject = $_POST['subject'];
+            $from = $_POST['contactmail'];
+            $message1 = $_POST['message'];
+            $name = $_POST['name'];
+            $phone = $_POST['telephone'];
+
+            // Message
+            $message = '<html>
+                        <head>
+                        </head>
+                        <body>
+                        <img src="http://tilit.nl/assets/images/TiliT_Logo2.png" alt="TiliT Logo" height="100" width="320">
+                        <table>
+                            <tr>
+                                <td>Naam:</td><td>'.$name.'</td>
+                            </tr>
+                            <tr>
+                                <td>Telefoonnummer:</td><td>'.$phone.'</td>
+                            </tr>
+                            <tr>
+                                <td>Onderwerp:</td><td>'.$subject.'</td>
+                            </tr>
+                        </table>
+                        <p>Bericht:</p>
+                        <p>'.$message1.'</p>
+                        </body>
+                        </html>
+                        ';
+            // Message
+
+            // To send HTML mail, the Content-type header must be set
+            $headers[] = 'Content-type: text/html; charset=iso-8859-1';
+            $headers[] = 'MIME-Version: 1.0';
+
+            // Additional headers add additional receivers (split with comma's)
+            $headers[] = 'To: ';
+            $headers[] = 'From: ' . $from;
+
+            // Mail it
+            mail($to, $subject, $message, implode("\r\n", $headers));
         }
+    }
 
-        public function sendMail()
-        {
-            if (isset($_POST['submitBtn'])) {
-                $to = 'info@tilit.nl';
-                $subject = $_POST['subject'];
-                $from    = $_POST['contactmail'];
-                $message = $_POST['message'];
-                $name    = $_POST['name'];
-                $phone   = $_POST['telephone'];
-
-                // Message
-                $message = file_get_contents("/assets/includes/contactFormTemplate.php");
-
-                // To send HTML mail, the Content-type header must be set
-                $headers[] = 'Content-type: text/html; charset=iso-8859-1';
-                $headers[] = 'MIME-Version: 1.0';
-
-                // Additional headers add additional receivers (split with comma's)
-                $headers[] = 'To: ';
-                $headers[] = 'From: '. $from;
-
-                // Mail it
-                mail($to, $subject, $message, implode("\r\n", $headers));
-            }
+    public function generateRandomString($length)
+    {
+        $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+        $charactersLength = strlen($characters);
+        $randomString = '';
+        for ($i = 0; $i < $length; $i++) {
+            $randomString .= $characters[rand(0, $charactersLength - 1)];
         }
-
-        public function generateRandomString($length) {
-            $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
-            $charactersLength = strlen($characters);
-            $randomString = '';
-            for ($i = 0; $i < $length; $i++) {
-                $randomString .= $characters[rand(0, $charactersLength - 1)];
-            }
-            return $randomString;
-        }
+        return $randomString;
+    }
 
 
-        public function getRecoveryString($email)
-        {
-            $mysqli = $this->Connect();
+    public function getRecoveryString($email)
+    {
+        $mysqli = $this->Connect();
 
-            $query = "SELECT recoveryString FROM tbl_users WHERE email = '$email'";
-            $result = $mysqli->query($query);
-            $string = $result->fetch_object()->recoveryString;
+        $query = "SELECT recoveryString FROM tbl_users WHERE email = '$email'";
+        $result = $mysqli->query($query);
+        $string = $result->fetch_object()->recoveryString;
 
-            return $string;
-        }
+        return $string;
+    }
 
-        public function createRecoveryString($email)
-        {
-            $mysqli = $this->Connect();
+    public function createRecoveryString($email)
+    {
+        $mysqli = $this->Connect();
 
-            $string = $this->generateRandomString('32');
+        $string = $this->generateRandomString('32');
 
-            $query = "UPDATE tbl_users SET recoveryString = '$string' WHERE email = '$email' ";
-            $mysqli->query($query);
-        }
+        $query = "UPDATE tbl_users SET recoveryString = '$string' WHERE email = '$email' ";
+        $mysqli->query($query);
+    }
 
-        public function forgotPassword()
-        {
-            if (isset($_POST['forgotSubmit'])) {
-                $email = $_POST['forgotEmail'];
+    public function forgotPassword()
+    {
+        if (isset($_POST['forgotSubmit'])) {
+            $email = $_POST['forgotEmail'];
 
-                $this->createRecoveryString($email);
-                $recoveryString = $this->getRecoveryString($email);
+            $this->createRecoveryString($email);
+            $recoveryString = $this->getRecoveryString($email);
 
-                $message = '<html>
+            $message = '<html>
                                 <head>
                                 </head>
                                 <body>
                                     <img src="http://tilit.nl/assets/images/TiliT_Logo2.png" alt="TiliT Logo" height="120" width="386"><br />
                                     <h3>Wachtwoord veranderen voor TiliT.nl</h3><br />
-                                    <p>Om uw wachtwoord te veranderen moet u deze link volgen: <a href="https://www.tilit.nl/admin/wachtwoord&string='.$recoveryString.'">Wachtwoord Veranderen</a></p> <br />
+                                    <p>Om uw wachtwoord te veranderen moet u deze link volgen: <a href="https://www.tilit.nl/admin/wachtwoord&string=' . $recoveryString . '">Wachtwoord Veranderen</a></p> <br />
                                     <p>Komt deze actie u niet bekent voor klik dan <a href="https://www.tilit.nl/">hier</a>.</p>
                                 </body>
                             </html>';
 
-                $subject = "Wachtwoord wijzigen TiliT";
-                $from    = "info@tilit.nl";
+            $subject = "Wachtwoord wijzigen TiliT";
+            $from = "info@tilit.nl";
 
-                // To send HTML mail, the Content-type header must be set
-                $headers[] = 'Content-type: text/html; charset=iso-8859-1';
-                $headers[] = 'MIME-Version: 1.0';
-                $headers[] = 'From: '. $from;
+            // To send HTML mail, the Content-type header must be set
+            $headers[] = 'Content-type: text/html; charset=iso-8859-1';
+            $headers[] = 'MIME-Version: 1.0';
+            $headers[] = 'From: ' . $from;
 
-                // Mail it
-                mail($email, $subject, $message, implode("\r\n", $headers));
-                require_once 'errorhandling.php';
-                $error = new errorHandling();
-                $error->setCustomError("Check uw mail om uw wachtwoord te veranderen");
-            }
-        }
-
-        public function changePassword()
-        {
-            $mysqli = $this->Connect();
+            // Mail it
+            mail($email, $subject, $message, implode("\r\n", $headers));
             require_once 'errorhandling.php';
             $error = new errorHandling();
+            $error->setCustomError("Check uw mail om uw wachtwoord te veranderen","warning");
+        }
+    }
 
-            if (isset($_POST['changeSubmitBtn'])) {
-                $checkpassword  = $mysqli->real_escape_string($_POST['password']);
-                $passwordrepeat = $mysqli->real_escape_string($_POST['passwordrepeat']);
+    public function changePassword()
+    {
+        $mysqli = $this->Connect();
+        require_once 'errorhandling.php';
+        $error = new errorHandling();
 
-                if ($checkpassword == $passwordrepeat) {
-                    $password = hash('sha512', $checkpassword);
-                    $recovery = $_GET['string'];
-                    $query = "SELECT id FROM tbl_users WHERE recoveryString = '$recovery'";
-                    $userId = $mysqli->query($query);
-                    if (!$userId == '') {
-                        $updatePasswordQuery = "UPDATE tbl_users SET password = '$password' WHERE recoveryString = '$recovery'";
-                        $updateRecoveryQuery = "UPDATE tbl_users SET recoveryString = '' WHERE recoveryString = '$recovery'";
-                        if ($mysqli->query($updatePasswordQuery)) {
-                            $mysqli->query($updateRecoveryQuery);
-                            header("Location: http://www.tilit.nl/");
-                            $error->setCustomError('Uw wachtwoord is successvol veranderd.');
-                        }
+        if (isset($_POST['changeSubmitBtn'])) {
+            $checkpassword = $mysqli->real_escape_string($_POST['password']);
+            $passwordrepeat = $mysqli->real_escape_string($_POST['passwordrepeat']);
+
+            if ($checkpassword == $passwordrepeat) {
+                $password = hash('sha512', $checkpassword);
+                $recovery = $_GET['string'];
+                $query = "SELECT id FROM tbl_users WHERE recoveryString = '$recovery'";
+                $userId = $mysqli->query($query);
+                if (!$userId == '') {
+                    $updatePasswordQuery = "UPDATE tbl_users SET password = '$password' WHERE recoveryString = '$recovery'";
+                    $updateRecoveryQuery = "UPDATE tbl_users SET recoveryString = '' WHERE recoveryString = '$recovery'";
+                    if ($mysqli->query($updatePasswordQuery)) {
+                        $mysqli->query($updateRecoveryQuery);
+                        $error->setCustomError("Uw wachtwoord is succesvol veranderd","warning");
+                        header("Location: http://www.tilit.nl/");
                     }
                 }
             }
         }
+    }
 
-				public function offerCreate($id) {
-					$mysqli = $this->connect();
-					$query = "
+    public function offerCreate($id)
+    {
+        $mysqli = $this->connect();
+        $query = "
 					SELECT A.*, B.*, C.*, D.*
 					FROM `tbl_projects`							AS A
 					INNER JOIN `tbl_users_projects` AS B ON A.id = B.FK_projects_id
 					INNER JOIN `tbl_users` 					AS C ON B.FK_users_id = C.id
 					INNER JOIN `tbl_offers` 				AS D ON C.id= D.FK_user_id AND A.id = D.FK_project_id
-					WHERE A.id = ".$id."";
-					$result = $mysqli->query($query);
-          while ($items = $result->fetch_assoc()){
-              $data[] = $items;
-          }
-          if (isset($data)) {
-						return $data;
-					}
-
-				}
+					WHERE A.id = " . $id . "";
+        $result = $mysqli->query($query);
+        while ($items = $result->fetch_assoc()) {
+            $data[] = $items;
+        }
+        if (isset($data)) {
+            return $data;
+        }
     }
+}
+
 ?>
