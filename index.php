@@ -11,6 +11,8 @@
     $user->register();
     $user->sendMail();
     $user->forgotPassword();
+
+
 ?>
 <!DOCTYPE html>
 <html>
