@@ -8,6 +8,7 @@
     if (isset($_POST['loginBtn'])) {
         $user->login($_POST['email'], $_POST['password'], "/admin/projecten");
     }
+    $error = new errorHandling();
     $user->register();
     $user->sendMail();
     $user->forgotPassword();
@@ -37,6 +38,7 @@
             include_once($page);
             include 'assets/includes/contactForm.php';
             include 'assets/includes/footer.php';
+            $error->getCustomError();
         ?>
     </div>
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>

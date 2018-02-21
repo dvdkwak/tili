@@ -262,7 +262,7 @@
 
             $query = "SELECT recoveryString FROM tbl_users WHERE email = '$email'";
             $result = $mysqli->query($query);
-            $string = $result->fetch_object()->email;
+            $string = $result->fetch_object()->recoveryString;
 
             return $string;
         }
@@ -279,10 +279,8 @@
 
         public function forgotPassword()
         {
-            $mysqli = $this->Connect();
-
             if (isset($_POST['forgotSubmit'])) {
-                $email = $mysqli->real_escape_string($_POST['forgotEmail']);
+                $email = $_POST['forgotEmail'];
 
                 $this->createRecoveryString($email);
                 $recoveryString = $this->getRecoveryString($email);
@@ -293,7 +291,7 @@
                                 <body>
                                     <img src="http://tilit.nl/assets/images/TiliT_Logo2.png" alt="TiliT Logo" height="120" width="386"><br />
                                     <h3>Wachtwoord veranderen voor TiliT.nl</h3><br />
-                                    <p>Om uw wachtwoord te veranderen moet u deze link volgen: <a href="https://www.tilit.nl/admin/wachtwoord?string=' . $recoveryString .'">Wachtwoord Veranderen</a></p> <br />
+                                    <p>Om uw wachtwoord te veranderen moet u deze link volgen: <a href="https://www.tilit.nl/admin/wachtwoord&string='.$recoveryString.'">Wachtwoord Veranderen</a></p> <br />
                                     <p>Komt deze actie u niet bekent voor klik dan <a href="https://www.tilit.nl/">hier</a>.</p>
                                 </body>
                             </html>';
@@ -308,23 +306,36 @@
 
                 // Mail it
                 mail($email, $subject, $message, implode("\r\n", $headers));
+                require_once 'errorhandling.php';
+                $error = new errorHandling();
+                $error->setCustomError("Check uw mail om uw wachtwoord te veranderen");
             }
         }
 
         public function changePassword()
         {
             $mysqli = $this->Connect();
+            require_once 'errorhandling.php';
+            $error = new errorHandling();
 
             if (isset($_POST['changeSubmitBtn'])) {
                 $checkpassword  = $mysqli->real_escape_string($_POST['password']);
                 $passwordrepeat = $mysqli->real_escape_string($_POST['passwordrepeat']);
-                $password = hash('sha512', $checkpassword);
-                $recovery = $_GET['string'];
 
                 if ($checkpassword == $passwordrepeat) {
-                    $query = "UPDATE tbl_users SET password = '$password' WHERE recoveryString = ".$recovery;
-                    $mysqli->query($query);
-                    header('/');
+                    $password = hash('sha512', $checkpassword);
+                    $recovery = $_GET['string'];
+                    $query = "SELECT id FROM tbl_users WHERE recoveryString = '$recovery'";
+                    $userId = $mysqli->query($query);
+                    if (!$userId == '') {
+                        $updatePasswordQuery = "UPDATE tbl_users SET password = '$password' WHERE recoveryString = '$recovery'";
+                        $updateRecoveryQuery = "UPDATE tbl_users SET recoveryString = '' WHERE recoveryString = '$recovery'";
+                        if ($mysqli->query($updatePasswordQuery)) {
+                            $mysqli->query($updateRecoveryQuery);
+                            header("Location: http://www.tilit.nl/");
+                            $error->setCustomError('Uw wachtwoord is successvol veranderd.');
+                        }
+                    }
                 }
             }
         }
