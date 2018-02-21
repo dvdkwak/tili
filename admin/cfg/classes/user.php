@@ -306,12 +306,17 @@
 
                 // Mail it
                 mail($email, $subject, $message, implode("\r\n", $headers));
+                require_once 'errorhandling.php';
+                $error = new errorHandling();
+                $error->setCustomError("Check uw mail om uw wachtwoord te veranderen");
             }
         }
 
         public function changePassword()
         {
             $mysqli = $this->Connect();
+            require_once 'errorhandling.php';
+            $error = new errorHandling();
 
             if (isset($_POST['changeSubmitBtn'])) {
                 $checkpassword  = $mysqli->real_escape_string($_POST['password']);
@@ -328,6 +333,7 @@
                         if ($mysqli->query($updatePasswordQuery)) {
                             $mysqli->query($updateRecoveryQuery);
                             header("Location: http://www.tilit.nl/");
+                            $error->setCustomError('Uw wachtwoord is successvol veranderd.');
                         }
                     }
                 }
