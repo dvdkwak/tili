@@ -1,5 +1,4 @@
 <?php
-
 require_once __DIR__ . '/../autoload.php';
 
 include_once('cfg/config.php');
@@ -19,6 +18,7 @@ $content = new adminContent();
 $page = $content->getContent($url);
 
 $user->changePassword();
+$user->checkSession();
 ?>
 <!DOCTYPE html>
 <html>
@@ -37,20 +37,20 @@ $user->changePassword();
 </head>
 <body>
     <ul class="main-navbar">
-        <li class="main-navbar-item"><a href="/admin/projecten">Home</a></li>
-        <li class="main-navbar-item"><a href="/admin/projecten">Projecten</a></li>
-    <?php
-        if ($user->checkUserLevel(array('0'))) {
-            echo '<li class="main-navbar-item"><a href="/admin/gebruikers">Gebruikers</a></li>';
+        <?php
+        if ($_SESSION['status'] == true) { ?>
+            <li class="main-navbar-item"><a href="/admin/projecten">Projecten</a></li><?php
+            if ($user->checkUserLevel(array('0'))) {
+                echo '<li class="main-navbar-item"><a href="/admin/gebruikers">Gebruikers</a></li>';
+                echo '<li class="main-navbar-item"><a href="/admin/aanvragen">Aanvragen</a></li>';
+                echo '<li class="main-navbar-item"><a href="/admin/pdftest">PDF TEST</a></li>';
+            }
+            ?> <li class="main-navbar-item float-right"><a href="/admin/logout">Uitloggen</a></li> <?php
+        } else {
+            ?> <li class="main-navbar-item float-left"><a href="/">Home</a></li> <?php
         }
-        if ($user->checkUserLevel(array('0'))) {
-            echo '<li class="main-navbar-item"><a href="/admin/aanvragen">Aanvragen</a></li>';
-        }
-        if ($user->checkUserLevel(array('0'))) {
-            echo '<li class="main-navbar-item"><a href="/admin/pdftest">PDF TEST</a></li>';
-        }
-    ?>
-        <li class="main-navbar-item float-right"><a href="/admin/logout">Uitloggen</a></li>
+        ?>
+
     </ul>
     <?php
         include_once($page['link']);

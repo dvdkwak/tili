@@ -390,6 +390,13 @@ class user extends db
             return $data;
         }
     }
+
+    public function checkSession()
+    {
+        if (!isset($_SESSION['status'])) {
+            $_SESSION['status'] = '';
+        }
+    }
 }
 
 ?>

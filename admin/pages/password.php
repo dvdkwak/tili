@@ -15,6 +15,6 @@
   </div>
 
 <?php 
-  $error->getCustomError();
+  $error->getCustomError("/admin/wachtwoord");
 ?>
 </div>

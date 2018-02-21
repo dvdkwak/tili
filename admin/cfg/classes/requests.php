@@ -51,10 +51,6 @@
             }
 		}
 
-		public function requestProject() {
-			
-		}
-
 		public function redirectUser()
 		{
 			if (!$_SESSION['userlevel'] == 0) {
