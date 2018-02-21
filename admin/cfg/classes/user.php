@@ -329,16 +329,22 @@
             }
         }
 
-				public function offerCreate($projectId) {
+				public function offerCreate($id) {
 					$mysqli = $this->connect();
-
 					$query = "
-						SELECT A.*, B.*, C.*, D.* FROM tbl_projects AS C
-						INNER JOIN tbl_users_projects AS B ON C.id = B.FK_project_id
-						INNER JOIN tbl_users AS A ON B.FK_user_id = A.id
-						INNER JOIN tbl_offers AS D ON A.id= D.FK_user_id AND C.id = D.FK_project_id
-						WHERE C.id = ".$projectId."";
-
+					SELECT A.*, B.*, C.*, D.*
+					FROM `tbl_projects`							AS A
+					INNER JOIN `tbl_users_projects` AS B ON A.id = B.FK_projects_id
+					INNER JOIN `tbl_users` 					AS C ON B.FK_users_id = C.id
+					INNER JOIN `tbl_offers` 				AS D ON C.id= D.FK_user_id AND A.id = D.FK_project_id
+					WHERE A.id = ".$id."";
+					$result = $mysqli->query($query);
+          while ($items = $result->fetch_assoc()){
+              $data[] = $items;
+          }
+          if (isset($data)) {
+						return $data;
+					}
 
 				}
     }
