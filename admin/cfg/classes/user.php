@@ -397,6 +397,21 @@ class user extends db
             $_SESSION['status'] = '';
         }
     }
+
+    public function checkProjectId($id){
+      $userlvl = $_SESSION['userlevel'];
+      $userID = $_SESSION['id'];
+      $mysqli = $this->connect();
+
+      if ($userlvl !== "0") {
+        $query = "SELECT FK_users_id FROM tbl_users_projects WHERE FK_projects_id='$id'";
+        $result = $mysqli->query($query);
+        $idUser = $result->fetch_object()->FK_users_id;
+        if ($idUser !== $userID) {
+          header("location: /admin");
+        }
+      }
+    }
 }
 
 ?>

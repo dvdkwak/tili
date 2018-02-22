@@ -20,6 +20,9 @@ if (isset($_POST['btnOfferte'])) {
 
 $getHours = new user();
 $data2 = $getHours->getTimeRegistration($id);
+
+$CPID = new user();
+$CPID->checkProjectId($id);
 ?>
 
 <!-- Modal -->
