@@ -5,12 +5,14 @@
     $content = new content();
     $page = $content->getContent($url);
     $user = new user();
-    if (isset($_POST['email'])) {
+    if (isset($_POST['loginBtn'])) {
         $user->login($_POST['email'], $_POST['password'], "/admin/projecten");
     }
+    $error = new errorHandling();
     $user->register();
-
-    
+    $user->sendMail();
+    $user->forgotPassword();
+    $error->getCustomError("www.tilit.nl");
 ?>
 <!DOCTYPE html>
 <html>
@@ -35,6 +37,7 @@
             include 'assets/includes/registerModal.php';
             include 'assets/includes/header.php';
             include_once($page);
+            include 'assets/includes/contactForm.php';
             include 'assets/includes/footer.php';
         ?>
     </div>

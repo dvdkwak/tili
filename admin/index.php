@@ -1,5 +1,4 @@
 <?php
-
 require_once __DIR__ . '/../autoload.php';
 
 include_once('cfg/config.php');
@@ -7,8 +6,8 @@ include_once('cfg/config.php');
 $user  = new user();
 $error = new errorHandling();
 
-if($url!="login"){
-    $user->lock("/admin/login", "/admin");
+if($url!="wachtwoord"){
+    $user->lock("/", "/admin/wachtwoord");
 }
 
 if($url == "logout"){
@@ -18,9 +17,8 @@ if($url == "logout"){
 $content = new adminContent();
 $page = $content->getContent($url);
 
-if(isset($_POST['flag']) && $_POST['flag'] == "login"){
-    $user->login($_POST['username'], $_POST['password'], $_SESSION['oldLocation']);
-}
+$user->changePassword();
+$user->checkSession();
 ?>
 <!DOCTYPE html>
 <html>
@@ -39,16 +37,20 @@ if(isset($_POST['flag']) && $_POST['flag'] == "login"){
 </head>
 <body>
     <ul class="main-navbar">
-        <li class="main-navbar-item"><a href="/admin/projecten">Projecten</a></li>
-    <?php
-        if ($user->checkUserLevel(array('0'))) {
-            echo '<li class="main-navbar-item"><a href="/admin/gebruikers">Gebruikers</a></li>';
+        <?php
+        if ($_SESSION['status'] == true) { ?>
+            <li class="main-navbar-item"><a href="/admin/projecten">Projecten</a></li><?php
+            if ($user->checkUserLevel(array('0'))) {
+                echo '<li class="main-navbar-item"><a href="/admin/gebruikers">Gebruikers</a></li>';
+                echo '<li class="main-navbar-item"><a href="/admin/aanvragen">Aanvragen</a></li>';
+                echo '<li class="main-navbar-item"><a href="/admin/pdftest">PDF TEST</a></li>';
+            }
+            ?> <li class="main-navbar-item float-right"><a href="/admin/logout">Uitloggen</a></li> <?php
+        } else {
+            ?> <li class="main-navbar-item float-left"><a href="/">Home</a></li> <?php
         }
-        if ($user->checkUserLevel(array('0'))) {
-            echo '<li class="main-navbar-item"><a href="/admin/aanvragen">Aanvragen</a></li>';
-        }
-    ?>
-        <li class="main-navbar-item float-right"><a href="/admin/logout">Uitloggen</a></li>
+        ?>
+
     </ul>
     <?php
         include_once($page['link']);

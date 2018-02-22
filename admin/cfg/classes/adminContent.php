@@ -6,8 +6,8 @@ class adminContent
             case 'home':
                 return array('link'=>'pages/projects.php', 'styleLink'=>'', 'title'=>'Admin | Projects', 'scriptLink'=>'');
                 break;
-            case 'login':
-                return array('link'=>'pages/login.php', 'styleLink'=>'assets/css/login.css', 'title'=>'Admin | Login', 'scriptLink'=>'');
+            case 'wachtwoord':
+                return array('link'=>'pages/password.php', 'styleLink'=>'assets/css/login.css', 'title'=>'Admin | Wachtwoord Vergeten', 'scriptLink'=>'');
                 break;
             case 'projecten':
             	return array('link'=>'pages/projects.php', 'styleLink'=>'', 'title'=>'Admin | Projects', 'scriptLink'=>'');
@@ -20,6 +20,9 @@ class adminContent
                 break;
             case 'gebruikers':
                 return array('link'=>'pages/gebruikers.php', 'styleLink'=>'', 'title'=>'Admin | gebruikersbeheer', 'scriptLink'=>'');
+                break;
+            case 'pdftest':
+                return array('link'=>'pages/pdftest.php', 'styleLink'=>'', 'title'=>'Admin | gebruikersbeheer', 'scriptLink'=>'');
                 break;
             default:
                 return array('link'=>'pages/404.php', 'styleLink'=>'assets/css/404.css', 'title'=>'Oops!', 'scriptLink'=>'');

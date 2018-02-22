@@ -9,9 +9,6 @@ $requests->redirectUser();
 $requests->acceptRequests();
 $requests->deleteRequests();
 
-$error->getCustomError();
-unset($_SESSION['customError']);
-
 $data = $requests->getRequests();
 
 if (isset($data)) {

@@ -14,8 +14,15 @@ if(isset($_POST['btnVerLog'])) {
 	$verLog->verLog($id,$fname ,$lname , $message);
 }
 
+if (isset($_POST['btnOfferte'])) {
+	header("location: /admin/pdftest?id=".$id."");
+}
+
 $getHours = new user();
 $data2 = $getHours->getTimeRegistration($id);
+
+$CPID = new user();
+$CPID->checkProjectId($id);
 ?>
 
 <!-- Modal -->
@@ -46,6 +53,9 @@ $data2 = $getHours->getTimeRegistration($id);
 	<h1>Projectdetails</h1>
 </div>
 <div class="main-container">
+	<form method="post">
+		<button type="submit" name="btnOfferte">Offerte</button>
+	</form>
 	<ul class="nav nav-tabs" role="tablist">
 		<li class="nav-item">
 		  <a class="nav-link active" data-toggle="tab" href="#log" role="tab">Logboek</a>
