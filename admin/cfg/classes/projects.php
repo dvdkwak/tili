@@ -76,6 +76,10 @@ class projects extends db{
 
         $projectName = $mysqli->real_escape_string($_POST['projectname']);
         $projectDesc = $mysqli->real_escape_string($_POST['description']);
+<<<<<<< HEAD
+=======
+        $userId = $_SESSION['id'];
+>>>>>>> 669734db7ba6d315663fef9cdd98d5390ee2d611
         $date = $this->getDate();
 
         if ($uploadOk != 111) {
@@ -83,8 +87,20 @@ class projects extends db{
         } else {
             if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $fileName.'.pdf')) {
                 echo "The file ". $target_file ." has been uploaded.";
+<<<<<<< HEAD
                 $query = "INSERT INTO tbl_projects (projectName,description,date,pvePath,isRequest) VALUES ('$projectName','$projectDesc','$date','$fileName','0')";
+=======
+                $query = "INSERT INTO tbl_projects (projectName,description,startDate,pvePath,isRequest) VALUES ('$projectName','$projectDesc','$date','$fileName','0')";
+>>>>>>> 669734db7ba6d315663fef9cdd98d5390ee2d611
                 $mysqli->query($query);
+
+                $query2 = "SELECT id FROM `tbl_projects` WHERE description='$projectDesc'";
+                $result = $mysqli->query($query2);
+                $projectId = $result->fetch_object()->id;
+
+                $query3 = "INSERT INTO `tbl_users_projects` (FK_projects_id, FK_users_id) VALUES ('$projectId','$userId')";
+                $mysqli->query($query3);
+
             } else {
                 echo "Sorry, there was an error uploading your file.";
             }

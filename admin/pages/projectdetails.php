@@ -14,6 +14,14 @@ if(isset($_POST['btnVerLog'])) {
 	$verLog->verLog($id,$fname ,$lname , $message);
 }
 
+if(isset($_POST['btnToevoegenMedewerker'])) {
+	if($_SESSION['userlevel'] == "0") {
+		$addMember = new user();
+		$email = $_POST['txtMedewerker'];
+		$addMember->addMember($id, $email);
+	}
+}
+
 if (isset($_POST['btnOfferte'])) {
 	header("location: /admin/pdftest?id=".$id."");
 }
@@ -49,6 +57,30 @@ $CPID->checkProjectId($id);
   </div>
 </div>
 
+<div class="modal fade" id="medewerker" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-body">
+
+				<form method="post">
+					<div class="form-group">
+						<div class='row'>
+							<div class='col-11'>
+								<p>Voeg een email van de medewerker toe:</p>
+									<input name="txtMedewerker" class='form-control' placeholder='Typ hier de email van een medewerker.' type='text' />
+							</div>
+						</div>
+					</div>
+      </div>
+      <div class="modal-footer">
+				<button type="submit" name="btnToevoegenMedewerker" class="btn btn-outline-success">Toevoegen</button>
+        <button type="button" class="btn btn-outline-secondary" data-dismiss="modal">Sluiten</button>
+				</form>
+      </div>
+    </div>
+  </div>
+</div>
+
 <div class="main-container">
 	<h1>Projectdetails</h1>
 </div>
@@ -66,7 +98,10 @@ $CPID->checkProjectId($id);
 	</ul>
 <div class="tab-content">
 	<div class="tab-pane active" id="log" data-toggle="tab" role="tabpanel"><br>
-		<button type="button" class="btn btn-outline-secondary" data-toggle="modal" data-target="#exampleModal">Log bericht toevoegen</button><br>
+		<?php $i=$_SESSION['userlevel']; if($i !== "2") {echo "
+			<button type='button' class='btn btn-outline-secondary' data-toggle='modal' data-target='#exampleModal'>Log bericht toevoegen</button>
+			<button type='button' class='btn btn-outline-secondary' data-toggle='modal' data-target='#medewerker'>medewerker toevoegen</button><br>
+		";} ?>
 		<table class="table table-hover">
 			<thead>
 				<tr>

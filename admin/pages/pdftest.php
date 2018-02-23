@@ -15,6 +15,7 @@ $totaal = 1 * $stukprijs;
 $totaal2 = $aantalUren * $urenPrijsPS;
 $totaal3 = $totaal / 100 * $btw;
 $totaal4 = $totaal3 + $totaal;
+$totaal5 = $totaal + $totaal2;
 $totaalAll = $totaal4 + $totaal2;
 
 if (isset($item)) {
@@ -158,7 +159,7 @@ if (isset($item)) {
 
             <tr scope="row">
               <td colspan="5" scope="col"><strong>Totaal EX. BTW</strong></td>
-              <td class="text-right" scope="col">&euro; ,-</td>
+              <td class="text-right" scope="col">&euro;<?php echo $totaal5; ?> ,-</td>
             </tr>
 
             <tr scope="row">
@@ -209,23 +210,3 @@ if (isset($item)) {
     echo 'Geen resultaten';
   }
 ?>
-
-<div id="editor"></div>
-<button id="cmd">generate PDF</button>
-
-<script src="https://unpkg.com/jspdf@latest/dist/jspdf.min.js">
-var doc = new jsPDF();
-var specialElementHandlers = {
-    '#editor': function (element, renderer) {
-        return true;
-    }
-};
-
-$('#cmd').click(function () {
-    doc.fromHTML($('#content').html(), 15, 15, {
-        'width': 170,
-            'elementHandlers': specialElementHandlers
-    });
-    doc.save('sample-file.pdf');
-});
-</script>

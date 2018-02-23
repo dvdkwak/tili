@@ -435,6 +435,7 @@ class user extends db
       }
     }
 
+<<<<<<< HEAD
     public function mailPasswordSuccess($email)
     {
         $string = '<html>
@@ -457,6 +458,22 @@ class user extends db
 
         // Mail it
         mail($email, $subject, $string, implode("\r\n", $headers));
+=======
+    public function addMember($id, $email) {
+      $mysqli = $this->connect();
+
+      $query = "SELECT id, userlevel FROM tbl_users WHERE email='$email'";
+      $result = $mysqli->query($query);
+      $item = $result->fetch_object();
+
+      $uID = $item->id;
+      $lvl = $item->userlevel;
+
+      if ($lvl == "1") {
+        $query2 = "INSERT INTO `tbl_users_projects` (FK_projects_id, FK_users_id) VALUES ('$id','$uID')";
+        $mysqli->query($query2);
+      }
+>>>>>>> 669734db7ba6d315663fef9cdd98d5390ee2d611
     }
 }
 
