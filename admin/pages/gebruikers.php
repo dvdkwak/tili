@@ -3,6 +3,17 @@ $users = new user();
 $data = $users->getUsers('*', 'NOT userlevel=2');
 $data2 = $users->getUsers('*', 'userlevel=2');
 $user->register();
+
+if (isset($_POST['btnAcceptRequest'])) {
+  $user = new user();
+  $id= $_POST['acceptID'];
+  $user->acceptNew($id);
+}
+if (isset($_POST['btnDeleteRequest'])) {
+  $user = new user();
+  $id= $_POST['acceptID'];
+  $user->denyNew($id);
+}
 ?>
 
 <div class="main-container">
