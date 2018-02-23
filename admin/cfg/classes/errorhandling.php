@@ -7,18 +7,18 @@
 		public function setCustomError($message, $sort)
 		{
 			$_SESSION['customError'] = '
-			<div style="position:fixed;z-index:100;margin-top:890px;margin-left:20px;" class="my-alert-message alert alert-'.$sort.' alert-dismissable">
-	        	<a style="margin-left:10px;margin-top:-2px;" href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+            <div class="alert-fixed alert alert-'.$sort.' alert-dismissible fade show" role="alert">
                 '.$message.'
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
             </div>';
 		}
 
-		public function getCustomError($header)
+		public function getCustomError()
 		{
 			if (isset($_SESSION['customError'])) {
 				echo $_SESSION['customError'];
-				unset($_SESSION['customError']);
-				header("Location: ".$header);
 			}
 		}
 	}

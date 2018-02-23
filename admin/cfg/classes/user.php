@@ -13,6 +13,15 @@ class user extends db
         }
     }
 
+    public function setCustomError($message, $sort)
+    {
+        $_SESSION['customError'] = '
+			<div style="position:fixed;z-index:100;margin-top:890px;margin-left:20px;" class="my-alert-message alert alert-'.$sort.' alert-dismissable">
+	        	<a style="margin-left:10px;margin-top:-2px;" href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                '.$message.'
+            </div>';
+    }
+
     //function to add the user to the database
     public function register()
     {
@@ -49,15 +58,15 @@ class user extends db
                         $prepos = "NULL";
                     }
 
-                    $insertUser = $mysqli->query("INSERT INTO tbl_users (email, password, userlevel, tel, firstName, lastName, preposition, city, address, zipCode)
-                                                      VALUES ('$email','$password','$userlvl','$telnumber','$firstname','$lastname','$prepos','$city','$address','$zipcode')");
+                    $mysqli->query("INSERT INTO tbl_users (email, password, userlevel, tel, firstName, lastName, preposition, city, address, zipCode, recoveryString, status)
+                                           VALUES ('$email','$password','$userlvl','$telnumber','$firstname','$lastname','$prepos','$city','$address','$zipcode','','2')");
 
                     header('Location: index.php');
                 } else {
-                    $this->alert('Het email dat u heeft ingevoerd bestaat al.', 'danger');
+                    $this->setCustomError('Het email dat u heeft ingevoerd bestaat al.', 'danger');
                 }
             } else {
-                $this->alert('De wachtwoorden komen niet overeen, probeer het opnieuw.', 'danger');
+                $this->setCustomError('De wachtwoorden komen niet overeen, probeer het opnieuw.', 'danger');
             }
         }
     }
@@ -85,11 +94,15 @@ class user extends db
 
         //if I get a result it means the credentials are right.
         if ($result->num_rows === 1) {
-            $this->status = True;
-            $this->userlevel = $item->userlevel;
-            $this->id = $item->id;
-            $this->firstName = $item->firstName;
-            $this->lastName = $item->lastName;
+            if (!$item->status == 2) {
+                $this->status = True;
+                $this->userlevel = $item->userlevel;
+                $this->id = $item->id;
+                $this->firstName = $item->firstName;
+                $this->lastName = $item->lastName;
+            } else {
+                $error->setCustomError("Uw account is nog niet geactiveert, neem contact op met de eigenaar van de site.", "danger");
+            }
         } else {
             $this->status = False;
             $error->setCustomError("Username or password are wrong!", "danger");
@@ -317,16 +330,16 @@ class user extends db
             $this->createRecoveryString($email);
             $recoveryString = $this->getRecoveryString($email);
 
-            $message = '<html>
-                                <head>
-                                </head>
-                                <body>
-                                    <img src="http://tilit.nl/assets/images/TiliT_Logo2.png" alt="TiliT Logo" height="120" width="386"><br />
-                                    <h3>Wachtwoord veranderen voor TiliT.nl</h3><br />
-                                    <p>Om uw wachtwoord te veranderen moet u deze link volgen: <a href="https://www.tilit.nl/admin/wachtwoord&string=' . $recoveryString . '">Wachtwoord Veranderen</a></p> <br />
-                                    <p>Komt deze actie u niet bekent voor klik dan <a href="https://www.tilit.nl/">hier</a>.</p>
-                                </body>
-                            </html>';
+            $string = '<html>
+                        <head>
+                        </head>
+                        <body>
+                            <img src="http://tilit.nl/assets/images/TiliT_Logo2.png" alt="TiliT Logo" height="120" width="386"><br />
+                            <h3>Wachtwoord veranderen voor TiliT.nl</h3><br />
+                            <p>Om uw wachtwoord te veranderen moet u deze link volgen: <a href="https://www.tilit.nl/admin/wachtwoord&string='.$recoveryString.'">Wachtwoord Veranderen</a></p> <br />
+                            <p>Komt deze actie u niet bekent voor klik dan <a href="https://www.tilit.nl/admin/wachtwoord&string='.$recoveryString.'&recognize=no">hier</a>.</p>
+                        </body>
+                    </html>';
 
             $subject = "Wachtwoord wijzigen TiliT";
             $from = "info@tilit.nl";
@@ -337,7 +350,7 @@ class user extends db
             $headers[] = 'From: ' . $from;
 
             // Mail it
-            mail($email, $subject, $message, implode("\r\n", $headers));
+            mail($email, $subject, $string, implode("\r\n", $headers));
             require_once 'errorhandling.php';
             $error = new errorHandling();
             $error->setCustomError("Check uw mail om uw wachtwoord te veranderen","warning");
@@ -349,26 +362,35 @@ class user extends db
         $mysqli = $this->Connect();
         require_once 'errorhandling.php';
         $error = new errorHandling();
-
-        if (isset($_POST['changeSubmitBtn'])) {
-            $checkpassword = $mysqli->real_escape_string($_POST['password']);
-            $passwordrepeat = $mysqli->real_escape_string($_POST['passwordrepeat']);
-
-            if ($checkpassword == $passwordrepeat) {
-                $password = hash('sha512', $checkpassword);
+        if (!isset($_GET['recognize'])) {
+            if (isset($_POST['changeSubmitBtn'])) {
+                $checkpassword = $mysqli->real_escape_string($_POST['password']);
+                $passwordrepeat = $mysqli->real_escape_string($_POST['passwordrepeat']);
                 $recovery = $_GET['string'];
-                $query = "SELECT id FROM tbl_users WHERE recoveryString = '$recovery'";
-                $userId = $mysqli->query($query);
-                if (!$userId == '') {
-                    $updatePasswordQuery = "UPDATE tbl_users SET password = '$password' WHERE recoveryString = '$recovery'";
-                    $updateRecoveryQuery = "UPDATE tbl_users SET recoveryString = '' WHERE recoveryString = '$recovery'";
-                    if ($mysqli->query($updatePasswordQuery)) {
-                        $mysqli->query($updateRecoveryQuery);
-                        $error->setCustomError("Uw wachtwoord is succesvol veranderd","warning");
-                        header("Location: http://www.tilit.nl/");
+
+                if ($checkpassword == $passwordrepeat) {
+                    $password = hash('sha512', $checkpassword);
+                    $query = "SELECT id,email FROM tbl_users WHERE recoveryString = '$recovery'";
+                    $user = $mysqli->query($query)->fetch_object();
+                    $userId = $user->id;
+                    if (!$userId == '') {
+                        $updatePasswordQuery = "UPDATE tbl_users SET password = '$password' WHERE recoveryString = '$recovery'";
+                        $updateRecoveryQuery = "UPDATE tbl_users SET recoveryString = '' WHERE recoveryString = '$recovery'";
+                        if ($mysqli->query($updatePasswordQuery)) {
+                            $mysqli->query($updateRecoveryQuery);
+                            $email = $user->email;
+                            $this->mailPasswordSuccess($email);
+                            $error->setCustomError("Uw wachtwoord is succesvol veranderd","warning");
+                            header("Location: http://www.tilit.nl/");
+                        }
                     }
                 }
             }
+        } else {
+            $recovery = $_GET['string'];
+            $query = "UPDATE tbl_users SET recoveryString = '' WHERE recoveryString = '$recovery'";
+            $mysqli->query($query);
+            header("Location: http://www.tilit.nl/");
         }
     }
 
@@ -411,6 +433,30 @@ class user extends db
           header("location: /admin");
         }
       }
+    }
+
+    public function mailPasswordSuccess($email)
+    {
+        $string = '<html>
+                        <head>
+                        </head>
+                        <body>
+                            <img src="http://tilit.nl/assets/images/TiliT_Logo2.png" alt="TiliT Logo" height="120" width="386"><br />
+                            <h3>Wachtwoord veranderd voor TiliT.nl</h3><br />
+                            <p>Uw wachtwoord is successvol gewijzigt.</p>
+                        </body>
+                    </html>';
+
+        $subject = "Wachtwoord gewijzigt TiliT";
+        $from = "info@tilit.nl";
+
+        // To send HTML mail, the Content-type header must be set
+        $headers[] = 'Content-type: text/html; charset=iso-8859-1';
+        $headers[] = 'MIME-Version: 1.0';
+        $headers[] = 'From: ' . $from;
+
+        // Mail it
+        mail($email, $subject, $string, implode("\r\n", $headers));
     }
 }
 

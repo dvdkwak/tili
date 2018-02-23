@@ -76,13 +76,14 @@ class projects extends db{
 
         $projectName = $mysqli->real_escape_string($_POST['projectname']);
         $projectDesc = $mysqli->real_escape_string($_POST['description']);
+        $date = $this->getDate();
 
         if ($uploadOk != 111) {
             echo " Je project is helaas niet aangevraagt, probeer het opnieuw.";
         } else {
             if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $fileName.'.pdf')) {
                 echo "The file ". $target_file ." has been uploaded.";
-                $query = "INSERT INTO tbl_projects (projectName,description,pvePath,isRequest) VALUES ('$projectName','$projectDesc','$fileName','0')";
+                $query = "INSERT INTO tbl_projects (projectName,description,date,pvePath,isRequest) VALUES ('$projectName','$projectDesc','$date','$fileName','0')";
                 $mysqli->query($query);
             } else {
                 echo "Sorry, there was an error uploading your file.";
@@ -146,7 +147,7 @@ class projects extends db{
         if (isset($_POST['btnStartTiming'])) {
             $projectId   = $_POST['projectId'];
             $userId      = $_SESSION['id'];
-            setcookie($userId,$userId);
+            setcookie($userId,$userId,time() + 28800);
             $time = $this->getTime();
             $date = $this->getDate();
 

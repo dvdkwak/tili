@@ -157,3 +157,10 @@ No media query since this is the default in Bootstrap*/
 .myform {
   border-radius: 0px;
 }
+.alert-fixed {
+    position:fixed;
+    top: 90%;
+    left: 2%;
+    width:40%;
+    z-index:9999;
+}

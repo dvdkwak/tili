@@ -132,3 +132,10 @@ body {
     height: 20px;
     background: green;
 }
+.alert-fixed {
+    position:fixed;
+    top: 90%;
+    left: 2%;
+    width:40%;
+    z-index:9999;
+}s

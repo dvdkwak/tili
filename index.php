@@ -12,7 +12,8 @@
     $user->register();
     $user->sendMail();
     $user->forgotPassword();
-    $error->getCustomError("www.tilit.nl");
+    $error->getCustomError();
+
 ?>
 <!DOCTYPE html>
 <html>
@@ -20,7 +21,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Welcome - TiliT</title>
-    <link rel="icon" href="/images/favicon.png">
+    <link rel="icon" href="assets/images/favicon.png">
     <link rel="stylesheet" href="https://cdn.rawgit.com/konpa/devicon/df6431e323547add1b4cf45992913f15286456d3/devicon.min.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
