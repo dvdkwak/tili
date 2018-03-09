@@ -33,6 +33,7 @@ class user extends db
             $address = $mysqli->real_escape_string($_POST['address']);
             $zipcode = $mysqli->real_escape_string($_POST['zipcode']);
             $userlvl = $mysqli->real_escape_string($_POST['userlvl']);
+            $companyname = $mysqli->real_escape_string($_POST['cname']);
 
             //check if the passwords match
             if ($password === $repeated) {
@@ -49,15 +50,15 @@ class user extends db
                         $prepos = "NULL";
                     }
 
-                    $insertUser = $mysqli->query("INSERT INTO tbl_users (email, password, userlevel, tel, firstName, lastName, preposition, city, address, zipCode)
-                                                      VALUES ('$email','$password','$userlvl','$telnumber','$firstname','$lastname','$prepos','$city','$address','$zipcode')");
+                    $insertUser = $mysqli->query("INSERT INTO tbl_users (email, password, userlevel, tel, firstName, lastName, companyName, preposition, city, address, zipCode)
+                                                      VALUES ('$email','$password','$userlvl','$telnumber','$firstname','$lastname','$companyname','$prepos','$city','$address','$zipcode')");
 
                     header('Location: index.php');
                 } else {
-                    $this->alert('Het email dat u heeft ingevoerd bestaat al.', 'danger');
+                    $error->setCustomError('Het email dat u heeft ingevoerd bestaat al.', "danger");
                 }
             } else {
-                $this->alert('De wachtwoorden komen niet overeen, probeer het opnieuw.', 'danger');
+              $error->setCustomError('De wachtwoorden komen niet overeen, probeer het opnieuw.', "danger");
             }
         }
     }
@@ -83,18 +84,23 @@ class user extends db
         $result = $mysqli->query($query);
         $item = $result->fetch_object();
 
-        //if I get a result it means the credentials are right.
-        if ($result->num_rows === 1) {
-            $this->status = True;
-            $this->userlevel = $item->userlevel;
-            $this->id = $item->id;
-            $this->firstName = $item->firstName;
-            $this->lastName = $item->lastName;
+        if ($item->status !== "3") {
+          //if I get a result it means the credentials are right.
+          if ($result->num_rows === 1) {
+              $this->status = True;
+              $this->userlevel = $item->userlevel;
+              $this->id = $item->id;
+              $this->firstName = $item->firstName;
+              $this->lastName = $item->lastName;
+          } else {
+              $this->status = False;
+              $error->setCustomError("Gebruikersnaam of wachtwoord komt niet overeen met een bestaand account.", "danger");
+          }
         } else {
-            $this->status = False;
-            $error->setCustomError("Username or password are wrong!", "danger");
+          $this->status = False;
+          $error->setCustomError("Uw account is nog niet geaccepteerd.", "danger");
         }
-    }
+      }
 
     //if status is true then we can set the session
     public function setSession()

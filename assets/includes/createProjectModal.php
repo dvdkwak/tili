@@ -14,7 +14,7 @@
            <div class="row">
                <div class="col-12">
                    <div class="form-group">
-           <input type="text" name="projectname" id="projectname" class="form-control input-sm" placeholder="Project naam">
+           <input type="text" required name="projectname" id="projectname" class="form-control input-sm" placeholder="Project naam">
                    </div>
                </div>
 
@@ -22,21 +22,21 @@
                <div class="row">
                    <div class="col-12">
                    <div class="form-group">
-                       <input type="text" name="description" id="description" class="form-control input-sm" placeholder="Beschrijving">
+                       <input type="text" required name="description" id="description" class="form-control input-sm" placeholder="Beschrijving">
                    </div>
                    </div>
                </div>
                <div class="row">
                    <div class="col-12">
                    <div class="form-group">
-                       <input type="email" name="pve" id="pve" class="form-control input-sm" placeholder="PVE Path">
+                       <input type="email" required name="pve" id="pve" class="form-control input-sm" placeholder="PVE Path">
                    </div>
                    </div>
                </div>
                <div class="row">
                <div class="col-12">
                    <div class="form-group">
-                       <input type="text" name="details" id="details" class="form-control input-sm" placeholder="Details">
+                       <input type="text" required name="details" id="details" class="form-control input-sm" placeholder="Details">
                    </div>
          </div>
          <div class="modal-footer">
