@@ -6,6 +6,7 @@
 		// $this->setCustomError("Error message comes here!!!")
 		public function setCustomError($message, $sort)
 		{
+		    $this->unsetError();
 			$_SESSION['customError'] = '
             <div class="alert-fixed alert alert-'.$sort.' alert-dismissible fade show" role="alert">
                 '.$message.'
@@ -21,6 +22,13 @@
 				echo $_SESSION['customError'];
 			}
 		}
+
+		public function unsetError()
+        {
+            if (isset($_SESSION['customError'])) {
+                unset($_SESSION['customError']);
+            }
+        }
 	}
 
 ?>

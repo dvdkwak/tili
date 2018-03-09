@@ -15,10 +15,12 @@ if($url == "logout"){
 }
 
 $content = new adminContent();
+$error = new errorHandling();
 $page = $content->getContent($url);
 
 $user->changePassword();
 $user->checkSession();
+$error->getCustomError();
 ?>
 <!DOCTYPE html>
 <html>
@@ -43,7 +45,6 @@ $user->checkSession();
             if ($user->checkUserLevel(array('0'))) {
                 echo '<li class="main-navbar-item"><a href="/admin/gebruikers">Gebruikers</a></li>';
                 echo '<li class="main-navbar-item"><a href="/admin/aanvragen">Aanvragen</a></li>';
-                echo '<li class="main-navbar-item"><a href="/admin/pdftest">PDF TEST</a></li>';
             }
             ?> <li class="main-navbar-item float-right"><a href="/admin/logout">Uitloggen</a></li> <?php
         } else {

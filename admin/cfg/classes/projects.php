@@ -1,4 +1,5 @@
 <?php
+include ('errorhandling.php');
 
 class projects extends db{
 
@@ -12,7 +13,7 @@ class projects extends db{
 
             if ($_SESSION['userlevel'] == 0) {
                 //When userlevel is 0 (Beheerder) show all the projects
-                $query = 'SELECT * FROM tbl_projects WHERE isRequest = "1"';
+                $query = 'SELECT * FROM tbl_projects WHERE isRequest = "0"';
             } else {
                 //When userlevel is 1 (Medewerker) show all the projects where the user is assigned to
                 $query = 'SELECT a.*, b.FK_projects_id, b.FK_users_id FROM tbl_projects AS a
@@ -52,8 +53,9 @@ class projects extends db{
 
     public function checkImageType($imageFileType)
     {
+        $error = new errorHandling();
         if ($imageFileType != "doc" && $imageFileType != "docx" && $imageFileType != "pdf") {
-            echo "Het is alleen toegestaan om word documenten of PDF bestanden te uploaden";
+            $error->setCustomError("Het is alleen toegestaan om word documenten of PDF bestanden te uploaden!","danger");
             return 0;
         } else {
             return 1;
@@ -62,8 +64,9 @@ class projects extends db{
 
     public function checkImageSize()
     {
+        $error = new errorHandling();
         if ($_FILES["fileToUpload"]["size"] > 500000) {
-            echo "Het bestand is to groot";
+            $error->setCustomError("Het bestand is te groot!","danger");
             return 0;
         } else {
             return 1;
@@ -73,6 +76,7 @@ class projects extends db{
     public function uploadFile($uploadOk, $fileName, $target_file)
     {
         $mysqli = $this->Connect();
+        $error = new errorHandling();
 
         $projectName = $mysqli->real_escape_string($_POST['projectname']);
         $projectDesc = $mysqli->real_escape_string($_POST['description']);
@@ -80,11 +84,17 @@ class projects extends db{
         $date = $this->getDate();
 
         if ($uploadOk != 111) {
-            echo " Je project is helaas niet aangevraagt, probeer het opnieuw.";
+
         } else {
             if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $fileName.'.pdf')) {
-                echo "The file ". $target_file ." has been uploaded.";
-                $query = "INSERT INTO tbl_projects (projectName,description,startDate,pvePath,isRequest) VALUES ('$projectName','$projectDesc','$date','$fileName','0')";
+                if ($_SESSION['userlevel'] == 0) {
+                    $isRequest = 0;
+                    $error->setCustomError("Uw project is successvol aangemaakt","success");
+                } else {
+                    $isRequest = 1;
+                    $error->setCustomError("Uw project is successvol aangevraagt","success");
+                }
+                $query = "INSERT INTO tbl_projects (projectName,description,startDate,pvePath,isRequest) VALUES ('$projectName','$projectDesc','$date','$fileName','$isRequest')";
                 $mysqli->query($query);
 
                 $query2 = "SELECT id FROM `tbl_projects` WHERE description='$projectDesc'";
@@ -93,9 +103,9 @@ class projects extends db{
 
                 $query3 = "INSERT INTO `tbl_users_projects` (FK_projects_id, FK_users_id) VALUES ('$projectId','$userId')";
                 $mysqli->query($query3);
-
+                header('Location: /admin/projecten');
             } else {
-                echo "Sorry, there was an error uploading your file.";
+                $error->setCustomError("Er is een probleem met het bestand dat u probeert te uploaden!","danger");
             }
         }
     }
