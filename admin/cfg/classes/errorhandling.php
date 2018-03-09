@@ -14,13 +14,18 @@
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>';
+			$_SESSION['errorCalled'] = '0';
 		}
 
 		public function getCustomError()
 		{
-			if (isset($_SESSION['customError'])) {
+			if (isset($_SESSION['customError']) && isset($_SESSION['errorCalled'])) {
 				echo $_SESSION['customError'];
+                $_SESSION['errorCalled'] = '1';
 			}
+			if ($_SESSION['errorCalled'] = '1') {
+			    unset($_SESSION['customError']);
+            }
 		}
 
 		public function unsetError()

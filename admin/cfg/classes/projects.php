@@ -47,7 +47,7 @@ class projects extends db{
             $uploadOk .= $this->checkImageSize();
 
             $this->uploadFile($uploadOk,$fileName,$target_file);
-
+            header('admin/projecten');
         }
     }
 

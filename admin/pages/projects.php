@@ -52,7 +52,7 @@ if (isset($data)) {
                 <div class="card-body">
                     <h5 class="card-title">Beschrijving:</h5>
                     <p class="card-text"><?= $item['description']?></p>
-                    <a href="<?= $item['pvePath']?>.pdf"><button type="button" class="btn btn-outline-info">Bekijk PvE</button></a>
+                    <a href="<?= $item['pvePath']?>.pdf" target="_blank"><button type="button" class="btn btn-outline-info">Bekijk PvE</button></a>
                     <a href="projectdetails?id=<?php echo htmlentities($item['id']); ?>" class="btn btn-outline-info">Details</a>
                 </div>
             </div>
