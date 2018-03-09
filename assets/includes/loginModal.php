@@ -15,13 +15,13 @@
            <div class="col-12">
              <div class="form-group">
                <label for="email">E-mail</label>
-               <input type="email" class="form-control myform" id="email" name="email" placeholder="Email"/>
+               <input type="email" required class="form-control myform" id="email" name="email" placeholder="Email"/>
              </div>
            </div>
            <div class="col-12">
              <div class="form-group">
                <label for="psw"> Password</label>
-               <input type="password" class="form-control myform" id="psw" name="password" placeholder="Wachtwoord">
+               <input type="password" required class="form-control myform" id="psw" name="password" placeholder="Wachtwoord">
              </div>
            </div>
          </div>

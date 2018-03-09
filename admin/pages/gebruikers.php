@@ -120,7 +120,7 @@ if (isset($_POST['btnDeleteRequest'])) {
 														<td><?php echo $item['email'] ?></td>
 														<td><?php echo $userlevel ?></td>
 														<td>
-                                                        <?php if ($item['status'] == 2) { ?>
+                                                        <?php if ($item['status'] == 3) { ?>
                                                             <form action="" method="post">
                                                             <input type="hidden" name="acceptID" value="<?php echo $item['id']; ?>" />
                                                             <button name="btnDeleteRequest" type="submit" class="btn btn-custom-trans float-right"><i class="material-icons"cx>remove_circle_outline</i></button>

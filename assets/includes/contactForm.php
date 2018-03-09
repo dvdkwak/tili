@@ -6,23 +6,23 @@
                 <form method="post">
                     <div class="form-group">
                         <label for="exampleFormControlInput1">Naam</label>
-                        <input type="text" name="name" class="form-control b-radius-none" id="exampleFormControlInput1">
+                        <input type="text" required name="name" class="form-control b-radius-none" id="exampleFormControlInput1">
                     </div>
                     <div class="form-group">
                         <label for="exampleFormControlInput1">Email address</label>
-                        <input type="email" name="contactmail" class="form-control b-radius-none" id="exampleFormControlInput1">
+                        <input type="email" required name="contactmail" class="form-control b-radius-none" id="exampleFormControlInput1">
                     </div>
                     <div class="form-group">
                         <label for="exampleFormControlInput1">Telefoon nummer</label>
-                        <input type="number" name="telephone" class="form-control b-radius-none" id="exampleFormControlInput1">
+                        <input type="number" required name="telephone" class="form-control b-radius-none" id="exampleFormControlInput1">
                     </div>
                     <div class="form-group">
                         <label for="exampleFormControlInput1">Onderwerp</label>
-                        <input type="text" name="subject" class="form-control b-radius-none" id="exampleFormControlInput1">
+                        <input type="text" required name="subject" class="form-control b-radius-none" id="exampleFormControlInput1">
                     </div>
                     <div class="form-group">
                         <label for="exampleFormControlTextarea1">Bericht</label>
-                        <textarea class="form-control b-radius-none" name="message" id="exampleFormControlTextarea1" rows="3"></textarea>
+                        <textarea  required class="form-control b-radius-none" name="message" id="exampleFormControlTextarea1" rows="3"></textarea>
                     </div>
                     <input type="submit" class="btn float-right bg-color-mint b-radius-none" name="submitBtn" value="Verzend">
                 </form>
