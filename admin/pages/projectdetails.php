@@ -85,9 +85,6 @@ $CPID->checkProjectId($id);
 	<h1>Projectdetails</h1>
 </div>
 <div class="main-container">
-	<form method="post">
-		<button type="submit" name="btnOfferte">Offerte</button>
-	</form>
 	<ul class="nav nav-tabs" role="tablist">
 		<li class="nav-item">
 		  <a class="nav-link active" data-toggle="tab" href="#log" role="tab">Logboek</a>

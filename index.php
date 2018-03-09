@@ -50,3 +50,5 @@
     <script src="<?php if(!empty($page['scriptLink'])){ echo $page['scriptLink']; } ?>"></script>
 </body>
 </html>
+<?php
+?>

@@ -5,7 +5,7 @@ $root = $_SERVER['DOCUMENT_ROOT'];
 
 define('hostname', 'localhost');
 define('username', 'root');
-define('password', 'usbw');
+define('password', '');
 define('database', 'tilit');
 
 

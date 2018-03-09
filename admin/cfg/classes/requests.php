@@ -8,8 +8,8 @@
         {
             $mysqli = $this->Connect();
 
-            //Getting all the projects where the isRequest is 0
-            $query = 'SELECT * FROM tbl_projects WHERE isRequest = "0"';
+            //Getting all the projects where the isRequest is 1
+            $query = 'SELECT * FROM tbl_projects WHERE isRequest = "1"';
             $result = $mysqli->query($query);
             while ($item = $result->fetch_assoc()) {
                 $data[] = $item;
