@@ -32,7 +32,7 @@
             if (isset($_POST['btnAcceptRequest'])) {
                 $projectId = $_POST['requestID'];
 
-                $query = 'UPDATE tbl_projects SET isRequest = "1" WHERE id =' . $projectId;
+                $query = 'UPDATE tbl_projects SET isRequest = "0" WHERE id =' . $projectId;
                 if ($mysqli->query($query)) {
                     $this->sendAcceptMail($projectId);
                     $error->setCustomError("Project succesfull accepted!", "success");
@@ -46,9 +46,9 @@
 
             $error = new errorHandling();
 
-            if (isset($_POST['btnDeleteRequest'])) {
+            if (isset($_POST['btnDeleteRequest2'])) {
                 $projectId = $_POST['requestID'];
-                $query = 'UPDATE tbl_projects SET isRequest = "2" WHERE id =' . $projectId;
+                $query = 'UPDATE tbl_projects SET isRequest = "3" WHERE id =' . $projectId;
 
                 if ($mysqli->query($query)) {
                     $this->sendDeclineMail($projectId);
@@ -68,7 +68,7 @@
         {
             $mysqli = $this->Connect();
 
-            $query = "SELECT c.email FROM tbl_projects AS a 
+            $query = "SELECT c.email FROM tbl_projects AS a
                       INNER JOIN tbl_users_projects AS b ON a.id = b.FK_projects_id
                       INNER JOIN tbl_users AS c ON b.FK_users_id = c.id
                       WHERE c.userlevel = 2 AND a.id = '$projectId'";
