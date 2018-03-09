@@ -9,6 +9,7 @@
         $user->login($_POST['email'], $_POST['password'], "/admin/projecten");
     }
     $error = new errorHandling();
+
     $user->register();
     $user->sendMail();
     $user->forgotPassword();
@@ -50,5 +51,3 @@
     <script src="<?php if(!empty($page['scriptLink'])){ echo $page['scriptLink']; } ?>"></script>
 </body>
 </html>
-<?php
-?>

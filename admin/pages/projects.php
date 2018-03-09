@@ -5,6 +5,7 @@
     $projects->requestProject();
     $projects->startTiming();
     $projects->stopTiming();
+    $projects->finishProject();
     /*$to_time = strtotime("09:30:00");
     $from_time = strtotime("16:30:00");
     echo round(abs($to_time - $from_time) / 60 / 60,2). " Uur";*/
@@ -54,6 +55,22 @@ if (isset($data)) {
                     <p class="card-text"><?= $item['description']?></p>
                     <a href="<?= $item['pvePath']?>.pdf" target="_blank"><button type="button" class="btn btn-outline-info">Bekijk PvE</button></a>
                     <a href="projectdetails?id=<?php echo htmlentities($item['id']); ?>" class="btn btn-outline-info">Details</a>
+                    <?php
+                    if ($userlvl == 0) {
+                        if ($item['status'] == '1') {
+                            ?><button type="submit" disabled="disabled" class="btn btn-outline-info float-right">Afgerond</button><?php
+                        } else {
+                            ?><form style="display: inline;" method="post">
+                                <input type="hidden" name="projectId" value="<?php echo $item['id']; ?>" />
+                                <button name="btnFinishProject" type="submit" class="btn btn-outline-info float-right">Afronden</button>
+                            </form><?php
+                        }
+                    } else {
+                        if ($item['status'] == '1') {
+                            ?><button type="submit" disabled="disabled" class="btn btn-outline-info float-right">Afgerond</button><?php
+                        }
+                    }
+                    ?>
                 </div>
             </div>
             

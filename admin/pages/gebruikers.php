@@ -53,7 +53,7 @@ if (isset($_POST['btnDeleteRequest'])) {
                                     foreach ($data AS $item) {
                                         switch ($item['userlevel']) {
                                             case '0':
-                                                $userlevel = 'Manager';
+                                                $userlevel = 'Projectleider';
                                                 break;
                                             case '1':
                                                 $userlevel = 'Medewerker';
@@ -103,7 +103,7 @@ if (isset($_POST['btnDeleteRequest'])) {
                                     foreach ($data2 AS $item) {
                                         switch ($item['userlevel']) {
                                             case '0':
-                                                $userlevel = 'Manager';
+                                                $userlevel = 'Projectleider';
                                                 break;
                                             case '1':
                                                 $userlevel = 'Medewerker';

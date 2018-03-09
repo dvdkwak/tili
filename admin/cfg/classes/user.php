@@ -52,7 +52,7 @@ class user extends db
 
                     $insertUser = $mysqli->query("INSERT INTO tbl_users (email, password, userlevel, tel, firstName, lastName, companyName, preposition, city, address, zipCode)
                                                       VALUES ('$email','$password','$userlvl','$telnumber','$firstname','$lastname','$companyname','$prepos','$city','$address','$zipcode')");
-
+                    $error->setCustomError('Uw account is successvol aangevraagt, u krijgt een mail wanneer uw account is geactiveert.', "success");
                     header('Location: index.php');
                 } else {
                     $error->setCustomError('Het email dat u heeft ingevoerd bestaat al.', "danger");
@@ -99,6 +99,7 @@ class user extends db
         } else {
           $this->status = False;
           $error->setCustomError("Uw account is nog niet geaccepteerd.", "danger");
+          header('Location: /');
         }
       }
 

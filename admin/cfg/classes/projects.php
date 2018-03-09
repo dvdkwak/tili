@@ -13,11 +13,11 @@ class projects extends db{
 
             if ($_SESSION['userlevel'] == 0) {
                 //When userlevel is 0 (Beheerder) show all the projects
-                $query = 'SELECT * FROM tbl_projects WHERE isRequest = "0"';
+                $query = 'SELECT * FROM tbl_projects WHERE isRequest = "0" ORDER BY status ASC';
             } else {
                 //When userlevel is 1 (Medewerker) show all the projects where the user is assigned to
                 $query = 'SELECT a.*, b.FK_projects_id, b.FK_users_id FROM tbl_projects AS a
-                INNER JOIN tbl_users_projects AS b ON a.id = b.FK_projects_id WHERE b.FK_users_id = '.$userId;
+                INNER JOIN tbl_users_projects AS b ON a.id = b.FK_projects_id WHERE b.FK_users_id = '.$userId.' ORDER BY status ASC';
             }
 
             $result = $mysqli->query($query);
@@ -48,6 +48,19 @@ class projects extends db{
 
             $this->uploadFile($uploadOk,$fileName,$target_file);
             header('admin/projecten');
+        }
+    }
+
+    public function finishProject()
+    {
+        $mysqli = $this->Connect();
+
+        if (isset($_POST['btnFinishProject'])) {
+            $projectId   = $_POST['projectId'];
+
+            $query = "UPDATE tbl_projects SET status = '1' WHERE id = '$projectId'";
+            $mysqli->query($query);
+            header("Location: /admin/projecten");
         }
     }
 
@@ -106,6 +119,7 @@ class projects extends db{
                 header('Location: /admin/projecten');
             } else {
                 $error->setCustomError("Er is een probleem met het bestand dat u probeert te uploaden!","danger");
+                header('Location: /admin/projecten');
             }
         }
     }
