@@ -452,6 +452,32 @@ class user extends db
       $query="DELETE FROM tbl_users WHERE id='$id'";
       $mysqli->query($query);
     }
+    public function deleteWorker()
+    {
+        $mysqli=$this->connect();
+        $error = new errorHandling();
+        if (isset($_POST['btnDeleteWorker'])) {
+            $workerId = $_POST['workerId'];
+            $query="DELETE FROM tbl_users WHERE id='$workerId'";
+            $mysqli->query($query);
+            $error->setCustomError('test','danger');
+        }
+    }
+
+    public function getUsersProject($id)
+    {
+        $mysqli = $this->connect();
+        $query = 'SELECT a.id,firstname,lastname,preposition,email FROM tbl_users AS a
+                  INNER JOIN tbl_users_projects AS b ON a.id = b.FK_users_id WHERE FK_projects_id ='.$id;
+        $result = $mysqli->query($query);
+        while ($items = $result->fetch_assoc()) {
+            $data[] = $items;
+        }
+        if (empty($data)) {
+        } else {
+            return $data;
+        }
+    }
 }
 
 ?>
