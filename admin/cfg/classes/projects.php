@@ -17,7 +17,7 @@ class projects extends db{
             } else {
                 //When userlevel is 1 (Medewerker) show all the projects where the user is assigned to
                 $query = 'SELECT a.*, b.FK_projects_id, b.FK_users_id FROM tbl_projects AS a
-                INNER JOIN tbl_users_projects AS b ON a.id = b.FK_projects_id WHERE b.FK_users_id = '.$userId.' ORDER BY status ASC';
+                INNER JOIN tbl_users_projects AS b ON a.id = b.FK_projects_id WHERE b.FK_users_id = '.$userId.' ORDER BY id DESC';
             }
 
             $result = $mysqli->query($query);
@@ -135,39 +135,39 @@ class projects extends db{
     public function getDate()
     {
         date_default_timezone_set('Europe/Amsterdam');
-        $date = date("Y-m-d");
+        $date = date("d-m-Y");
 
         return $date;
     }
 
     public function checkTimerButton()
     {
-        $userId = $_SESSION['id'];
-        if (isset($_COOKIE[$userId])) {
+        $klok = $_SESSION['klok'];
+        if ($klok == "1") {
             echo 'disabled';
         }
     }
 
     public function checkTimerOffButton()
     {
-        $userId = $_SESSION['id'];
-        if (!isset($_COOKIE[$userId])) {
+        $klok = $_SESSION['klok'];
+        if ($klok == "0") {
             echo 'disabled';
         }
     }
 
     public function isDisabledOn()
     {
-        $userId = $_SESSION['id'];
-        if (isset($_COOKIE[$userId])) {
+        $klok = $_SESSION['klok'];
+        if ($klok == "1") {
             echo 'disabled="disabled"';
         }
     }
 
     public function isDisabledOff()
     {
-        $userId = $_SESSION['id'];
-        if (!isset($_COOKIE[$userId])) {
+        $klok = $_SESSION['klok'];
+        if ($klok == "0") {
             echo 'disabled="disabled"';
         }
     }
@@ -180,13 +180,19 @@ class projects extends db{
         if (isset($_POST['btnStartTiming'])) {
             $projectId   = $_POST['projectId'];
             $userId      = $_SESSION['id'];
-            setcookie($userId,$userId,time() + 28800);
+            date_default_timezone_set('Europe/Amsterdam');
             $time = $this->getTime();
             $date = $this->getDate();
 
-            $query = "INSERT INTO tbl_timeregistration (date, startTime,endTime,FK_user_id,FK_project_id) VALUES ('$date','$time','0','$userId','$projectId');
-                      UPDATE tbl_users SET status = '1' WHERE id = '$userId'";
+            $query = "INSERT INTO tbl_timeregistration (date, startTime,endTime,FK_user_id,FK_project_id) VALUES ('$date','$time','0','$userId','$projectId')";
             $mysqli->multi_query($query);
+
+            $query2 = "UPDATE tbl_users SET status = '1' WHERE id = '$userId'";
+            $mysqli->multi_query($query2);
+
+            $query3 = "UPDATE tbl_users SET klok = '1' WHERE id = '$userId'";
+            $mysqli->multi_query($query3);
+            $_SESSION['klok'] = "1";
             header("Location: /admin/projecten");
         }
     }
@@ -197,13 +203,18 @@ class projects extends db{
 
         if (isset($_POST['btnStopTiming'])) {
             $userId = $_SESSION['id'];
-            setcookie($userId,"");
             $time = $this->getTime();
             $date = $this->getDate();
 
-            $query = "UPDATE tbl_timeregistration SET endTime = '$time' WHERE FK_user_id = '$userId' AND date = '$date' AND endTime = '0';
-                      UPDATE tbl_users SET status = '0' WHERE id = '$userId'";
+            $query = "UPDATE tbl_timeregistration SET endTime = '$time' WHERE FK_user_id = '$userId' AND date = '$date' AND endTime = '0'";
             $mysqli->multi_query($query);
+
+            $query2 = "UPDATE tbl_users SET status = '0' WHERE id = '$userId'";
+            $mysqli->multi_query($query2);
+
+            $query3 = "UPDATE tbl_users SET klok = '0' WHERE id = '$userId'";
+            $mysqli->multi_query($query3);
+            $_SESSION['klok'] = "0";
             header("Location: /admin/projecten");
         }
     }

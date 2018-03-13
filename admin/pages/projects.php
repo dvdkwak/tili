@@ -1,6 +1,4 @@
-<div class="main-container">
-
-	<?php
+<?php
 	$projects = new projects();
     $projects->requestProject();
     $projects->startTiming();
@@ -10,7 +8,7 @@
     $from_time = strtotime("16:30:00");
     echo round(abs($to_time - $from_time) / 60 / 60,2). " Uur";*/
 	?>
-
+<div class="main-container">
     <div class="container-fluid">
         <div id="medewerker" class="container">
             <div class="row">
@@ -24,31 +22,34 @@
                     </div>
                 </div>
             </div>
-
 <?php
 //Getting the project information and putting it in $data
 $data = $projects->getProjects();
-
 //Displaying all the results in foreach loop
 if (isset($data)) {
-    foreach ($data as $item):?>
+    foreach ($data as $item):
+			?>
 
             <div class="card my-4">
-                <div <?php if ($_SESSION['userlevel'] == 2) { ?>style="height:50px;"<?php } ?> class="card-header custom-header">
+                <div <?php if ($_SESSION['userlevel'] == 2) { ?>style="height:67px;"<?php } if($item['status'] == "1"){ echo "style='height:67px'";} ?> class="card-header custom-header">
                     <h5 style="color:white; margin-bottom: -25px;"><?= $item['projectName'] ?></h5>
                     <?php
                     $userlvl = $_SESSION['userlevel'];
-                    if ($userlvl == 1 || $userlvl == 0) {?>
-                    <form style="display: inline;" method="post">
-                        <input type="hidden" name="projectId" value="<?php echo $item['id']; ?>" />
-                        <button name="btnStopTiming" type="submit" <?php $projects->isDisabledOff(); ?> class="<?php $projects->checkTimerOffButton(); ?> snikker btn btn-dark btn-custom-trans float-right"><i class="material-icons">timer_off</i></button>
-                    </form>
 
-                    <form style="display: inline;" method="post">
-                        <input type="hidden" name="projectId" value="<?php echo $item['id']; ?>" />
-                        <button name="btnStartTiming" type="submit" <?php $projects->isDisabledOn(); ?> class="<?php $projects->checkTimerButton(); ?> snikker btn btn-dark btn-custom-trans float-right"><i class="material-icons">timer</i></button>
-                    </form>
-                    <?php } ?>
+                    if ($userlvl == 1 || $userlvl == 0) {
+											if ($item['status'] !== "1"){?>
+		                    <form style="display: inline;" method="post">
+		                        <input type="hidden" name="projectId" value="<?php echo $item['id']; ?>" />
+		                        <button name="btnStopTiming" type="submit" <?php $projects->isDisabledOff(); ?> class="<?php $projects->checkTimerOffButton(); ?> snikker btn btn-dark btn-custom-trans float-right"><i class="material-icons">timer_off</i></button>
+		                    </form>
+
+		                    <form style="display: inline;" method="post">
+		                        <input type="hidden" name="projectId" value="<?php echo $item['id']; ?>" />
+		                        <button name="btnStartTiming" type="submit" <?php $projects->isDisabledOn(); ?> class="<?php $projects->checkTimerButton(); ?> snikker btn btn-dark btn-custom-trans float-right"><i class="material-icons">timer</i></button>
+		                    </form>
+        			<?php }
+									} ?>
+
                 </div>
                 <div class="card-body">
                     <h5 class="card-title">Beschrijving:</h5>
@@ -73,7 +74,7 @@ if (isset($data)) {
                     ?>
                 </div>
             </div>
-            
+
 <?php endforeach; } else {
     echo 'Geen resultaten';
 } ?>
@@ -124,4 +125,5 @@ if (isset($data)) {
             </div>
         </div>
     </div>
+
 </div>
