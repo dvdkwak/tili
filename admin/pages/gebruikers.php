@@ -3,17 +3,17 @@ $users = new user();
 $data = $users->getUsers('*', 'NOT userlevel=2');
 $data2 = $users->getUsers('*', 'userlevel=2');
 $user->register();
+$user->deleteWorker();
 
 if (isset($_POST['btnAcceptRequest'])) {
-  $user = new user();
   $id= $_POST['acceptID'];
   $user->acceptNew($id);
 }
 if (isset($_POST['btnDeleteRequest'])) {
-  $user = new user();
   $id= $_POST['acceptID'];
   $user->denyNew($id);
 }
+
 ?>
 
 <div class="main-container">
@@ -46,6 +46,7 @@ if (isset($_POST['btnDeleteRequest'])) {
                                     <th scope="col">E-mailadres</th>
                                     <th scope="col">User level</th>
                                     <th scope="col">Status</th>
+                                    <th scope="col" style="width:50px">Verwijderen</th>
                                 </tr>
                                 </thead>
                                 <?php
@@ -70,17 +71,42 @@ if (isset($_POST['btnDeleteRequest'])) {
                                                 $status = '<div class="circleBase type2"></div>';
                                                 break;
                                         }
-                                        echo '<tbody>
-													<tr>
-														<td>' . $item['firstName'] . '</td>
-														<td>' . $item['preposition'] . '</td>
-														<td>' . $item['lastName'] . '</td>
-														<td>' . $item['email'] . '</td>
-														<td>' . $userlevel . '</td>
-														<td>' . $status . '</td>
-												    </tr>
-												</tbody>
-										';
+                                        ?>
+                                        <div class="modal fade" id="deleteConfirm<?php echo $item['id']; ?>" tabindex="-1" role="dialog" aria-labelledby="deleteConfirm<?php echo $item['id']; ?>" aria-hidden="true">
+                                            <div class="modal-dialog" role="document">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <h5 class="modal-title" id="exampleModalLabel">Medewerker verwijderen</h5>
+                                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                            <span aria-hidden="true">&times;</span>
+                                                        </button>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        Weet u heel zeker dat u deze medewerker wilt verwijderen?
+                                                    </div>
+                                                    <div class="modal-footer">
+
+                                                        <form action="" method="post">
+                                                            <input type="hidden" name="workerId" value="<?php echo $item['id']; ?>" />
+                                                            <button type="submit" name="btnDeleteWorker" class="btn btn-danger">Verwijderen</button>
+                                                        </form>
+
+                                                        <button type="button" class="btn btn-outline-danger" data-dismiss="modal">Sluiten</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <tbody>
+                                            <tr>
+                                                <td><?php echo $item['firstName']; ?></td>
+                                                <td><?php echo $item['preposition']; ?></td>
+                                                <td><?php echo $item['lastName']; ?></td>
+                                                <td><?php echo $item['email'];?></td>
+                                                <td><?php echo $userlevel; ?></td>
+                                                <td><?php echo $status; ?></td>
+                                                <td><button data-toggle="modal" data-target="#deleteConfirm<?php echo $item['id']; ?>" type="submit" class="snikker btn btn-outline-dark btn-custom-trans"><i class="material-icons">delete</i></button></td>
+                                            </tr>
+                                        </tbody><?php
                                     }
                                 }
                                 ?>
