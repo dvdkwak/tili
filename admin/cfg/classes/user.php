@@ -7,8 +7,9 @@ class user extends db
     public function login($username, $password, $location)
     {
         if (isset($_POST['loginBtn'])) {
-            $this->checkCredentials($username, $password, $location);
+            $this->checkCredentials($username, $password);
             $this->setSession();
+            $this->moveTo($location);
         }
     }
 
@@ -16,7 +17,7 @@ class user extends db
     public function register()
     {
         $mysqli = $this->Connect();
-        $error = new errorHandling();
+
         //if the register button is clicked proceed with adding the user
         if (isset($_POST['registerBtn'])) {
 
@@ -49,10 +50,10 @@ class user extends db
                         $prepos = "NULL";
                     }
 
-                    $mysqli->query("INSERT INTO tbl_users (email, password, userlevel, tel, firstName, lastName, companyName, preposition, city, address, zipCode, status)
-                                                      VALUES ('$email','$password','$userlvl','$telnumber','$firstname','$lastname','$companyname','$prepos','$city','$address','$zipcode', '3')");
+                    $insertUser = $mysqli->query("INSERT INTO tbl_users (email, password, userlevel, tel, firstName, lastName, companyName, preposition, city, address, zipCode)
+                                                      VALUES ('$email','$password','$userlvl','$telnumber','$firstname','$lastname','$companyname','$prepos','$city','$address','$zipcode')");
                     $error->setCustomError('Uw account is successvol aangevraagt, u krijgt een mail wanneer uw account is geactiveert.', "success");
-                    header('Location: /');
+                    header('Location: index.php');
                 } else {
                     $error->setCustomError('Het email dat u heeft ingevoerd bestaat al.', "danger");
                 }
@@ -63,7 +64,7 @@ class user extends db
     }
 
     //Let us just say here things get serious
-    public function checkCredentials($username, $password, $location)
+    public function checkCredentials($username, $password)
     {
         require_once 'errorhandling.php';
         $error = new errorHandling();
@@ -81,24 +82,25 @@ class user extends db
 					  WHERE email = "' . $username . '"
 						AND password = "' . $password . '"';
         $result = $mysqli->query($query);
-        if ($result->num_rows === 1) {
-            $item = $result->fetch_object();
+        $item = $result->fetch_object();
 
-            if ($item->status != "3") {
-                //if I get a result it means the credentials are right.
-                $this->status = True;
-                $this->userlevel = $item->userlevel;
-                $this->id = $item->id;
-                $this->firstName = $item->firstName;
-                $this->lastName = $item->lastName;
-                $this->moveTo($location);
-            } else {
-                $this->status = False;
-                $error->setCustomError("Uw account is nog niet geaccepteerd.", "danger");
-            }
+        if ($item->status !== "3") {
+          //if I get a result it means the credentials are right.
+          if ($result->num_rows === 1) {
+              $this->status = True;
+              $this->userlevel = $item->userlevel;
+              $this->id = $item->id;
+              $this->firstName = $item->firstName;
+              $this->lastName = $item->lastName;
+              $this->klok = $item->klok;
+          } else {
+              $this->status = False;
+              $error->setCustomError("Gebruikersnaam of wachtwoord komt niet overeen met een bestaand account.", "danger");
+          }
         } else {
-            $this->status = False;
-            $error->setCustomError("Gebruikersnaam of wachtwoord komt niet overeen met een bestaand account.", "danger");
+          $this->status = False;
+          $error->setCustomError("Uw account is nog niet geaccepteerd.", "danger");
+          header('Location: /');
         }
       }
 
@@ -111,6 +113,7 @@ class user extends db
             $_SESSION['status'] = True;
             $_SESSION['firstName'] = $this->firstName;
             $_SESSION['lastName'] = $this->lastName;
+            $_SESSION['klok'] = $this->klok;
         } else {
             $_SESSION['status'] = False;
         }
@@ -165,13 +168,16 @@ class user extends db
     }
 
 
-    public function removeMemberProject()
+    public function removeMember_Project()
     {
-        $mysqli = $this->connect();
 
-        $selectProjectID = $_POST['inputValueRemove'];
-        $query = 'DELETE FROM tbl_users_projects WHERE FK_users_id='.$selectProjectID;
-        $mysqli->query($query);
+        if (isset($_POST['btnProjectRemoveMember'])) {
+            $mysqli = $this->connect();
+
+            $selectProjectID = $_POST['selectedUserIDR'];
+            $query = 'DELETE FROM tbl_users_projects WHERE id=' . $selectProjectID . '';
+            $mysqli->query($query);
+        }
 
     }
 
@@ -421,22 +427,17 @@ class user extends db
 
     public function addMember($id, $email) {
       $mysqli = $this->connect();
-      $error = new errorHandling();
 
       $query = "SELECT id, userlevel FROM tbl_users WHERE email='$email'";
       $result = $mysqli->query($query);
-      if ($result->num_rows != 0) {
-          $item = $result->fetch_object();
-          $uID = $item->id;
-          $lvl = $item->userlevel;
+      $item = $result->fetch_object();
 
-          if ($lvl == "1") {
-              $query2 = "INSERT INTO `tbl_users_projects` (FK_projects_id, FK_users_id) VALUES ('$id','$uID')";
-              $mysqli->query($query2);
-              $error->setCustomError('De gebruiker is succesvol aan het project gekoppeld!', 'success');
-          }
-      } else {
-          $error->setCustomError('Er bestaat geen gebruiker met die email!', 'warning');
+      $uID = $item->id;
+      $lvl = $item->userlevel;
+
+      if ($lvl == "1") {
+        $query2 = "INSERT INTO `tbl_users_projects` (FK_projects_id, FK_users_id) VALUES ('$id','$uID')";
+        $mysqli->query($query2);
       }
     }
 
@@ -451,34 +452,6 @@ class user extends db
       $query="DELETE FROM tbl_users WHERE id='$id'";
       $mysqli->query($query);
     }
-
-    public function deleteWorker()
-    {
-        $mysqli=$this->connect();
-        $error = new errorHandling();
-        if (isset($_POST['btnDeleteWorker'])) {
-            $workerId = $_POST['workerId'];
-            $query="DELETE FROM tbl_users WHERE id='$workerId'";
-            $mysqli->query($query);
-            $error->setCustomError('test','danger');
-        }
-    }
-
-    public function getUsersProject($id)
-    {
-        $mysqli = $this->connect();
-        $query = 'SELECT a.id,firstname,lastname,preposition,email FROM tbl_users AS a
-                  INNER JOIN tbl_users_projects AS b ON a.id = b.FK_users_id WHERE FK_projects_id ='.$id;
-        $result = $mysqli->query($query);
-        while ($items = $result->fetch_assoc()) {
-            $data[] = $items;
-        }
-        if (empty($data)) {
-        } else {
-            return $data;
-        }
-    }
-
 }
 
 ?>
