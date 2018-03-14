@@ -67,6 +67,12 @@
             }
         }
 
+        public function refreshPage()
+        {
+            $url =  "http://" . $_SERVER['SERVER_NAME'] . $_SERVER['REQUEST_URI'];
+            header("Location: ".$url);
+        }
+
         public function getUserMail($projectId)
         {
             $mysqli = $this->Connect();

@@ -210,6 +210,12 @@ class user extends db
         }
     }
 
+    public function refreshPage()
+    {
+        $url =  "http://" . $_SERVER['SERVER_NAME'] . $_SERVER['REQUEST_URI'];
+        header("Location: ".$url);
+    }
+
     public function verLog($id, $fname, $lname, $message)
     {
         $mysqli = $this->connect();
