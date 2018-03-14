@@ -214,7 +214,7 @@ class user extends db
     {
         $mysqli = $this->connect();
         $query = '
-            SELECT A.*, B.* FROM tbl_projects_log AS A INNER JOIN tbl_log AS B ON A.FK_log_id = B.id WHERE A.FK_project_id = ' . $id . ' ORDER BY B.id ASC';
+            SELECT A.*, B.* FROM tbl_projects_log AS A INNER JOIN tbl_log AS B ON A.FK_log_id = B.id WHERE A.FK_project_id = ' . $id . ' ORDER BY B.id DESC';
         $result = $mysqli->query($query);
         while ($items = $result->fetch_assoc()) {
             $data[] = $items;
