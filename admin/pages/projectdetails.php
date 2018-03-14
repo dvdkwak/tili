@@ -25,7 +25,7 @@ if (isset($_POST['btnToevoegenMedewerker'])) {
 }
 
 if (isset($_POST['btnProjectRemoveMember'])) {
-    $user->removeMemberProject();
+    $user->removeMemberProject($id);
 }
 
 if (isset($_POST['btnOfferte'])) {
@@ -191,7 +191,7 @@ if (isset($data3))  {
                                     Weet u zeker dat u <?php echo $item['firstname'] . ' ' . $item['preposition'] . ' ' . $item['lastname']; ?> van dit project wilt verwijderen ?
                                     <div class="modalButtons">
                                         <form action="" method="post">
-                                            <input type="hidden" name="inputValueRemove" class='form-control' value="<?php echo $item['id'];?>" />
+                                            <input type="hidden" name="selectedUserIDR" class='form-control' value="<?php echo $item['id'];?>" />
                                             <button type="submit" name="btnProjectRemoveMember" class="btn btn-outline-danger">Verwijderen</button>
                                             <button type="button" class="btn btn-outline-secondary" data-dismiss="modal">Sluiten</button>
                                         </form>

@@ -38,13 +38,14 @@ class projects extends db{
     {
         if (isset($_POST['saveProject'])) {
 
-            $target_file = basename( $_FILES["fileToUpload"]["name"]);
+            $fileSize = $_FILES["fileToUpload"]["size"];
+            $target_file = basename($_FILES["fileToUpload"]["name"]);
             $fileName = "PvE/". md5(date("Y-m-d h:i:s"));
             $imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
 
             $uploadOk = 1;
             $uploadOk .= $this->checkImageType($imageFileType);
-            $uploadOk .= $this->checkImageSize();
+            $uploadOk .= $this->checkImageSize($fileSize);
 
             $this->uploadFile($uploadOk,$fileName,$target_file);
             header('admin/projecten');
@@ -75,10 +76,10 @@ class projects extends db{
         }
     }
 
-    public function checkImageSize()
+    public function checkImageSize($fileSize)
     {
         $error = new errorHandling();
-        if ($_FILES["fileToUpload"]["size"] > 500000) {
+        if ($fileSize > 500000) {
             $error->setCustomError("Het bestand is te groot!","danger");
             return 0;
         } else {
@@ -86,7 +87,7 @@ class projects extends db{
         }
     }
 
-    public function uploadFile($uploadOk, $fileName, $target_file)
+    public function uploadFile($uploadOk, $fileName)
     {
         $mysqli = $this->Connect();
         $error = new errorHandling();
@@ -107,7 +108,7 @@ class projects extends db{
                     $isRequest = 1;
                     $error->setCustomError("Uw project is successvol aangevraagt","success");
                 }
-                $query = "INSERT INTO tbl_projects (projectName,description,startDate,pvePath,isRequest) VALUES ('$projectName','$projectDesc','$date','$fileName','$isRequest')";
+                $query = "INSERT INTO tbl_projects (projectName,description,startDate,pvePath,isRequest,status) VALUES ('$projectName','$projectDesc','$date','$fileName','$isRequest','0')";
                 $mysqli->query($query);
 
                 $query2 = "SELECT id FROM `tbl_projects` WHERE description='$projectDesc'";

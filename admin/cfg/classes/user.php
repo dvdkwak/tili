@@ -53,7 +53,7 @@ class user extends db
 
                     if ($_SESSION['userlevel'] != "0") {
                       $insertUser = $mysqli->query("INSERT INTO tbl_users (email, password, userlevel, tel, firstName, lastName, companyName, preposition, city, address, zipCode, status)
-                                                        VALUES ('$email','$password','$userlvl','$telnumber','$firstname','$lastname','$companyname','$prepos','$city','$address','$zipcode', '')");
+                                                        VALUES ('$email','$password','$userlvl','$telnumber','$firstname','$lastname','$companyname','$prepos','$city','$address','$zipcode', '3')");
                       $error->setCustomError('Uw account is successvol aangevraagt, u krijgt een mail wanneer uw account is geactiveert.', "success");
                       header('Location: /');
                     }
@@ -176,15 +176,22 @@ class user extends db
     }
 
 
-    public function removeMember_Project()
+    public function removeMemberProject($id)
     {
+        $mysqli = $this->connect();
+        $error = new errorHandling();
 
         if (isset($_POST['btnProjectRemoveMember'])) {
-            $mysqli = $this->connect();
-
             $selectProjectID = $_POST['selectedUserIDR'];
-            $query = 'DELETE FROM tbl_users_projects WHERE id=' . $selectProjectID . '';
-            $mysqli->query($query);
+            $query = 'DELETE FROM tbl_users_projects WHERE FK_users_id =' . $selectProjectID . ' AND FK_projects_id ='.$id;
+            if ($mysqli->query($query)) {
+                $error->setCustomError('Deze gebruiker is succesvol van dit project verwijdert', 'success');
+                $this->refreshPage();
+            } else {
+                $error->setCustomError('Er is een probleem opgetreden probeer het opnieuw!', 'danger');
+                $this->refreshPage();
+            }
+
         }
 
     }
@@ -454,6 +461,8 @@ class user extends db
         if ($lvl == "1") {
             $query2 = "INSERT INTO `tbl_users_projects` (FK_projects_id, FK_users_id) VALUES ('$id','$uID')";
             $mysqli->query($query2);
+            $error->setCustomError('Deze gebruiker is succesvol and dit project gekoppeld', 'success');
+            $this->refreshPage();
         } else {
             $error->setCustomError('Deze gebruiker is helaas geen medewerker', 'danger');
             $this->refreshPage();
@@ -466,7 +475,7 @@ class user extends db
         $query="UPDATE tbl_users SET status='0' WHERE id='$id'";
         $mysqli->query($query);
         $error->setCustomError('Klant succesvol geaccepteerd!', 'success');
-        header ("location: /admin/gebruikers");
+        $this->refreshPage();
     }
 
     public function denyNew($id){
@@ -475,7 +484,7 @@ class user extends db
         $query="DELETE FROM tbl_users WHERE id='$id'";
         $mysqli->query($query);
         $error->setCustomError('Klant succesvol geweigerd!', 'success');
-        header ("location: /admin/gebruikers");
+        $this->refreshPage();
     }
     public function deleteWorker()
     {
