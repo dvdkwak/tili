@@ -227,7 +227,7 @@ class user extends db
 
     public function refreshPage()
     {
-        $url =  "http://" . $_SERVER['SERVER_NAME'] . $_SERVER['REQUEST_URI'];
+        $url =  "https://" . $_SERVER['SERVER_NAME'] . $_SERVER['REQUEST_URI'];
         header("Location: ".$url);
     }
 
