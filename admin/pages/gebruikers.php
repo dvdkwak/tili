@@ -190,13 +190,13 @@ if (isset($_POST['btnDeleteRequest'])) {
                                 <div class="row">
                                     <div class="col-xs-6 col-sm-6 col-md-6">
                                         <div class="form-group">
-                                            <input type="text" name="first_name" id="first_name"
+                                            <input type="text" name="firstname" id="firstname"
                                                    class="form-control input-sm" placeholder="Voornaam">
                                         </div>
                                     </div>
                                     <div class="col-xs-6 col-sm-6 col-md-6">
                                         <div class="form-group">
-                                            <input type="text" name="tussenvoegsel" id="tussenvoegsel"
+                                            <input type="text" name="firstname" id="firstname"
                                                    class="form-control input-sm" placeholder="Tussenvoegsel">
                                         </div>
                                     </div>
@@ -204,16 +204,22 @@ if (isset($_POST['btnDeleteRequest'])) {
                                 <div class="row">
                                     <div class="col-12">
                                         <div class="form-group">
-                                            <input type="text" name="last_name" id="last_name"
+                                            <input type="text" name="lastname" id="lastname"
                                                    class="form-control input-sm" placeholder="Achternaam">
                                         </div>
                                     </div>
                                 </div>
                                 <div class="row">
-                                    <div class="col-12">
+                                    <div class="col-6">
                                         <div class="form-group">
                                             <input type="email" name="email" id="email" class="form-control input-sm"
                                                    placeholder="Email Adres">
+                                        </div>
+                                    </div>
+                                    <div class="col-6">
+                                        <div class="form-group">
+                                            <input type="number" name="telnumber" id="telnumber" class="form-control input-sm"
+                                                   placeholder="Telefoonnummer">
                                         </div>
                                     </div>
                                 </div>
@@ -226,8 +232,8 @@ if (isset($_POST['btnDeleteRequest'])) {
                                     </div>
                                     <div class="col-xs-6 col-md-6">
                                         <div class="form-group">
-                                            <input type="password" name="password_confirmation"
-                                                   id="password_confirmation" class="form-control input-sm"
+                                            <input type="password" name="repeatpass"
+                                                   id="repeatpass" class="form-control input-sm"
                                                    placeholder="Herhaal wachtwoord">
                                         </div>
                                     </div>
@@ -235,18 +241,20 @@ if (isset($_POST['btnDeleteRequest'])) {
                                 <div class="row">
                                     <div class="col-12">
                                         <div class="form-group">
-                                            <label for="exampleSelect1"></label>
-                                            <select class="form-control" id="exampleSelect1">
+                                            <label for="userlvl"></label>
+                                            <select class="form-control" id="userlvl">
                                                 <option value="">Userlevel</option>
                                                 <option value="0">Admin</option>
                                                 <option value="1">Medewerker</option>
-                                                <option value="2">Klant</option>
                                             </select>
                                         </div>
                                     </div>
                                 </div>
-                                <input type="hidden" name="">
-                                <input type="submit" value="Register" class="btn btn-info btn-block">
+                                <input type="hidden" value="Emmeloord" name="city">
+                                <input type="hidden" value="Espelerlaan 74" name="address">
+                                <input type="hidden" value="TiliT" name="cname">
+                                <input type="hidden" value="8302 DC" name="zipcode">
+                                <input type="submit" name="registerBtn" value="Register" class="btn btn-info btn-block">
                             </form>
                         </div>
                         <div class="col-12 col-md-6">
