@@ -51,10 +51,17 @@ class user extends db
                         $prepos = "NULL";
                     }
 
-                    $mysqli->query("INSERT INTO tbl_users (email, password, userlevel, tel, firstName, lastName, companyName, preposition, city, address, zipCode)
-                                                      VALUES ('$email','$password','$userlvl','$telnumber','$firstname','$lastname','$companyname','$prepos','$city','$address','$zipcode')");
-                    $error->setCustomError('Uw account is successvol aangevraagt, u krijgt een mail wanneer uw account is geactiveert.', "success");
-                    $this->refreshPage();
+                    if ($_SESSION['userlevel'] != "0") {
+                      $insertUser = $mysqli->query("INSERT INTO tbl_users (email, password, userlevel, tel, firstName, lastName, companyName, preposition, city, address, zipCode, status)
+                                                        VALUES ('$email','$password','$userlvl','$telnumber','$firstname','$lastname','$companyname','$prepos','$city','$address','$zipcode', '')");
+                      $error->setCustomError('Uw account is successvol aangevraagt, u krijgt een mail wanneer uw account is geactiveert.', "success");
+                      header('Location: /');
+                    }
+                    if ($_SESSION['userlevel'] == "0") {
+                      $insertUser = $mysqli->query("INSERT INTO tbl_users (email, password, userlevel, tel, firstName, lastName, companyName, preposition, city, address, zipCode, status)
+                                                        VALUES ('$email','$password','$userlvl','$telnumber','$firstname','$lastname','$companyname','$prepos','$city','$address','$zipcode','0')");
+                      $this->refreshPage();
+                    }
                 } else {
                     $error->setCustomError('Het email dat u heeft ingevoerd bestaat al.', "danger");
                 }
