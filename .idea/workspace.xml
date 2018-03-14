@@ -49,10 +49,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="requests.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="requests.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/admin/cfg/classes/requests.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="382">
+            <state relative-caret-position="-698">
               <caret line="57" column="39" lean-forward="true" selection-start-line="0" selection-start-column="0" selection-end-line="147" selection-end-column="0" />
               <folding>
                 <marker date="1521017243505" expanded="true" signature="284:332" ph="SELECT * FRO... tbl_projects" />
@@ -71,44 +71,44 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="user.php" pinned="false" current-in-tab="false">
+      <file leaf-file-name="user.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/admin/cfg/classes/user.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="320">
-              <caret line="463" column="0" lean-forward="true" selection-start-line="463" selection-start-column="0" selection-end-line="463" selection-end-column="0" />
+            <state relative-caret-position="218">
+              <caret line="15" column="31" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="502" selection-end-column="0" />
               <folding>
-                <marker date="1521017698698" expanded="true" signature="1837:1887" ph="SELECT email... tbl_users" />
-                <marker date="1521017698698" expanded="true" signature="2144:2458" ph="INSERT INTO tbl_users... " />
-                <marker date="1521017698698" expanded="true" signature="3466:3571" ph="SELECT * FRO... tbl_users" />
-                <marker date="1521017698698" expanded="true" signature="6295:6360" ph="DELETE FROM tbl_users_projects... " />
-                <marker date="1521017698698" expanded="true" signature="6908:7050" ph="SELECT A.*, tbl_projects_log" />
-                <marker date="1521017698698" expanded="true" signature="7644:7731" ph="INSERT INTO tbl_log... " />
-                <marker date="1521017698698" expanded="true" signature="7786:7835" ph="SELECT id FR... tbl_log" />
-                <marker date="1521017698698" expanded="true" signature="7970:8049" ph="INSERT INTO tbl_projects_log... " />
-                <marker date="1521017698698" expanded="true" signature="8204:8329" ph="SELECT A.*, tbl_timeregistration" />
-                <marker date="1521017698698" expanded="true" signature="8938:9785" ph="..." />
-                <marker date="1521017698698" expanded="true" signature="8969:9001" ph="..." />
-                <marker date="1521017698698" expanded="true" signature="9032:9753" ph="..." />
-                <marker date="1521017698698" expanded="true" signature="9188:9636" ph="..." />
-                <marker date="1521017698698" expanded="true" signature="9221:9320" ph="..." />
-                <marker date="1521017698698" expanded="true" signature="9353:9463" ph="..." />
-                <marker date="1521017698698" expanded="true" signature="9496:9603" ph="..." />
-                <marker date="1521017698698" expanded="true" signature="10787:10846" ph="SELECT recov... tbl_users" />
-                <marker date="1521017698698" expanded="true" signature="11146:11216" ph="UPDATE tbl_users... " />
-                <marker date="1521017698698" expanded="true" signature="11535:12298" ph="..." />
-                <marker date="1521017698698" expanded="true" signature="11574:11614" ph="..." />
-                <marker date="1521017698698" expanded="true" signature="11653:12262" ph="..." />
-                <marker date="1521017698698" expanded="true" signature="13510:13569" ph="SELECT id FR... tbl_users" />
-                <marker date="1521017698698" expanded="true" signature="13704:13782" ph="UPDATE tbl_users... " />
-                <marker date="1521017698698" expanded="true" signature="13829:13904" ph="UPDATE tbl_users... " />
-                <marker date="1521017698698" expanded="true" signature="14371:14681" ph="SELECT A.*, tbl_projects" />
-                <marker date="1521017698698" expanded="true" signature="15223:15292" ph="SELECT FK_us... tbl_users_projects" />
-                <marker date="1521017698698" expanded="true" signature="15623:15679" ph="SELECT id, u... tbl_users" />
-                <marker date="1521017698698" expanded="true" signature="15862:15946" ph="INSERT INTO `tbl_users_projects`... " />
-                <marker date="1521017698698" expanded="true" signature="16252:16298" ph="UPDATE tbl_users... " />
-                <marker date="1521017698698" expanded="true" signature="16574:16610" ph="DELETE FROM tbl_users... " />
-                <marker date="1521017698698" expanded="true" signature="16993:17035" ph="DELETE FROM tbl_users... " />
-                <marker date="1521017698698" expanded="true" signature="17323:17491" ph="SELECT a.id,... tbl_users" />
+                <marker date="1521018080214" expanded="true" signature="1837:1887" ph="SELECT email... tbl_users" />
+                <marker date="1521018080214" expanded="true" signature="2144:2458" ph="INSERT INTO tbl_users... " />
+                <marker date="1521018080214" expanded="true" signature="3468:3573" ph="SELECT * FRO... tbl_users" />
+                <marker date="1521018080214" expanded="true" signature="6323:6388" ph="DELETE FROM tbl_users_projects... " />
+                <marker date="1521018080214" expanded="true" signature="6936:7078" ph="SELECT A.*, tbl_projects_log" />
+                <marker date="1521018080214" expanded="true" signature="7672:7759" ph="INSERT INTO tbl_log... " />
+                <marker date="1521018080214" expanded="true" signature="7814:7863" ph="SELECT id FR... tbl_log" />
+                <marker date="1521018080214" expanded="true" signature="7998:8077" ph="INSERT INTO tbl_projects_log... " />
+                <marker date="1521018080214" expanded="true" signature="8232:8357" ph="SELECT A.*, tbl_timeregistration" />
+                <marker date="1521018080214" expanded="true" signature="8966:9813" ph="..." />
+                <marker date="1521018080214" expanded="true" signature="8997:9029" ph="..." />
+                <marker date="1521018080214" expanded="true" signature="9060:9781" ph="..." />
+                <marker date="1521018080214" expanded="true" signature="9216:9664" ph="..." />
+                <marker date="1521018080214" expanded="true" signature="9249:9348" ph="..." />
+                <marker date="1521018080214" expanded="true" signature="9381:9491" ph="..." />
+                <marker date="1521018080214" expanded="true" signature="9524:9631" ph="..." />
+                <marker date="1521018080214" expanded="true" signature="10815:10874" ph="SELECT recov... tbl_users" />
+                <marker date="1521018080214" expanded="true" signature="11174:11244" ph="UPDATE tbl_users... " />
+                <marker date="1521018080214" expanded="true" signature="11563:12326" ph="..." />
+                <marker date="1521018080214" expanded="true" signature="11602:11642" ph="..." />
+                <marker date="1521018080214" expanded="true" signature="11681:12290" ph="..." />
+                <marker date="1521018080214" expanded="true" signature="13538:13597" ph="SELECT id FR... tbl_users" />
+                <marker date="1521018080214" expanded="true" signature="13732:13810" ph="UPDATE tbl_users... " />
+                <marker date="1521018080214" expanded="true" signature="13857:13932" ph="UPDATE tbl_users... " />
+                <marker date="1521018080214" expanded="true" signature="14399:14709" ph="SELECT A.*, tbl_projects" />
+                <marker date="1521018080214" expanded="true" signature="15263:15332" ph="SELECT FK_us... tbl_users_projects" />
+                <marker date="1521018080214" expanded="true" signature="15693:15749" ph="SELECT id, u... tbl_users" />
+                <marker date="1521018080214" expanded="true" signature="15946:16030" ph="INSERT INTO `tbl_users_projects`... " />
+                <marker date="1521018080214" expanded="true" signature="16352:16398" ph="UPDATE tbl_users... " />
+                <marker date="1521018080214" expanded="true" signature="16686:16722" ph="DELETE FROM tbl_users... " />
+                <marker date="1521018080214" expanded="true" signature="17109:17151" ph="DELETE FROM tbl_users... " />
+                <marker date="1521018080214" expanded="true" signature="17439:17607" ph="SELECT a.id,... tbl_users" />
               </folding>
             </state>
           </provider>
@@ -388,12 +388,12 @@
       <workItem from="1520581550043" duration="18175000" />
       <workItem from="1520842244835" duration="67000" />
       <workItem from="1520843364038" duration="13690000" />
-      <workItem from="1520928000600" duration="14546000" />
+      <workItem from="1520928000600" duration="14713000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="224199000" />
+    <option name="totallyTimeSpent" value="224366000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="1912" y="-8" width="1456" height="876" extended-state="6" />
@@ -621,8 +621,8 @@
           <caret line="57" column="31" lean-forward="false" selection-start-line="57" selection-start-column="31" selection-end-line="57" selection-end-column="31" />
           <folding>
             <element signature="e#4322#4329#1#HTML" expanded="false" />
-            <marker date="1521014962442" expanded="true" signature="6258:6459" ph="..." />
-            <marker date="1521014962442" expanded="true" signature="6259:6455" ph="..." />
+            <marker date="1521017936357" expanded="true" signature="6258:6459" ph="..." />
+            <marker date="1521017936357" expanded="true" signature="6259:6455" ph="..." />
           </folding>
         </state>
       </provider>
@@ -651,50 +651,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/admin/cfg/classes/user.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="320">
-          <caret line="463" column="0" lean-forward="true" selection-start-line="463" selection-start-column="0" selection-end-line="463" selection-end-column="0" />
-          <folding>
-            <marker date="1521017698698" expanded="true" signature="1837:1887" ph="SELECT email... tbl_users" />
-            <marker date="1521017698698" expanded="true" signature="2144:2458" ph="INSERT INTO tbl_users... " />
-            <marker date="1521017698698" expanded="true" signature="3466:3571" ph="SELECT * FRO... tbl_users" />
-            <marker date="1521017698698" expanded="true" signature="6295:6360" ph="DELETE FROM tbl_users_projects... " />
-            <marker date="1521017698698" expanded="true" signature="6908:7050" ph="SELECT A.*, tbl_projects_log" />
-            <marker date="1521017698698" expanded="true" signature="7644:7731" ph="INSERT INTO tbl_log... " />
-            <marker date="1521017698698" expanded="true" signature="7786:7835" ph="SELECT id FR... tbl_log" />
-            <marker date="1521017698698" expanded="true" signature="7970:8049" ph="INSERT INTO tbl_projects_log... " />
-            <marker date="1521017698698" expanded="true" signature="8204:8329" ph="SELECT A.*, tbl_timeregistration" />
-            <marker date="1521017698698" expanded="true" signature="8938:9785" ph="..." />
-            <marker date="1521017698698" expanded="true" signature="8969:9001" ph="..." />
-            <marker date="1521017698698" expanded="true" signature="9032:9753" ph="..." />
-            <marker date="1521017698698" expanded="true" signature="9188:9636" ph="..." />
-            <marker date="1521017698698" expanded="true" signature="9221:9320" ph="..." />
-            <marker date="1521017698698" expanded="true" signature="9353:9463" ph="..." />
-            <marker date="1521017698698" expanded="true" signature="9496:9603" ph="..." />
-            <marker date="1521017698698" expanded="true" signature="10787:10846" ph="SELECT recov... tbl_users" />
-            <marker date="1521017698698" expanded="true" signature="11146:11216" ph="UPDATE tbl_users... " />
-            <marker date="1521017698698" expanded="true" signature="11535:12298" ph="..." />
-            <marker date="1521017698698" expanded="true" signature="11574:11614" ph="..." />
-            <marker date="1521017698698" expanded="true" signature="11653:12262" ph="..." />
-            <marker date="1521017698698" expanded="true" signature="13510:13569" ph="SELECT id FR... tbl_users" />
-            <marker date="1521017698698" expanded="true" signature="13704:13782" ph="UPDATE tbl_users... " />
-            <marker date="1521017698698" expanded="true" signature="13829:13904" ph="UPDATE tbl_users... " />
-            <marker date="1521017698698" expanded="true" signature="14371:14681" ph="SELECT A.*, tbl_projects" />
-            <marker date="1521017698698" expanded="true" signature="15223:15292" ph="SELECT FK_us... tbl_users_projects" />
-            <marker date="1521017698698" expanded="true" signature="15623:15679" ph="SELECT id, u... tbl_users" />
-            <marker date="1521017698698" expanded="true" signature="15862:15946" ph="INSERT INTO `tbl_users_projects`... " />
-            <marker date="1521017698698" expanded="true" signature="16252:16298" ph="UPDATE tbl_users... " />
-            <marker date="1521017698698" expanded="true" signature="16574:16610" ph="DELETE FROM tbl_users... " />
-            <marker date="1521017698698" expanded="true" signature="16993:17035" ph="DELETE FROM tbl_users... " />
-            <marker date="1521017698698" expanded="true" signature="17323:17491" ph="SELECT a.id,... tbl_users" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/admin/cfg/classes/requests.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="382">
+        <state relative-caret-position="-698">
           <caret line="57" column="39" lean-forward="true" selection-start-line="0" selection-start-column="0" selection-end-line="147" selection-end-column="0" />
           <folding>
             <marker date="1521017243505" expanded="true" signature="284:332" ph="SELECT * FRO... tbl_projects" />
@@ -708,6 +667,47 @@
             <marker date="1521017243505" expanded="true" signature="4165:4616" ph="..." />
             <marker date="1521017243505" expanded="true" signature="4196:4228" ph="..." />
             <marker date="1521017243505" expanded="true" signature="4259:4584" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/admin/cfg/classes/user.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="218">
+          <caret line="15" column="31" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="502" selection-end-column="0" />
+          <folding>
+            <marker date="1521018080214" expanded="true" signature="1837:1887" ph="SELECT email... tbl_users" />
+            <marker date="1521018080214" expanded="true" signature="2144:2458" ph="INSERT INTO tbl_users... " />
+            <marker date="1521018080214" expanded="true" signature="3468:3573" ph="SELECT * FRO... tbl_users" />
+            <marker date="1521018080214" expanded="true" signature="6323:6388" ph="DELETE FROM tbl_users_projects... " />
+            <marker date="1521018080214" expanded="true" signature="6936:7078" ph="SELECT A.*, tbl_projects_log" />
+            <marker date="1521018080214" expanded="true" signature="7672:7759" ph="INSERT INTO tbl_log... " />
+            <marker date="1521018080214" expanded="true" signature="7814:7863" ph="SELECT id FR... tbl_log" />
+            <marker date="1521018080214" expanded="true" signature="7998:8077" ph="INSERT INTO tbl_projects_log... " />
+            <marker date="1521018080214" expanded="true" signature="8232:8357" ph="SELECT A.*, tbl_timeregistration" />
+            <marker date="1521018080214" expanded="true" signature="8966:9813" ph="..." />
+            <marker date="1521018080214" expanded="true" signature="8997:9029" ph="..." />
+            <marker date="1521018080214" expanded="true" signature="9060:9781" ph="..." />
+            <marker date="1521018080214" expanded="true" signature="9216:9664" ph="..." />
+            <marker date="1521018080214" expanded="true" signature="9249:9348" ph="..." />
+            <marker date="1521018080214" expanded="true" signature="9381:9491" ph="..." />
+            <marker date="1521018080214" expanded="true" signature="9524:9631" ph="..." />
+            <marker date="1521018080214" expanded="true" signature="10815:10874" ph="SELECT recov... tbl_users" />
+            <marker date="1521018080214" expanded="true" signature="11174:11244" ph="UPDATE tbl_users... " />
+            <marker date="1521018080214" expanded="true" signature="11563:12326" ph="..." />
+            <marker date="1521018080214" expanded="true" signature="11602:11642" ph="..." />
+            <marker date="1521018080214" expanded="true" signature="11681:12290" ph="..." />
+            <marker date="1521018080214" expanded="true" signature="13538:13597" ph="SELECT id FR... tbl_users" />
+            <marker date="1521018080214" expanded="true" signature="13732:13810" ph="UPDATE tbl_users... " />
+            <marker date="1521018080214" expanded="true" signature="13857:13932" ph="UPDATE tbl_users... " />
+            <marker date="1521018080214" expanded="true" signature="14399:14709" ph="SELECT A.*, tbl_projects" />
+            <marker date="1521018080214" expanded="true" signature="15263:15332" ph="SELECT FK_us... tbl_users_projects" />
+            <marker date="1521018080214" expanded="true" signature="15693:15749" ph="SELECT id, u... tbl_users" />
+            <marker date="1521018080214" expanded="true" signature="15946:16030" ph="INSERT INTO `tbl_users_projects`... " />
+            <marker date="1521018080214" expanded="true" signature="16352:16398" ph="UPDATE tbl_users... " />
+            <marker date="1521018080214" expanded="true" signature="16686:16722" ph="DELETE FROM tbl_users... " />
+            <marker date="1521018080214" expanded="true" signature="17109:17151" ph="DELETE FROM tbl_users... " />
+            <marker date="1521018080214" expanded="true" signature="17439:17607" ph="SELECT a.id,... tbl_users" />
           </folding>
         </state>
       </provider>
