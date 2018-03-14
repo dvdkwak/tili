@@ -17,6 +17,7 @@ class user extends db
     public function register()
     {
         $mysqli = $this->Connect();
+        $error = new errorHandling();
 
         //if the register button is clicked proceed with adding the user
         if (isset($_POST['registerBtn'])) {
@@ -50,10 +51,10 @@ class user extends db
                         $prepos = "NULL";
                     }
 
-                    $insertUser = $mysqli->query("INSERT INTO tbl_users (email, password, userlevel, tel, firstName, lastName, companyName, preposition, city, address, zipCode)
+                    $mysqli->query("INSERT INTO tbl_users (email, password, userlevel, tel, firstName, lastName, companyName, preposition, city, address, zipCode)
                                                       VALUES ('$email','$password','$userlvl','$telnumber','$firstname','$lastname','$companyname','$prepos','$city','$address','$zipcode')");
                     $error->setCustomError('Uw account is successvol aangevraagt, u krijgt een mail wanneer uw account is geactiveert.', "success");
-                    header('Location: /');
+                    $this->refreshPage();
                 } else {
                     $error->setCustomError('Het email dat u heeft ingevoerd bestaat al.', "danger");
                 }
@@ -100,7 +101,7 @@ class user extends db
         } else {
           $this->status = False;
           $error->setCustomError("Uw account is nog niet geaccepteerd.", "danger");
-          header('Location: /');
+            $this->refreshPage();
         }
       }
 
@@ -359,6 +360,7 @@ class user extends db
             require_once 'errorhandling.php';
             $error = new errorHandling();
             $error->setCustomError("Check uw mail om uw wachtwoord te veranderen","warning");
+            $this->refreshPage();
         }
     }
 
@@ -433,6 +435,7 @@ class user extends db
 
     public function addMember($id, $email) {
       $mysqli = $this->connect();
+      $error = new errorHandling();
 
       $query = "SELECT id, userlevel FROM tbl_users WHERE email='$email'";
       $result = $mysqli->query($query);
@@ -444,20 +447,27 @@ class user extends db
       if ($lvl == "1") {
         $query2 = "INSERT INTO `tbl_users_projects` (FK_projects_id, FK_users_id) VALUES ('$id','$uID')";
         $mysqli->query($query2);
+      } else {
+          $error->setCustomError('Deze gebruiker is helaas geen medewerker', 'danger');
+          $this->refreshPage();
       }
     }
 
     public function acceptNew($id){
       $mysqli=$this->connect();
+        $error = new errorHandling();
       $query="UPDATE tbl_users SET status='0' WHERE id='$id'";
       $mysqli->query($query);
+      $error->setCustomError('Klant succesvol geaccepteerd!', 'success');
       header ("location: /admin/gebruikers");
     }
 
     public function denyNew($id){
       $mysqli=$this->connect();
+      $error = new errorHandling();
       $query="DELETE FROM tbl_users WHERE id='$id'";
       $mysqli->query($query);
+        $error->setCustomError('Klant succesvol geweigerd!', 'success');
       header ("location: /admin/gebruikers");
     }
     public function deleteWorker()
@@ -468,7 +478,8 @@ class user extends db
             $workerId = $_POST['workerId'];
             $query="DELETE FROM tbl_users WHERE id='$workerId'";
             $mysqli->query($query);
-            $error->setCustomError('test','danger');
+            $error->setCustomError('Medewerker succesvol van het project verwijderd','success');
+            $this->refreshPage();
         }
     }
 

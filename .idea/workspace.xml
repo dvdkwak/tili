@@ -29,146 +29,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="projects.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/admin/cfg/classes/projects.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="510">
-              <caret line="77" column="36" lean-forward="false" selection-start-line="77" selection-start-column="36" selection-end-line="77" selection-end-column="36" />
-              <folding>
-                <marker date="1520931555525" expanded="true" signature="434:482" ph="SELECT * FRO... tbl_projects" />
-                <marker date="1520931555525" expanded="true" signature="434:502" ph="SELECT * FRO... tbl_projects" />
-                <marker date="1520931555525" expanded="true" signature="655:822" ph="SELECT a.*, tbl_projects" />
-                <marker date="1520931555525" expanded="true" signature="655:843" ph="SELECT a.*, tbl_projects" />
-                <marker date="1520931555525" expanded="true" signature="655:850" ph="SELECT a.*, tbl_projects" />
-                <marker date="1520931555525" expanded="true" signature="1912:1972" ph="UPDATE tbl_projects... " />
-                <marker date="1520931555525" expanded="true" signature="3645:3795" ph="INSERT INTO tbl_projects... " />
-                <marker date="1520931555525" expanded="true" signature="3866:3928" ph="SELECT id FR... tbl_projects" />
-                <marker date="1520931555525" expanded="true" signature="4068:4162" ph="INSERT INTO `tbl_users_projects`... " />
-                <marker date="1520931555525" expanded="true" signature="5794:5929" ph="INSERT INTO tbl_timeregistration... " />
-                <marker date="1520931555525" expanded="true" signature="5998:6052" ph="UPDATE tbl_users... " />
-                <marker date="1520931555525" expanded="true" signature="6122:6174" ph="UPDATE tbl_users... " />
-                <marker date="1520931555525" expanded="true" signature="6584:6699" ph="UPDATE tbl_timeregistration... " />
-                <marker date="1520931555525" expanded="true" signature="6768:6822" ph="UPDATE tbl_users... " />
-                <marker date="1520931555525" expanded="true" signature="6892:6944" ph="UPDATE tbl_users... " />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="projects.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/admin/pages/projects.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2176">
-              <caret line="128" column="6" lean-forward="false" selection-start-line="128" selection-start-column="6" selection-end-line="128" selection-end-column="6" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="projectdetails.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/admin/pages/projectdetails.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="209">
-              <caret line="32" column="1" lean-forward="false" selection-start-line="32" selection-start-column="1" selection-end-line="32" selection-end-column="1" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="style.css" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/admin/assets/css/style.css">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="17">
-              <caret line="111" column="17" lean-forward="false" selection-start-line="111" selection-start-column="17" selection-end-line="111" selection-end-column="17" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="user.php" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/admin/cfg/classes/user.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="271">
-              <caret line="216" column="5" lean-forward="false" selection-start-line="216" selection-start-column="5" selection-end-line="216" selection-end-column="5" />
-              <folding>
-                <marker date="1521014977612" expanded="true" signature="1799:1849" ph="SELECT email... tbl_users" />
-                <marker date="1521014977612" expanded="true" signature="2120:2434" ph="INSERT INTO tbl_users... " />
-                <marker date="1521014977612" expanded="true" signature="3443:3548" ph="SELECT * FRO... tbl_users" />
-                <marker date="1521014977612" expanded="true" signature="6271:6336" ph="DELETE FROM tbl_users_projects... " />
-                <marker date="1521014977612" expanded="true" signature="6884:7026" ph="SELECT A.*, tbl_projects_log" />
-                <marker date="1521014977612" expanded="true" signature="7620:7707" ph="INSERT INTO tbl_log... " />
-                <marker date="1521014977612" expanded="true" signature="7762:7811" ph="SELECT id FR... tbl_log" />
-                <marker date="1521014977612" expanded="true" signature="7946:8025" ph="INSERT INTO tbl_projects_log... " />
-                <marker date="1521014977612" expanded="true" signature="8180:8305" ph="SELECT A.*, tbl_timeregistration" />
-                <marker date="1521014977612" expanded="true" signature="8914:9761" ph="..." />
-                <marker date="1521014977612" expanded="true" signature="8945:8977" ph="..." />
-                <marker date="1521014977612" expanded="true" signature="9008:9729" ph="..." />
-                <marker date="1521014977612" expanded="true" signature="9164:9612" ph="..." />
-                <marker date="1521014977612" expanded="true" signature="9197:9296" ph="..." />
-                <marker date="1521014977612" expanded="true" signature="9329:9439" ph="..." />
-                <marker date="1521014977612" expanded="true" signature="9472:9579" ph="..." />
-                <marker date="1521014977612" expanded="true" signature="10763:10822" ph="SELECT recov... tbl_users" />
-                <marker date="1521014977612" expanded="true" signature="11122:11192" ph="UPDATE tbl_users... " />
-                <marker date="1521014977612" expanded="true" signature="11511:12274" ph="..." />
-                <marker date="1521014977612" expanded="true" signature="11550:11590" ph="..." />
-                <marker date="1521014977612" expanded="true" signature="11629:12238" ph="..." />
-                <marker date="1521014977612" expanded="true" signature="13452:13511" ph="SELECT id FR... tbl_users" />
-                <marker date="1521014977612" expanded="true" signature="13646:13724" ph="UPDATE tbl_users... " />
-                <marker date="1521014977612" expanded="true" signature="13771:13846" ph="UPDATE tbl_users... " />
-                <marker date="1521014977612" expanded="true" signature="14313:14623" ph="SELECT A.*, tbl_projects" />
-                <marker date="1521014977612" expanded="true" signature="15165:15234" ph="SELECT FK_us... tbl_users_projects" />
-                <marker date="1521014977612" expanded="true" signature="15529:15585" ph="SELECT id, u... tbl_users" />
-                <marker date="1521014977612" expanded="true" signature="15768:15852" ph="INSERT INTO `tbl_users_projects`... " />
-                <marker date="1521014977612" expanded="true" signature="15985:16031" ph="UPDATE tbl_users... " />
-                <marker date="1521014977612" expanded="true" signature="16197:16233" ph="DELETE FROM tbl_users... " />
-                <marker date="1521014977612" expanded="true" signature="16543:16585" ph="DELETE FROM tbl_users... " />
-                <marker date="1521014977612" expanded="true" signature="16795:16963" ph="SELECT a.id,... tbl_users" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="requests.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/admin/cfg/classes/requests.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="416">
-              <caret line="73" column="9" lean-forward="false" selection-start-line="73" selection-start-column="9" selection-end-line="73" selection-end-column="9" />
-              <folding>
-                <marker date="1521014976189" expanded="true" signature="284:332" ph="SELECT * FRO... tbl_projects" />
-                <marker date="1521014976189" expanded="true" signature="904:954" ph="UPDATE tbl_projects... " />
-                <marker date="1521014976189" expanded="true" signature="1468:1518" ph="UPDATE tbl_projects... " />
-                <marker date="1521014976189" expanded="true" signature="1554:1607" ph="DELETE FROM tbl_users_projects... " />
-                <marker date="1521014976189" expanded="true" signature="2366:2627" ph="SELECT c.ema... tbl_projects" />
-                <marker date="1521014976189" expanded="true" signature="3047:3437" ph="..." />
-                <marker date="1521014976189" expanded="true" signature="3078:3110" ph="..." />
-                <marker date="1521014976189" expanded="true" signature="3141:3405" ph="..." />
-                <marker date="1521014976189" expanded="true" signature="4083:4534" ph="..." />
-                <marker date="1521014976189" expanded="true" signature="4114:4146" ph="..." />
-                <marker date="1521014976189" expanded="true" signature="4177:4502" ph="..." />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="gebruikers.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/admin/pages/gebruikers.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="289">
-              <caret line="57" column="31" lean-forward="false" selection-start-line="57" selection-start-column="31" selection-end-line="57" selection-end-column="31" />
-              <folding>
-                <element signature="e#4322#4329#1#HTML" expanded="true" />
-                <marker date="1521014962442" expanded="true" signature="6258:6459" ph="..." />
-                <marker date="1521014962442" expanded="true" signature="6259:6455" ph="..." />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="errorhandling.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/admin/cfg/classes/errorhandling.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="340">
-              <caret line="20" column="16" lean-forward="false" selection-start-line="20" selection-start-column="16" selection-end-line="20" selection-end-column="16" />
+            <state relative-caret-position="187">
+              <caret line="11" column="60" lean-forward="false" selection-start-line="11" selection-start-column="47" selection-end-line="11" selection-end-column="60" />
               <folding />
             </state>
           </provider>
@@ -177,10 +42,73 @@
       <file leaf-file-name="index.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/admin/index.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="442">
-              <caret line="56" column="9" lean-forward="false" selection-start-line="56" selection-start-column="9" selection-end-line="56" selection-end-column="9" />
+            <state relative-caret-position="317">
+              <caret line="57" column="9" lean-forward="false" selection-start-line="57" selection-start-column="9" selection-end-line="57" selection-end-column="9" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="requests.php" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/admin/cfg/classes/requests.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="382">
+              <caret line="57" column="39" lean-forward="true" selection-start-line="0" selection-start-column="0" selection-end-line="147" selection-end-column="0" />
               <folding>
-                <element signature="e#3252#3335#0#PHP" expanded="true" />
+                <marker date="1521017243505" expanded="true" signature="284:332" ph="SELECT * FRO... tbl_projects" />
+                <marker date="1521017243505" expanded="true" signature="904:954" ph="UPDATE tbl_projects... " />
+                <marker date="1521017243505" expanded="true" signature="1508:1558" ph="UPDATE tbl_projects... " />
+                <marker date="1521017243505" expanded="true" signature="1594:1647" ph="DELETE FROM tbl_users_projects... " />
+                <marker date="1521017243505" expanded="true" signature="2448:2709" ph="SELECT c.ema... tbl_projects" />
+                <marker date="1521017243505" expanded="true" signature="3129:3519" ph="..." />
+                <marker date="1521017243505" expanded="true" signature="3160:3192" ph="..." />
+                <marker date="1521017243505" expanded="true" signature="3223:3487" ph="..." />
+                <marker date="1521017243505" expanded="true" signature="4165:4616" ph="..." />
+                <marker date="1521017243505" expanded="true" signature="4196:4228" ph="..." />
+                <marker date="1521017243505" expanded="true" signature="4259:4584" ph="..." />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="user.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/admin/cfg/classes/user.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="320">
+              <caret line="463" column="0" lean-forward="true" selection-start-line="463" selection-start-column="0" selection-end-line="463" selection-end-column="0" />
+              <folding>
+                <marker date="1521017698698" expanded="true" signature="1837:1887" ph="SELECT email... tbl_users" />
+                <marker date="1521017698698" expanded="true" signature="2144:2458" ph="INSERT INTO tbl_users... " />
+                <marker date="1521017698698" expanded="true" signature="3466:3571" ph="SELECT * FRO... tbl_users" />
+                <marker date="1521017698698" expanded="true" signature="6295:6360" ph="DELETE FROM tbl_users_projects... " />
+                <marker date="1521017698698" expanded="true" signature="6908:7050" ph="SELECT A.*, tbl_projects_log" />
+                <marker date="1521017698698" expanded="true" signature="7644:7731" ph="INSERT INTO tbl_log... " />
+                <marker date="1521017698698" expanded="true" signature="7786:7835" ph="SELECT id FR... tbl_log" />
+                <marker date="1521017698698" expanded="true" signature="7970:8049" ph="INSERT INTO tbl_projects_log... " />
+                <marker date="1521017698698" expanded="true" signature="8204:8329" ph="SELECT A.*, tbl_timeregistration" />
+                <marker date="1521017698698" expanded="true" signature="8938:9785" ph="..." />
+                <marker date="1521017698698" expanded="true" signature="8969:9001" ph="..." />
+                <marker date="1521017698698" expanded="true" signature="9032:9753" ph="..." />
+                <marker date="1521017698698" expanded="true" signature="9188:9636" ph="..." />
+                <marker date="1521017698698" expanded="true" signature="9221:9320" ph="..." />
+                <marker date="1521017698698" expanded="true" signature="9353:9463" ph="..." />
+                <marker date="1521017698698" expanded="true" signature="9496:9603" ph="..." />
+                <marker date="1521017698698" expanded="true" signature="10787:10846" ph="SELECT recov... tbl_users" />
+                <marker date="1521017698698" expanded="true" signature="11146:11216" ph="UPDATE tbl_users... " />
+                <marker date="1521017698698" expanded="true" signature="11535:12298" ph="..." />
+                <marker date="1521017698698" expanded="true" signature="11574:11614" ph="..." />
+                <marker date="1521017698698" expanded="true" signature="11653:12262" ph="..." />
+                <marker date="1521017698698" expanded="true" signature="13510:13569" ph="SELECT id FR... tbl_users" />
+                <marker date="1521017698698" expanded="true" signature="13704:13782" ph="UPDATE tbl_users... " />
+                <marker date="1521017698698" expanded="true" signature="13829:13904" ph="UPDATE tbl_users... " />
+                <marker date="1521017698698" expanded="true" signature="14371:14681" ph="SELECT A.*, tbl_projects" />
+                <marker date="1521017698698" expanded="true" signature="15223:15292" ph="SELECT FK_us... tbl_users_projects" />
+                <marker date="1521017698698" expanded="true" signature="15623:15679" ph="SELECT id, u... tbl_users" />
+                <marker date="1521017698698" expanded="true" signature="15862:15946" ph="INSERT INTO `tbl_users_projects`... " />
+                <marker date="1521017698698" expanded="true" signature="16252:16298" ph="UPDATE tbl_users... " />
+                <marker date="1521017698698" expanded="true" signature="16574:16610" ph="DELETE FROM tbl_users... " />
+                <marker date="1521017698698" expanded="true" signature="16993:17035" ph="DELETE FROM tbl_users... " />
+                <marker date="1521017698698" expanded="true" signature="17323:17491" ph="SELECT a.id,... tbl_users" />
               </folding>
             </state>
           </provider>
@@ -218,7 +146,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/admin/.HTACCESS" />
         <option value="$PROJECT_DIR$/.HTACCESS" />
         <option value="$PROJECT_DIR$/admin/assets/css/home.css" />
         <option value="$PROJECT_DIR$/admin/assets/css/animate.css" />
@@ -266,6 +193,7 @@
         <option value="$PROJECT_DIR$/admin/pages/projectdetails.php" />
         <option value="$PROJECT_DIR$/admin/cfg/classes/projects.php" />
         <option value="$PROJECT_DIR$/admin/cfg/classes/errorhandling.php" />
+        <option value="$PROJECT_DIR$/admin/test.php" />
         <option value="$PROJECT_DIR$/admin/index.php" />
         <option value="$PROJECT_DIR$/admin/cfg/classes/requests.php" />
         <option value="$PROJECT_DIR$/admin/cfg/classes/user.php" />
@@ -460,12 +388,12 @@
       <workItem from="1520581550043" duration="18175000" />
       <workItem from="1520842244835" duration="67000" />
       <workItem from="1520843364038" duration="13690000" />
-      <workItem from="1520928000600" duration="11615000" />
+      <workItem from="1520928000600" duration="14546000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="221268000" />
+    <option name="totallyTimeSpent" value="224199000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="1912" y="-8" width="1456" height="876" extended-state="6" />
@@ -505,7 +433,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://C:/animations.html" />
     <entry file="file://$PROJECT_DIR$/admin/assets/js/countUp.js" />
     <entry file="file://$PROJECT_DIR$/admin/pages/404.html" />
     <entry file="file://$PROJECT_DIR$/.HTACCESS" />
@@ -693,88 +620,94 @@
         <state relative-caret-position="289">
           <caret line="57" column="31" lean-forward="false" selection-start-line="57" selection-start-column="31" selection-end-line="57" selection-end-column="31" />
           <folding>
-            <element signature="e#4322#4329#1#HTML" expanded="true" />
+            <element signature="e#4322#4329#1#HTML" expanded="false" />
             <marker date="1521014962442" expanded="true" signature="6258:6459" ph="..." />
             <marker date="1521014962442" expanded="true" signature="6259:6455" ph="..." />
           </folding>
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/admin/test.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="11" column="1" lean-forward="true" selection-start-line="11" selection-start-column="1" selection-end-line="11" selection-end-column="1" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/admin/cfg/classes/errorhandling.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="340">
-          <caret line="20" column="16" lean-forward="false" selection-start-line="20" selection-start-column="16" selection-end-line="20" selection-end-column="16" />
+        <state relative-caret-position="187">
+          <caret line="11" column="60" lean-forward="false" selection-start-line="11" selection-start-column="47" selection-end-line="11" selection-end-column="60" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/admin/index.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="442">
-          <caret line="56" column="9" lean-forward="false" selection-start-line="56" selection-start-column="9" selection-end-line="56" selection-end-column="9" />
+        <state relative-caret-position="317">
+          <caret line="57" column="9" lean-forward="false" selection-start-line="57" selection-start-column="9" selection-end-line="57" selection-end-column="9" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/admin/cfg/classes/user.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="320">
+          <caret line="463" column="0" lean-forward="true" selection-start-line="463" selection-start-column="0" selection-end-line="463" selection-end-column="0" />
           <folding>
-            <element signature="e#3252#3335#0#PHP" expanded="true" />
+            <marker date="1521017698698" expanded="true" signature="1837:1887" ph="SELECT email... tbl_users" />
+            <marker date="1521017698698" expanded="true" signature="2144:2458" ph="INSERT INTO tbl_users... " />
+            <marker date="1521017698698" expanded="true" signature="3466:3571" ph="SELECT * FRO... tbl_users" />
+            <marker date="1521017698698" expanded="true" signature="6295:6360" ph="DELETE FROM tbl_users_projects... " />
+            <marker date="1521017698698" expanded="true" signature="6908:7050" ph="SELECT A.*, tbl_projects_log" />
+            <marker date="1521017698698" expanded="true" signature="7644:7731" ph="INSERT INTO tbl_log... " />
+            <marker date="1521017698698" expanded="true" signature="7786:7835" ph="SELECT id FR... tbl_log" />
+            <marker date="1521017698698" expanded="true" signature="7970:8049" ph="INSERT INTO tbl_projects_log... " />
+            <marker date="1521017698698" expanded="true" signature="8204:8329" ph="SELECT A.*, tbl_timeregistration" />
+            <marker date="1521017698698" expanded="true" signature="8938:9785" ph="..." />
+            <marker date="1521017698698" expanded="true" signature="8969:9001" ph="..." />
+            <marker date="1521017698698" expanded="true" signature="9032:9753" ph="..." />
+            <marker date="1521017698698" expanded="true" signature="9188:9636" ph="..." />
+            <marker date="1521017698698" expanded="true" signature="9221:9320" ph="..." />
+            <marker date="1521017698698" expanded="true" signature="9353:9463" ph="..." />
+            <marker date="1521017698698" expanded="true" signature="9496:9603" ph="..." />
+            <marker date="1521017698698" expanded="true" signature="10787:10846" ph="SELECT recov... tbl_users" />
+            <marker date="1521017698698" expanded="true" signature="11146:11216" ph="UPDATE tbl_users... " />
+            <marker date="1521017698698" expanded="true" signature="11535:12298" ph="..." />
+            <marker date="1521017698698" expanded="true" signature="11574:11614" ph="..." />
+            <marker date="1521017698698" expanded="true" signature="11653:12262" ph="..." />
+            <marker date="1521017698698" expanded="true" signature="13510:13569" ph="SELECT id FR... tbl_users" />
+            <marker date="1521017698698" expanded="true" signature="13704:13782" ph="UPDATE tbl_users... " />
+            <marker date="1521017698698" expanded="true" signature="13829:13904" ph="UPDATE tbl_users... " />
+            <marker date="1521017698698" expanded="true" signature="14371:14681" ph="SELECT A.*, tbl_projects" />
+            <marker date="1521017698698" expanded="true" signature="15223:15292" ph="SELECT FK_us... tbl_users_projects" />
+            <marker date="1521017698698" expanded="true" signature="15623:15679" ph="SELECT id, u... tbl_users" />
+            <marker date="1521017698698" expanded="true" signature="15862:15946" ph="INSERT INTO `tbl_users_projects`... " />
+            <marker date="1521017698698" expanded="true" signature="16252:16298" ph="UPDATE tbl_users... " />
+            <marker date="1521017698698" expanded="true" signature="16574:16610" ph="DELETE FROM tbl_users... " />
+            <marker date="1521017698698" expanded="true" signature="16993:17035" ph="DELETE FROM tbl_users... " />
+            <marker date="1521017698698" expanded="true" signature="17323:17491" ph="SELECT a.id,... tbl_users" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/admin/cfg/classes/requests.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="416">
-          <caret line="73" column="9" lean-forward="false" selection-start-line="73" selection-start-column="9" selection-end-line="73" selection-end-column="9" />
+        <state relative-caret-position="382">
+          <caret line="57" column="39" lean-forward="true" selection-start-line="0" selection-start-column="0" selection-end-line="147" selection-end-column="0" />
           <folding>
-            <marker date="1521014976189" expanded="true" signature="284:332" ph="SELECT * FRO... tbl_projects" />
-            <marker date="1521014976189" expanded="true" signature="904:954" ph="UPDATE tbl_projects... " />
-            <marker date="1521014976189" expanded="true" signature="1468:1518" ph="UPDATE tbl_projects... " />
-            <marker date="1521014976189" expanded="true" signature="1554:1607" ph="DELETE FROM tbl_users_projects... " />
-            <marker date="1521014976189" expanded="true" signature="2366:2627" ph="SELECT c.ema... tbl_projects" />
-            <marker date="1521014976189" expanded="true" signature="3047:3437" ph="..." />
-            <marker date="1521014976189" expanded="true" signature="3078:3110" ph="..." />
-            <marker date="1521014976189" expanded="true" signature="3141:3405" ph="..." />
-            <marker date="1521014976189" expanded="true" signature="4083:4534" ph="..." />
-            <marker date="1521014976189" expanded="true" signature="4114:4146" ph="..." />
-            <marker date="1521014976189" expanded="true" signature="4177:4502" ph="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/admin/cfg/classes/user.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="271">
-          <caret line="216" column="5" lean-forward="false" selection-start-line="216" selection-start-column="5" selection-end-line="216" selection-end-column="5" />
-          <folding>
-            <marker date="1521014977612" expanded="true" signature="1799:1849" ph="SELECT email... tbl_users" />
-            <marker date="1521014977612" expanded="true" signature="2120:2434" ph="INSERT INTO tbl_users... " />
-            <marker date="1521014977612" expanded="true" signature="3443:3548" ph="SELECT * FRO... tbl_users" />
-            <marker date="1521014977612" expanded="true" signature="6271:6336" ph="DELETE FROM tbl_users_projects... " />
-            <marker date="1521014977612" expanded="true" signature="6884:7026" ph="SELECT A.*, tbl_projects_log" />
-            <marker date="1521014977612" expanded="true" signature="7620:7707" ph="INSERT INTO tbl_log... " />
-            <marker date="1521014977612" expanded="true" signature="7762:7811" ph="SELECT id FR... tbl_log" />
-            <marker date="1521014977612" expanded="true" signature="7946:8025" ph="INSERT INTO tbl_projects_log... " />
-            <marker date="1521014977612" expanded="true" signature="8180:8305" ph="SELECT A.*, tbl_timeregistration" />
-            <marker date="1521014977612" expanded="true" signature="8914:9761" ph="..." />
-            <marker date="1521014977612" expanded="true" signature="8945:8977" ph="..." />
-            <marker date="1521014977612" expanded="true" signature="9008:9729" ph="..." />
-            <marker date="1521014977612" expanded="true" signature="9164:9612" ph="..." />
-            <marker date="1521014977612" expanded="true" signature="9197:9296" ph="..." />
-            <marker date="1521014977612" expanded="true" signature="9329:9439" ph="..." />
-            <marker date="1521014977612" expanded="true" signature="9472:9579" ph="..." />
-            <marker date="1521014977612" expanded="true" signature="10763:10822" ph="SELECT recov... tbl_users" />
-            <marker date="1521014977612" expanded="true" signature="11122:11192" ph="UPDATE tbl_users... " />
-            <marker date="1521014977612" expanded="true" signature="11511:12274" ph="..." />
-            <marker date="1521014977612" expanded="true" signature="11550:11590" ph="..." />
-            <marker date="1521014977612" expanded="true" signature="11629:12238" ph="..." />
-            <marker date="1521014977612" expanded="true" signature="13452:13511" ph="SELECT id FR... tbl_users" />
-            <marker date="1521014977612" expanded="true" signature="13646:13724" ph="UPDATE tbl_users... " />
-            <marker date="1521014977612" expanded="true" signature="13771:13846" ph="UPDATE tbl_users... " />
-            <marker date="1521014977612" expanded="true" signature="14313:14623" ph="SELECT A.*, tbl_projects" />
-            <marker date="1521014977612" expanded="true" signature="15165:15234" ph="SELECT FK_us... tbl_users_projects" />
-            <marker date="1521014977612" expanded="true" signature="15529:15585" ph="SELECT id, u... tbl_users" />
-            <marker date="1521014977612" expanded="true" signature="15768:15852" ph="INSERT INTO `tbl_users_projects`... " />
-            <marker date="1521014977612" expanded="true" signature="15985:16031" ph="UPDATE tbl_users... " />
-            <marker date="1521014977612" expanded="true" signature="16197:16233" ph="DELETE FROM tbl_users... " />
-            <marker date="1521014977612" expanded="true" signature="16543:16585" ph="DELETE FROM tbl_users... " />
-            <marker date="1521014977612" expanded="true" signature="16795:16963" ph="SELECT a.id,... tbl_users" />
+            <marker date="1521017243505" expanded="true" signature="284:332" ph="SELECT * FRO... tbl_projects" />
+            <marker date="1521017243505" expanded="true" signature="904:954" ph="UPDATE tbl_projects... " />
+            <marker date="1521017243505" expanded="true" signature="1508:1558" ph="UPDATE tbl_projects... " />
+            <marker date="1521017243505" expanded="true" signature="1594:1647" ph="DELETE FROM tbl_users_projects... " />
+            <marker date="1521017243505" expanded="true" signature="2448:2709" ph="SELECT c.ema... tbl_projects" />
+            <marker date="1521017243505" expanded="true" signature="3129:3519" ph="..." />
+            <marker date="1521017243505" expanded="true" signature="3160:3192" ph="..." />
+            <marker date="1521017243505" expanded="true" signature="3223:3487" ph="..." />
+            <marker date="1521017243505" expanded="true" signature="4165:4616" ph="..." />
+            <marker date="1521017243505" expanded="true" signature="4196:4228" ph="..." />
+            <marker date="1521017243505" expanded="true" signature="4259:4584" ph="..." />
           </folding>
         </state>
       </provider>

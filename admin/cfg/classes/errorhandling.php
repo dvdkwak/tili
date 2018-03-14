@@ -9,7 +9,7 @@
 			$_SESSION['customError'] = '
             <div class="alert-fixed alert alert-'.$sort.' alert-dismissible fade show" role="alert">
                 '.$message.'
-                <button type="button" id="btnClose" class="close" data-dismiss="alert" aria-label="Close">
+                <button type="button" onclick="deleteSession()" id="btnClose" class="close" data-dismiss="alert" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>';

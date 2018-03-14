@@ -34,8 +34,9 @@
 
                 $query = 'UPDATE tbl_projects SET isRequest = "0" WHERE id =' . $projectId;
                 if ($mysqli->query($query)) {
-                    //$this->sendAcceptMail($projectId);
+                    $this->sendAcceptMail($projectId);
                     $error->setCustomError("Project succesfull accepted!", "success");
+                    $this->refreshPage();
                 }
             }
         }
@@ -56,6 +57,7 @@
                 if ($mysqli->query($query)) {
                     $this->sendDeclineMail($projectId);
                     $error->setCustomError("Project succesfull deleted!", "success");
+                    $this->refreshPage();
                 }
             }
         }
