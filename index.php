@@ -14,7 +14,7 @@
     $user->sendMail();
     $user->forgotPassword();
     $error->getCustomError();
-
+    $_SESSION['customError'] = '';
 ?>
 <!DOCTYPE html>
 <html>
