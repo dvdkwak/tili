@@ -50,6 +50,9 @@
                 $projectId = $_POST['requestID'];
                 $query = 'UPDATE tbl_projects SET isRequest = "3" WHERE id =' . $projectId;
 
+								$query2 = 'DELETE FROM tbl_users_projects WHERE FK_projects_id =' . $projectId;
+								$mysqli->query($query2);
+
                 if ($mysqli->query($query)) {
                     $this->sendDeclineMail($projectId);
                     $error->setCustomError("Project succesfull deleted!", "success");

@@ -53,7 +53,7 @@ class user extends db
                     $insertUser = $mysqli->query("INSERT INTO tbl_users (email, password, userlevel, tel, firstName, lastName, companyName, preposition, city, address, zipCode)
                                                       VALUES ('$email','$password','$userlvl','$telnumber','$firstname','$lastname','$companyname','$prepos','$city','$address','$zipcode')");
                     $error->setCustomError('Uw account is successvol aangevraagt, u krijgt een mail wanneer uw account is geactiveert.', "success");
-                    header('Location: index.php');
+                    header('Location: /');
                 } else {
                     $error->setCustomError('Het email dat u heeft ingevoerd bestaat al.', "danger");
                 }
@@ -445,12 +445,14 @@ class user extends db
       $mysqli=$this->connect();
       $query="UPDATE tbl_users SET status='0' WHERE id='$id'";
       $mysqli->query($query);
+      header ("location: /admin/gebruikers");
     }
 
     public function denyNew($id){
       $mysqli=$this->connect();
       $query="DELETE FROM tbl_users WHERE id='$id'";
       $mysqli->query($query);
+      header ("location: /admin/gebruikers");
     }
     public function deleteWorker()
     {

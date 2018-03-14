@@ -250,8 +250,6 @@ if (isset($_POST['btnDeleteRequest'])) {
                             </form>
                         </div>
                         <div class="col-12 col-md-6">
-                            <h2>Uitleg</h2>
-                            <p>Paragraph</p>
                         </div>
                     </div>
                     <!-- eind form -->

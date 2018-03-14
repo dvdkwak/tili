@@ -45,7 +45,7 @@ $error->getCustomError();
           <div class='row'>
             <div class='col-11'>
               <form method="post">
-                <input name="logVerzend" class='form-control' placeholder='Typ hier een bericht.' type='text' />
+                <input name="logVerzend" class='form-control' required placeholder='Typ hier een bericht.' type='text' />
                 <div class="modalButtons">
                     <button type="submit" name="btnVerLog" class="btn btn-outline-success">Verzenden</button>
                     <button type="button" class="btn btn-outline-secondary" data-dismiss="modal">Sluiten</button>
@@ -69,7 +69,7 @@ $error->getCustomError();
             <div class='col-11'>
               <p>Voeg een email van de medewerker toe:</p>
               <form method="post">
-                <input name="txtMedewerker" class='form-control' placeholder='Typ hier de email van een medewerker.' type='text' />
+                <input name="txtMedewerker" class='form-control' required placeholder='Typ hier de email van een medewerker.' type='text' />
                 <div class="modalButtons">
                     <button type="submit" name="btnToevoegenMedewerker" class="btn btn-outline-success">Toevoegen</button>
                     <button type="button" class="btn btn-outline-secondary" data-dismiss="modal">Sluiten</button>
